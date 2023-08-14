@@ -108,8 +108,6 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   brightnessctl
   playerctl
   git
-  git-crypt
-  gnupg
   cryptsetup
   polkit_gnome
   lsof # volume control²

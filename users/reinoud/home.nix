@@ -18,8 +18,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    pinentry
-    
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -218,14 +216,5 @@ programs = {
     userName = "s141959@ap.be";
     userEmail = "öÑÛn±à¸wV7ª'ÎL¦g^ïs¨ÁÝäá;{^¥àXPFó¾ø~TgÁ*x]t²?%DÏg÷Õô'ÀÑ{Ó¯B8Ãß½GÆR7ô{ÃÑ";
   };
-  gpg.enable = true;
 };
-
-services.gpg-agent = {
-  enable = true;
-  pinentryFlavor = "qt";
-};
-
-
-
 }
