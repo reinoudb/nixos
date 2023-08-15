@@ -1,0 +1,33 @@
+#config bestand gemaakt door reinoud
+# hierin worden alle progamas en services gezet die bij het inloggen opgestart moeten worden
+#
+# launch keepass on startup
+exec --no-startup-id keepassxc
+
+#launch picom zo kan alacritty transparant zijn ook wle genaamt een compositor
+exec --no-startup-id picom
+
+# runs dunst on startup dit dient voor custom notifications. zoals oa battery
+exec --no-startup-id dunst
+
+#run lxpolkit hierdoor kan een gui app sudo rechten vragen
+exec --no-startup-id lxpolkit
+
+#conky launcen @ start
+exec_always --no-startup-id ~/.config/conky/launch.sh
+
+#polybar launch
+exec_always --no-startup-id ./.config/polybar/launch.sh
+exec xrandr --no-startup-id --output-key Virtual-1 --mode 1920x1080
+
+#automount sd kaart naar /mnt/sd_kaart when login
+exec --no-startup-id /mnt/automount_sd_kaart.sh
+
+#mount onedrive
+exec_always --no-startup-id /home/$USER/scripts/mountonedrive.sh
+
+#backup keepass
+exec --no-startup-id /home/$USER/scripts/keepass/rsync_boot.sh
+
+#wallpaper
+exec_always feh --bg-scale /home/rbruyndonckx/Pictures/Wallpapers/woestijn.jpg

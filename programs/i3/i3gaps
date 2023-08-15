@@ -1,0 +1,15 @@
+# config gemaakt door reinoud
+# gebruikt om alles rond i3 gaps te configureren
+
+# # lege stroken rond windows
+#gaps inner 30 
+#gaps inner 0 
+gaps outer 2
+smart_gaps on
+
+#verwijder title bar    dit is nodig voor i3gaps
+# You can also use any non-zero value if you'd like to have a border
+#default_border pixel 2
+
+new_window pixel 2
+new_float pixel 2

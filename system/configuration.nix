@@ -132,9 +132,9 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
 
 # virtual
 	virt-manager
-	# vmware-workstation
-  # linuxKernel.packages.linux_zen.vmware
-  # linuxKernel.packages.linux_xanmod_stable.vmware
+	vmware-workstation
+  linuxKernel.packages.linux_zen.vmware
+  linuxKernel.packages.linux_xanmod_stable.vmware
   qemu_full
 
     btop 
@@ -253,7 +253,7 @@ services = {
 	flatpak.enable = true;
 	xserver = { 
 		enable = true;
-		windowManager.i3.configFile = /config/i3/config;
+		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;

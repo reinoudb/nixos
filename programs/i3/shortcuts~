@@ -1,0 +1,28 @@
+#config file door reinoud
+# wordt gebruik om i3 config te verkleinen
+# hierin staan alle shortcuts
+
+# workspace to the right
+bindsym $mod+Tab workspace next
+
+# firefox
+bindsym $mod+shift+f exec firefox
+
+# nemo file manager
+bindsym $mod+shift+m exec nemo
+
+# rofi power menu en ander menu
+# bron
+# https://github.com/adi1090x/rofi
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-3/launcher.sh
+bindsym $mod+shiftx exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
+
+bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +5%
+
+bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 5-%
+
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86AudioNext exec playerctl next
+
+bindsym XF86AudioPlay exec playerctl pause

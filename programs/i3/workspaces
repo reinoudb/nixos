@@ -1,0 +1,63 @@
+# Deze config is door Reinoud geschreven om de main i3 config kleiner en overzichtelijker te houden
+# In deze config worden workspaces aangemaakt, aangepast en windows aan ws gekoppelt
+# Wil je erbij voegen en weet niet hoe je de class en instance vind ? 
+
+# xprop | grep WM_CLASS
+
+#set $ ""
+#set $ ""
+#set $ ""
+#set $ ""
+#set $ ""
+
+assign [class="aciii.exe" instance="aciii.exe"] → $15
+# assign [class="acu.exe" instance="acu.exe"] → $15
+assign [class="acc.exe" instance="acc.exe"] → $15
+assign [class="KeePassXC" instance="keepassxc"] → $12
+assign [class="qBittorrent" instance="qbittorrent"] → $14
+assign [class="Signal" instance="signal"] → $11
+assign [class="Minecraft* 1.19.4" instance="Minecraft* 1.19.4"] → $15
+assign [class="sottr.exe" instance="sottr.exe"] → $15
+assign [class="rottr.exe" instance="rottr.exe"] → $15
+assign [class="Spotify" instance="spotify"] → $13
+
+# hierdoor kan je las je op mod+1 zit en druk mod+2 en je wilt terug naar 1 kan je op mod+2 drukken en dan ga je terug naar je vorige ws
+workspace_auto_back_and_forth yes
+
+# Define names for default workspaces for which we configure key bindings later on.
+# # We use variables to avoid repeating the names in multiple places.
+ set $11 "11"
+ set $12 "12"
+ set $13 "13"
+ set $14 "14"
+ set $15  "15 "
+ set $ws16 "16"
+ set $ws17 "17"
+ set $ws18 "18"
+ set $ws19 "19"
+ set $ws20 "20"
+#
+# # switch to workspace
+ bindsym $mod+ctrl+ampersand workspace number $11
+ bindsym $mod+ctrl+eacute workspace number $12
+ bindsym $mod+ctrl+quotedbl workspace number $13
+ bindsym $mod+ctrl+apostrophe workspace number $14
+ bindsym $mod+ctrl+parenleft workspace number $15 
+ bindsym $mod+ctrl+section workspace number $ws16
+ bindsym $mod+ctrl+egrave workspace number $ws17
+ bindsym $mod+ctrl+exclam workspace number $ws18
+ bindsym $mod+ctrl+ccedilla workspace number $ws19
+ bindsym $mod+ctrl+agrave workspace number $ws20
+#
+# # move focused container to workspace
+ bindsym $mod+Shift+ctrl+ampersand move container to workspace number $ws11
+ bindsym $mod+Shift+ctrl+eacute move container to workspace number $ws12
+ bindsym $mod+Shift+ctrl+quotedbl move container to workspace number $ws13
+ bindsym $mod+Shift+ctrl+apostrophe move container to workspace number $ws14
+ bindsym $mod+Shift+ctrl+5 move container to workspace number $ws15
+ bindsym $mod+Shift+ctrl+section move container to workspace number $ws16
+ bindsym $mod+Shift+ctrl+egrave move container to workspace number $ws17
+ bindsym $mod+Shift+ctrl+exclam move container to workspace number $ws18
+ bindsym $mod+Shift+ctrl+ccedilla move container to workspace number $ws19
+bindsym $mod+Shift+ctrl+agrave move container to workspace number $ws20
+

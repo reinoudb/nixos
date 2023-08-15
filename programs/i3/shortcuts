@@ -1,0 +1,57 @@
+#config file door reinoud
+# wordt gebruik om i3 config te verkleinen
+# hierin staan alle shortcuts
+
+# workspace to the right
+bindsym $mod+Tab workspace next
+
+# firefox
+# bindsym $mod+shift+f exec firefox
+bindsym $mod+shift+f exec librewolf
+# bindsym $mod+shift+f exec flatpak run io.gitlab.librewolf-community
+
+# nemo file manager
+bindsym $mod+shift+m exec nemo
+
+
+# rofi power menu en ander menu
+# bron
+# https://github.com/adi1090x/rofi
+#bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
+bindsym $mod+shift+x exec --no-startup-id rofi -modi "Power:rofi-power-menu" -show Power
+# bindsym $mod+shift+x exec --no-startup-id /config/rofi/powermenu/type-2/powermenu.sh
+
+bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +5%
+
+bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 5-%
+
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86AudioNext exec playerctl next
+
+bindsym XF86AudioPlay exec playerctl pause
+
+bindsym $mod+n split toggle
+
+# Toggle System Information Bar Visibility
+# bindsym $mod+p bar mode toggle system_info_bar
+
+
+bindsym PrintScreen exec xfce4-screenshooter
+
+bindsym $mod+shift+u move scratchpad 
+bindsym $mod+u scratchpad show
+# bindsym $mod+p [title="^Sup ::"] scratchpad show
+
+
+
+
+# set $alacritty alacritty --class alacritty
+# set $browser_scratchpad firefox --new-window --class scratchpad_browser
+
+# bindsym $mod+a [class=alacritty] scratchpad show
+# bindsym $mod+z [class=scratchpad_browser] scratchpad show
+
+#bindsym $mod+d exec --no-startup-id dmenu_run
+
+bindsym $mod+µ [title="scratchpad"] scratchpad show

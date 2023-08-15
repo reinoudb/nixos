@@ -1,0 +1,34 @@
+# Deze config is door Reinoud geschreven om de main i3 config kleiner en overzichtelijker te houden
+# In deze config worden workspaces aangemaakt, aangepast en windows aan ws gekoppelt
+# Wil je erbij voegen en weet niet hoe je de class en instance vind ? 
+
+# xprop | grep WM_CLASS
+
+set $ ""
+set $ ""
+set $ ""
+set $ ""
+set $ ""
+
+# assasins creed III
+assign [class="aciii.exe" instance="aciii.exe"] → $
+
+#keepass xc
+assign [class="KeePassXC" instance="keepassxc"] → $
+
+#qbittorrent
+assign [class="qBittorrent" instance="qbittorrent"] → $
+
+#signal
+assign [class="Signal" instance="signal"] → $
+
+#minecraft
+assign [class="Minecraft* 1.19.2" instance="Minecraft* 1.19.2"] → $
+
+#spotify
+assign [class="Spotify" instance="spotify"] → $
+
+# hierdoor kan je las je op mod+1 zit en druk mod+2 en je wilt terug naar 1 kan je op mod+2 drukken en dan ga je terug naar je vorige ws
+#workspace_auto_back_and_forth yes
+
+
