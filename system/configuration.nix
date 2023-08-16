@@ -141,8 +141,6 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
     xfce.xfce4-screenshooter
     alacritty
     gimp
-    signal-cli
-    matrixcli
     russ # rss
     gpicview 
     vlc
