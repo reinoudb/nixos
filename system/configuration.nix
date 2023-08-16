@@ -264,39 +264,19 @@ services = {
     tumbler.enable = true; # Thumbnail support for images
     };
 
-
+/*
 home-manager.useGlobalPkgs = true;
 home-manager.users.reinoud = { pkgs, ...}: {
 	home.stateVersion = "23.05";
 	home.packages = with pkgs; [
 				];
 
-
-	home.file.".vimrc" = {
-		source = /config/vimrc;
-		};
-
-	home.file.".vim" = {
-		source = /config/vim;
-		recursive = true;
-		};
-
-	home.file.".config/i3" = {
-		source = /config/i3;
-		recursive = true;
-		};
-
-	home.file.".config/alacritty" = {
-		source = /config/alacritty;
-		recursive = true;
-	};
-  home.file.".config/dunst" = {
-    source = /config/dunst;
-    recursive = true;
-  };
-	
+  #home.file.".vim" = {
+  #	source = /config/vim;
+  #	recursive = true;
+  #	};
 };
-
+*/
 
 systemd.user = {
     services = {
