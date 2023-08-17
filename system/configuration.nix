@@ -33,7 +33,7 @@ networking = {
   hostName = "nixos";
   networkmanager.enable = true;
   nameservers = [ "9.9.9.9" ];
-  #wireless.enable = true; # enable wireless support via wpa_supplicant
+ # wireless.enable = true; # enable wireless support via wpa_supplicant
    wg-quick.interfaces = { #/
      wg0 = { #/
        address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
@@ -89,6 +89,7 @@ i3blocks
   alsa-utils
 
 # core
+#wpa_supplicant_gui
 sshfs
 psmisc
 linuxKernel.packages.linux_zen.cpupower # set cpu performance
@@ -141,6 +142,7 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
     btop 
     xfce.xfce4-screenshooter
     alacritty
+    iamb
     matrixcli
     nheko
     gimp
