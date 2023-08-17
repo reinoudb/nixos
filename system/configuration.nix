@@ -98,6 +98,7 @@ i3blocks
   alsa-utils
 
 # core
+dig
 #wpa_supplicant_gui
 sshfs
 psmisc
