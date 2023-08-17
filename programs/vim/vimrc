@@ -145,3 +145,12 @@ let g:pymode_lint_cwindow = 0 " zet python errors onderaan
 
 
 colorscheme seoul256
+
+" ipv plugin voor autoclose
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
