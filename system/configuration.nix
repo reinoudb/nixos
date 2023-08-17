@@ -10,8 +10,10 @@
       ./hardware-configuration.nix
       <home-manager/nixos>
       # ./borgbackupMonitor.nix
-      ./vim.nix
+      #./vim.nix
+#      /home/reinoud/.dotfiles/users/reinoud/packettracer8.nix
     ];
+    
 
 boot = { 
   plymouth.enable = true;

@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  #imports = [
+  #  ./packettracer8.nix
+  #];
+
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "reinoud";
@@ -93,5 +98,7 @@ programs = {
     userEmail = "öÑÛn±à¸wV7ª'ÎL¦g^ïs¨ÁÝäá;{^¥àXPFó¾ø~TgÁ*x]t²?%DÏg÷Õô'ÀÑ{Ó¯B8Ãß½GÆR7ô{ÃÑ";
   };
 };
+
+
 
 }

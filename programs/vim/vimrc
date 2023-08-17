@@ -1,5 +1,5 @@
 "if empty(glob(data_dir . '/autoload/plug.vim'))
-"  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+ " silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 "  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 "endif
 
@@ -11,22 +11,26 @@ Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets'
 Plug 'vim-scripts/AutoComplPop' " autocompletion
 Plug 'davidhalter/jedi-vim' " python type suggestion
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' " git
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop'}
-Plug 'jceb/vim-scrollcenter'
-Plug 'tpope/commentary.vim'
+"Plug 'jceb/vim-scrollcenter'
+"Plug 'tpope/commentary'
+Plug 'junegunn/seoul256.vim'
+
+Plug 'tpope/vim-commentary'
 
 Plug 'itchyny/lightline.vim' "Highlights lines
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' "Fuzzy find plugin
 Plug 'mbbill/undotree' "Creates an undo tree
 Plug 'preservim/nerdtree' "File browser inside vim
-Plug 'godlygeek/tabular' "Auto formatting
+" Plug 'godlygeek/tabular' "Auto formatting
 Plug 'plasticboy/vim-markdown' "Markdown syntax highlighting
 Plug 'ryanoasis/vim-devicons' "Cool icons for nerd tree
-Plug 'Xuyuanp/nerdtree-git-plugin' "nerd tree customization
+" Plug 'Xuyuanp/nerdtree-git-plugin' "nerd tree customization
 Plug '907th/vim-auto-save' "auto saves files as you edit
 Plug 'jdhao/better-escape.vim' "remaps esc key to jj
+
 call plug#end()
 
 " Startup Settings
@@ -138,3 +142,6 @@ let g:pymode_lint_cwindow = 0 " zet python errors onderaan
 
 
 " let g:UltiSnipsSnippetDirectories=["~/.vim/sqlsnippets/"]
+
+
+colorscheme seoul256
