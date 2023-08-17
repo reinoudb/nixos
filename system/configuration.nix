@@ -380,7 +380,6 @@ nix.gc = {
       # SSH options
       "reconnect"              # handle connection drops
       "ServerAliveInterval=15" # keep connections alive
-      #"IdentityFile=/var/secrets/example-key"
     ];
 };
 }
