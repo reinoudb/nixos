@@ -9,11 +9,18 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
+      ./packettracer.nix
       # ./borgbackupMonitor.nix
       #./vim.nix
 #      /home/reinoud/.dotfiles/users/reinoud/packettracer8.nix
     ];
-    
+ 
+system = {
+  stateVersion = "23.05"; # Did you read the comment?
+  autoUpgrade.enable = true;
+  autoUpgrade.allowReboot = true; # false
+};
+   
 
 boot = { 
   plymouth.enable = true;
@@ -73,8 +80,8 @@ users = {
 
 nixpkgs.config.allowUnfree = true;
 
-environment = { 
-  systemPackages = with pkgs; [
+environment.systemPackages = with pkgs; [
+
 lxappearance # change icon & themes i3
 i3
 i3lock-fancy-rapid
@@ -136,9 +143,9 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
 
 # virtual
 	virt-manager
-  #vmware-workstation
-  #linuxKernel.packages.linux_zen.vmware
-  #linuxKernel.packages.linux_xanmod_stable.vmware
+  # vmware-workstation
+  # linuxKernel.packages.linux_zen.vmware
+  # linuxKernel.packages.linux_xanmod_stable.vmware
   qemu_full
 
     btop 
@@ -159,7 +166,7 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
 	vim-full
     xcolor
     mysql80
-    /* ciscoPacketTracer8 */
+    #ciscoPacketTracer8 
     xfce.thunar
     thunderbird
     filezilla
@@ -191,7 +198,7 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
     firefox
     brave
   ];
-};
+#};
 
   # Some rograms need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -207,12 +214,6 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-system = {
-  stateVersion = "23.05"; # Did you read the comment?
-  autoUpgrade.enable = true;
-  autoUpgrade.allowReboot = true; # false
-};
 
 xdg.portal.enable = true;
 xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
