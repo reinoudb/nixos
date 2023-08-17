@@ -33,23 +33,23 @@ networking = {
   hostName = "nixos";
   networkmanager.enable = true;
   #wireless.enable = true; # enable wireless support via wpa_supplicant
-   # wg-quick.interfaces = { #/
-   #   wg0 = { #/
-   #     address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
-   #     dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
-   #     privateKeyFile = "/config/wireguard/privatekey"; #/
+   wg-quick.interfaces = { #/
+     wg0 = { #/
+       address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
+       dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
+       privateKeyFile = "/config/wireguard/privatekey"; #/
 
-   #    peers = [ #/
-   #       { #/
-   #       publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
-   #       presharedKeyFile = "/config/wireguard/presharedKeyFile"; #/
-   #       allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
-   #       endpoint = "nl.vpn.airdns.org:1637"; #/
-   #       persistentKeepalive = 15; #/
-   #       } #/
-   #     ]; #/
-   #   }; #/
-   # }; #/
+      peers = [ #/
+         { #/
+         publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
+         presharedKeyFile = "/config/wireguard/presharedKeyFile"; #/
+         allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
+         endpoint = "nl.vpn.airdns.org:1637"; #/
+         persistentKeepalive = 15; #/
+         } #/
+       ]; #/
+     }; #/
+   }; #/
 };
 
 time.timeZone = "Europe/Brussels";
@@ -88,8 +88,8 @@ i3blocks
   alsa-utils
 
 # core
+sshfs
 psmisc
-linuxKernel.packages.linux_zen.nvidia_x11
 linuxKernel.packages.linux_zen.cpupower # set cpu performance
   cargo
   tmux
@@ -132,14 +132,16 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
 
 # virtual
 	virt-manager
-	vmware-workstation
-  linuxKernel.packages.linux_zen.vmware
-  linuxKernel.packages.linux_xanmod_stable.vmware
+  #vmware-workstation
+  #linuxKernel.packages.linux_zen.vmware
+  #linuxKernel.packages.linux_xanmod_stable.vmware
   qemu_full
 
     btop 
     xfce.xfce4-screenshooter
     alacritty
+    matrixcli
+    nheko
     gimp
     russ # rss
     gpicview 
@@ -342,5 +344,43 @@ nix.gc = {
   options = "--delete-older-than 30d";
 };
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
+  #services.xserver.videoDrivers = ["nvidia" "modesetting"];
+
+    hardware.nvidia = {
+
+    # Modesetting is needed for most Wayland compositors
+    modesetting.enable = true;
+
+    # Use the open source version of the kernel module
+    # Only available on driver 515.43.04+
+    open = false;
+
+    # Enable the nvidia settings menu
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    #package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  fileSystems."/home/reinoud/basestation" = {
+  device = "local-basestation:/mnt/2tb/Documents/";
+  fsType = "sshfs";
+  options =
+    [ # Filesystem options
+      "allow_other"          # for non-root access
+      "_netdev"              # this is a network fs
+      "x-systemd.automount"  # mount on demand
+
+      # SSH options
+      "reconnect"              # handle connection drops
+      "ServerAliveInterval=15" # keep connections alive
+      #"IdentityFile=/var/secrets/example-key"
+    ];
+};
 }

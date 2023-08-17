@@ -93,4 +93,22 @@ programs = {
     userEmail = "öÑÛn±à¸wV7ª'ÎL¦g^ïs¨ÁÝäá;{^¥àXPFó¾ø~TgÁ*x]t²?%DÏg÷Õô'ÀÑ{Ó¯B8Ãß½GÆR7ô{ÃÑ";
   };
 };
+
+
+fileSystems."/home/reinoud/mount/" = {
+  device = "local-basestation:/mnt/2tb/Documents/";
+  fsType = "sshfs";
+  options =
+    [ # Filesystem options
+      "allow_other"          # for non-root access
+      "_netdev"              # this is a network fs
+      "x-systemd.automount"  # mount on demand
+
+      # SSH options
+      "reconnect"              # handle connection drops
+      "ServerAliveInterval=15" # keep connections alive
+      "IdentityFile=/var/secrets/example-key"
+    ];
+};
+
 }
