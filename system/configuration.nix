@@ -32,6 +32,7 @@ fonts.fonts = with pkgs; [
 networking = {
   hostName = "nixos";
   networkmanager.enable = true;
+  nameservers = [ "9.9.9.9" ];
   #wireless.enable = true; # enable wireless support via wpa_supplicant
    wg-quick.interfaces = { #/
      wg0 = { #/
