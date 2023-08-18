@@ -42,7 +42,7 @@ networking = {
   hostName = "nixos";
   networkmanager.enable = true;
   nameservers = [ "9.9.9.9" ];
- # wireless.enable = true; # enable wireless support via wpa_supplicant
+ #wireless.enable = true; # enable wireless support via wpa_supplicant
    # wg-quick.interfaces = { #/
    #   wg0 = { #/
    #     address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
@@ -351,32 +351,8 @@ nix.gc = {
   options = "--delete-older-than 30d";
 };
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  #services.xserver.videoDrivers = ["nvidia" "modesetting"];
-
-    hardware.nvidia = {
-
-    # Modesetting is needed for most Wayland compositors
-    modesetting.enable = true;
-
-    # Use the open source version of the kernel module
-    # Only available on driver 515.43.04+
-    open = false;
-
-    # Enable the nvidia settings menu
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    #package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
   fileSystems."/home/reinoud/basestation" = {
-  device = "local-basestation:/mnt/2tb/Documents/";
+  device = "local-basestation:/mnt/2tb/Documents";
   fsType = "sshfs";
   options =
     [ # Filesystem options
