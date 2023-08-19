@@ -18,7 +18,7 @@
 system = {
   stateVersion = "23.05"; # Did you read the comment?
   autoUpgrade.enable = true;
-  autoUpgrade.allowReboot = true; # false
+  autoUpgrade.allowReboot = false; # true
 };
    
 
@@ -69,7 +69,7 @@ console.keyMap = "be-latin1";
 i18n.defaultLocale = "en_US.UTF-8";
 
 users = {
-  defaultUserShell = pkgs.fish;
+  # defaultUserShell = pkgs.fish;
   users.reinoud = {
     isNormalUser = true;
     description = "reinoud";
@@ -176,7 +176,7 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
     dolphin
     j4-dmenu-desktop
     spotify
-    fish
+    # fish
     neofetch
     keepassxc
     signal-desktop
@@ -234,7 +234,7 @@ programs = {
     };
 	dconf.enable = true;
 	vim.defaultEditor = true;
-	fish.enable = true;
+	# fish.enable = true;
   thunar = {
     enable = true;
     plugins = with pkgs.xfce; [

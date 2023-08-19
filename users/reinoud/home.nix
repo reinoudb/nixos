@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   #imports = [
   #  ./packettracer8.nix
@@ -23,6 +22,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    bash-completion
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -89,7 +89,24 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    bash = {
+      enable = true;
+      enableCompletion = true;
+    };
+    # fish = {
+    #   enable = true;
+    #   shellAliases = {
+    #     applysystem = "/home/reinoud/;dotfiles/apply-system.sh";
+    #     applyuser = "/home/reinoud/;dotfiles/apply-user.sh";
+
+    #     dot = "cd /home/reinoud/.dotfiles/";
+    #   };
+    # };
+
+  };
+
 
 programs = {
   git = {
