@@ -69,7 +69,7 @@ console.keyMap = "be-latin1";
 i18n.defaultLocale = "en_US.UTF-8";
 
 users = {
-  # defaultUserShell = pkgs.fish;
+  defaultUserShell = pkgs.fish;
   users.reinoud = {
     isNormalUser = true;
     description = "reinoud";
@@ -91,6 +91,7 @@ xdg-desktop-portal-gnome
 i3status
 lightdm
 i3blocks
+# qtile
 
 # audio
   blueman # bluetooth
@@ -176,7 +177,7 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
     dolphin
     j4-dmenu-desktop
     spotify
-    # fish
+    fish
     neofetch
     keepassxc
     signal-desktop
@@ -234,7 +235,7 @@ programs = {
     };
 	dconf.enable = true;
 	vim.defaultEditor = true;
-	# fish.enable = true;
+	fish.enable = true;
   thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
@@ -261,9 +262,11 @@ services = {
 	xserver = { 
 		enable = true;
 		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
+		# windowManager.qtile.configFile = /home/reinoud/.config/qtile/config;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
+    # windowManager.qtile.enable = true;
 
 		};
 	blueman.enable = true;

@@ -22,7 +22,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    bash-completion
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -62,6 +61,11 @@
      source = ~/.dotfiles/programs/i3;
      recursive = true; 
     };
+
+    ".config/dunst" = {
+      source = ~/.dotfiles/programs/dunst;
+     recursive = true; 
+    };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -95,15 +99,15 @@
       enable = true;
       enableCompletion = true;
     };
-    # fish = {
-    #   enable = true;
-    #   shellAliases = {
-    #     applysystem = "/home/reinoud/;dotfiles/apply-system.sh";
-    #     applyuser = "/home/reinoud/;dotfiles/apply-user.sh";
+     fish = {
+      enable = true;
+      shellAliases = {
+        applysystem = "/home/reinoud/;dotfiles/apply-system.sh";
+        applyuser = "/home/reinoud/;dotfiles/apply-user.sh";
 
-    #     dot = "cd /home/reinoud/.dotfiles/";
-    #   };
-    # };
+        dot = "cd /home/reinoud/.dotfiles/";
+      };
+    };
 
   };
 
@@ -113,6 +117,13 @@ programs = {
     enable = true;
     userName = "s141959@ap.be";
     userEmail = "öÑÛn±à¸wV7ª'ÎL¦g^ïs¨ÁÝäá;{^¥àXPFó¾ø~TgÁ*x]t²?%DÏg÷Õô'ÀÑ{Ó¯B8Ãß½GÆR7ô{ÃÑ";
+  };
+};
+
+services = {
+  dunst = {
+    enable = true;
+    configFile = ~/.config/dunst/dunstrc;
   };
 };
 
