@@ -306,7 +306,7 @@ systemd.user = {
         path = with pkgs; [ bash libnotify x11vnc ];
         description = "Battery Alert Service";
         serviceConfig.Type = "simple";
-        serviceConfig.ExecStart = /config/battery/alert-battery.sh;
+        serviceConfig.ExecStart = /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh;
       };
       polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
