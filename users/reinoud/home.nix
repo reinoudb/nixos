@@ -123,7 +123,7 @@ programs = {
 services = {
   dunst = {
     enable = true;
-    configFile = ~/.config/dunst/dunstrc;
+    # configFile = ~/.config/dunst/dunstrc;
   };
 };
 

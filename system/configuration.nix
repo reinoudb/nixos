@@ -44,21 +44,21 @@ networking = {
   nameservers = [ "9.9.9.9" ];
  #wireless.enable = true; # enable wireless support via wpa_supplicant
    # wg-quick.interfaces = { #/
-   #   wg0 = { #/
-   #     address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
-   #     dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
-   #     privateKeyFile = "/config/wireguard/privatekey"; #/
+     # wg0 = { #/
+     #   address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
+     #   dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
+     #   privateKeyFile = "/config/wireguard/privatekey"; #/
 
-   #    peers = [ #/
-   #       { #/
-   #       publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
-   #       presharedKeyFile = "/config/wireguard/presharedKeyFile"; #/
-   #       allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
-   #       endpoint = "nl.vpn.airdns.org:1637"; #/
-   #       persistentKeepalive = 15; #/
-   #       } #/
-   #     ]; #/
-   #   }; #/
+     #  peers = [ #/
+     #     { #/
+     #     publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
+     #     presharedKeyFile = "/config/wireguard/presharedKeyFile"; #/
+     #     allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
+     #     endpoint = "nl.vpn.airdns.org:1637"; #/
+     #     persistentKeepalive = 15; #/
+     #     } #/
+     #   ]; #/
+     # }; #/
    # }; #/
 };
 
@@ -84,6 +84,7 @@ environment.systemPackages = with pkgs; [
 
 lxappearance # change icon & themes i3
 i3
+qtile
 i3lock-fancy-rapid
 # x11vnc
 x11basic
@@ -91,7 +92,6 @@ xdg-desktop-portal-gnome
 i3status
 lightdm
 i3blocks
-# qtile
 
 # audio
   blueman # bluetooth
@@ -99,6 +99,7 @@ i3blocks
   alsa-utils
 
 # core
+unrar-wrapper
 dig
 #wpa_supplicant_gui
 sshfs
@@ -135,6 +136,8 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   wirelesstools
 
 # gaming
+steam
+lutris
   #jc141
   perl536Packages.OpenGL
     wineWowPackages.unstableFull
@@ -174,6 +177,7 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
     filezilla
     wireshark
     freetube
+    pipe-viewer
     dolphin
     j4-dmenu-desktop
     spotify
@@ -262,7 +266,7 @@ services = {
 	xserver = { 
 		enable = true;
 		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
-		# windowManager.qtile.configFile = /home/reinoud/.config/qtile/config;
+		# windowManager.qtile.configFile = /home/reinoud/.config/qtile/config.py;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
@@ -303,6 +307,7 @@ systemd.user = {
 
 
             battery-alert = {
+              enable = true;
         path = with pkgs; [ bash libnotify x11vnc ];
         description = "Battery Alert Service";
         serviceConfig.Type = "simple";
@@ -321,10 +326,12 @@ systemd.user = {
 	};
     timers = {
       battery-alert = {
+        enable = true;
         timerConfig.OnbootSec = "5m";
         description = "Battery Alert Timer";
         timerConfig.OnUnitActiveSec = "1m";
-        timerConfig.Unit = "battery-alert.service";
+        timerConfig.Unit = "battery-alert";
+        timerConfig.RemainAfterElapse= true;
         wantedBy = [ "multi-user.target" ];       
       };
     };

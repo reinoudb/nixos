@@ -1,4 +1,5 @@
 #!/bin/sh
+pushd ~/.dotfiles/scripts/battery/
 bat_files="/sys/class/power_supply/BAT1"
 bat_status=$(cat "${bat_files}/status")
 capacity=$(cat "${bat_files}/capacity")
@@ -22,12 +23,12 @@ fi
 
 
 
-if [[ ${capacity} -gt 98 ]]; then
+if [[ ${capacity} -gt 95 ]]; then
 	    echo "Battery alert - ${capacity}%"
 	    notify-send  "Battery full" --icon=./full-battery.png --urgency low
 fi
 
 echo $capacity
 notify-send "test"
-sleep 20
-./alert-battery.sh
+popd
+
