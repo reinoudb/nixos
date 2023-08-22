@@ -126,7 +126,4 @@ services = {
     # configFile = ~/.config/dunst/dunstrc;
   };
 };
-
-
-
 }

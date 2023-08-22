@@ -136,6 +136,9 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   wirelesstools
 
 # gaming
+steam-run
+protontricks
+winetricks
 steam
 lutris
   #jc141
@@ -344,7 +347,7 @@ systemd.user = {
 
 
 services.borgbackup.jobs.home-dir = {
-  paths = "/home/reinoud/Downloads/";
+  paths = "/home/reinoud/Documents";
   encryption = {
     mode = "keyfile";
     passCommand = "cat /config/borg/password";

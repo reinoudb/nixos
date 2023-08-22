@@ -2,8 +2,7 @@
 # It will not be overwritten, so edit it as you like.
 #
 # Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
+# this file and re-run i3-config-wizard(1).  #
 
 # i3 config file (v4)
 #
@@ -52,8 +51,11 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # kill focused window
-# bindsym $mod+w kill
-bindsym $mod+Shift+a kill
+bindsym $mod+shift+a kill
+# bindsym $mod+Shift+a [con_id="__focused__" class="^(?!dropdown).*$"] kill
+# bindsym $mod+Shift+q [con_id="__focused__" instance="^(dropdown).*$"] kill
+
+# bindsym $mod+Shift+a kill
 
 
 # start dmenu (a program launcher)
@@ -202,5 +204,6 @@ include ~/.config/i3/startup
 include ~/.config/i3/shortcuts
 include ~/.config/i3/workspaces
 include ~/.config/i3/bar/bar.conf
+include ~/.config/i3/scratchpad
 
 smart_borders on
