@@ -136,6 +136,8 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   wirelesstools
 
 # gaming
+vulkan-tools
+vulkan-loader
 steam-run
 protontricks
 winetricks
@@ -159,6 +161,7 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
+    gimp
     iamb
     matrixcli
     nheko
@@ -273,7 +276,7 @@ services = {
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
-    # windowManager.qtile.enable = true;
+    windowManager.qtile.enable = true;
 
 		};
 	blueman.enable = true;
