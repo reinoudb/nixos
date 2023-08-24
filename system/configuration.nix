@@ -12,7 +12,7 @@
       ./packettracer.nix
       # ./borgbackupMonitor.nix
       #./vim.nix
-#      /home/reinoud/.dotfiles/users/reinoud/packettracer8.nix
+      ./notify-service-service.nix
     ];
  
 system = {
@@ -302,6 +302,7 @@ home-manager.users.reinoud = { pkgs, ...}: {
 
 systemd.user = {
     services = {
+
       vorta-startup = {
       
         enable = true;
@@ -310,15 +311,14 @@ systemd.user = {
         wantedBy = [ "multi-user.target" ];
       };
 
-
-
-            battery-alert = {
-              enable = true;
+      battery-alert = {
+        enable = true;
         path = with pkgs; [ bash libnotify x11vnc ];
         description = "Battery Alert Service";
         serviceConfig.Type = "simple";
         serviceConfig.ExecStart = /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh;
       };
+
       polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
         wantedBy = [ "graphical-session.target" ];
@@ -333,10 +333,10 @@ systemd.user = {
     timers = {
       battery-alert = {
         enable = true;
-        timerConfig.OnbootSec = "5m";
+        # timerConfig.OnbootSec = "5m";
         description = "Battery Alert Timer";
         timerConfig.OnUnitActiveSec = "1m";
-        timerConfig.Unit = "battery-alert";
+        # timerConfig.Unit = "battery-alert";
         timerConfig.RemainAfterElapse= true;
         wantedBy = [ "multi-user.target" ];       
       };
@@ -350,6 +350,7 @@ systemd.user = {
 
 
 services.borgbackup.jobs.home-dir = {
+  # wantedBy = [ "multi-user.target" ];
   paths = "/home/reinoud/Documents";
   encryption = {
     mode = "keyfile";
