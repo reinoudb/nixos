@@ -2,6 +2,7 @@
 {
   #imports = [
   #  ./packettracer8.nix
+    ./librewolf.nix
   #];
 
 
