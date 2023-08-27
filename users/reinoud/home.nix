@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 {
-  #imports = [
+  imports = [
   #  ./packettracer8.nix
     ./librewolf.nix
-  #];
+  ];
 
 
   # Home Manager needs a bit of information about you and the paths it should
