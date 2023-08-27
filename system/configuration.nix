@@ -12,7 +12,8 @@
       ./unstable.nix
       # ./borgbackupMonitor.nix
       #./vim.nix
-      ./notify-service-service.nix
+      # ./notify-service-service.nix
+      ./services.nix
     ];
  
 system = {
@@ -302,21 +303,13 @@ home-manager.users.reinoud = { pkgs, ...}: {
 systemd.user = {
     services = {
 
-      vorta-startup = {
-      
-        enable = true;
-        description = "start vorta on boot";
-        serviceConfig.ExecStart = "/run/current-system/sw/bin/vorta";
-        wantedBy = [ "multi-user.target" ];
-      };
-
-      battery-alert = {
-        enable = true;
-        path = with pkgs; [ bash libnotify x11vnc ];
-        description = "Battery Alert Service";
-        serviceConfig.Type = "simple";
-        serviceConfig.ExecStart = /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh;
-      };
+      # battery-alert = {
+      #   enable = true;
+      #   path = with pkgs; [ bash libnotify x11vnc ];
+      #   description = "Battery Alert Service";
+      #   serviceConfig.Type = "simple";
+      #   serviceConfig.ExecStart = /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh;
+      # };
 
       polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
@@ -329,17 +322,17 @@ systemd.user = {
           };
     };
 	};
-    timers = {
-      battery-alert = {
-        enable = true;
-        timerConfig.OnbootSec = "5m";
-        description = "Battery Alert Timer";
-        timerConfig.OnUnitActiveSec = "1m";
-        # timerConfig.Unit = "battery-alert";
-        timerConfig.RemainAfterElapse= true;
-        wantedBy = [ "multi-user.target" ];       
-      };
-    };
+    # timers = {
+    #   battery-alert = {
+    #     enable = true;
+    #     timerConfig.OnbootSec = "5m";
+    #     description = "Battery Alert Timer";
+    #     timerConfig.OnUnitActiveSec = "1m";
+    #     # timerConfig.Unit = "battery-alert";
+    #     timerConfig.RemainAfterElapse= true;
+    #     wantedBy = [ "multi-user.target" ];       
+    #   };
+    # };
 };
 
 
@@ -364,7 +357,7 @@ services.borgbackup.jobs.home-dir = {
 nix.gc = {
   automatic = true;
   dates = "weekly";
-  options = "--delete-older-than 30d";
+  options = "--delete-older-than 15d";
 };
 
   fileSystems."/home/reinoud/basestation" = {
