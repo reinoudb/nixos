@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
-      ./packettracer.nix
+      ./unstable.nix
       # ./borgbackupMonitor.nix
       #./vim.nix
       ./notify-service-service.nix
@@ -182,7 +182,6 @@ lutris
     thunderbird
     filezilla
     wireshark
-    freetube
     pipe-viewer
     dolphin
     j4-dmenu-desktop
@@ -333,7 +332,7 @@ systemd.user = {
     timers = {
       battery-alert = {
         enable = true;
-        # timerConfig.OnbootSec = "5m";
+        timerConfig.OnbootSec = "5m";
         description = "Battery Alert Timer";
         timerConfig.OnUnitActiveSec = "1m";
         # timerConfig.Unit = "battery-alert";
