@@ -27,6 +27,7 @@
   in {
     homeManagerConfigurations = {
       reinoud = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs; };
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           ./users/reinoud/home.nix 
