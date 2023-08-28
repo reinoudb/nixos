@@ -8,13 +8,18 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
-      ./unstable.nix
+      # <home-manager/nixos>
+      # ./unstable.nix
       # ./borgbackupMonitor.nix
       #./vim.nix
       # ./notify-service-service.nix
-      ./services.nix
+      # ./services.nix
     ];
+
+    nix = {
+      package = pkgs.nixFlakes;
+     extraOptions = "experimental-features = nix-command flakes"; 
+    };
  
 system = {
   stateVersion = "23.05"; # Did you read the comment?
@@ -162,6 +167,7 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
+    freetube
     gimp
     iamb
     matrixcli
@@ -271,7 +277,7 @@ services = {
 	flatpak.enable = true;
 	xserver = { 
 		enable = true;
-		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
+		windowManager.i3.configFile = ./../programs/i3/config;
 		# windowManager.qtile.configFile = /home/reinoud/.config/qtile/config.py;
 		layout = "be";
 		xkbVariant = "";
