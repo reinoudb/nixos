@@ -31,13 +31,13 @@
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           ./users/reinoud/home.nix 
-          {
-            home = {
-              username = "reinoud";
-              homeDirectory = "/home/reinoud";
-             stateVersion = "23.05"; 
-            }; 
-          }
+          # {
+          #   home = {
+          #     username = "reinoud";
+          #     homeDirectory = "/home/reinoud";
+          #    stateVersion = "23.05"; 
+          #   }; 
+          # }
         ];
       }; 
     }; 

@@ -213,8 +213,8 @@ lutris
     librewolf
     tor-browser-bundle-bin 
     tor
-    firefox
     brave
+    firefox
   ];
 #};
 

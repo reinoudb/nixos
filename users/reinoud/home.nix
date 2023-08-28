@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports = [
   #  ./packettracer8.nix
-    # ./librewolf.nix
+    # ./firefox.nix
   ];
 
 
@@ -63,10 +63,10 @@
      recursive = true; 
     };
 
-    ".config/dunst" = {
-      source = ./../../programs/dunst;
-     recursive = true; 
-    };
+    # ".config/dunst" = {
+    #   source = ./../../programs/dunst;
+    #  recursive = true; 
+    # };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -96,15 +96,11 @@
   # Let Home Manager install and manage itself.
   programs = {
     home-manager.enable = true;
-    bash = {
-      enable = true;
-      enableCompletion = true;
-    };
      fish = {
       enable = true;
       shellAliases = {
-        applysystem = "/home/reinoud/;dotfiles/apply-system.sh";
-        applyuser = "/home/reinoud/;dotfiles/apply-user.sh";
+        applysystem = "/home/reinoud/.dotfiles/apply-system.sh";
+        applyuser = "/home/reinoud/.dotfiles/apply-user.sh";
 
         dot = "cd /home/reinoud/.dotfiles/";
       };
@@ -124,7 +120,45 @@ programs = {
 services = {
   dunst = {
     enable = true;
-    # configFile = ~/.config/dunst/dunstrc;
   };
 };
+
+
+  programs.firefox = {
+    enable = true;
+    profiles.reinoud = {
+
+      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+        ublock-origin
+        keepassxc-browser
+      ];
+
+      search.engines = {
+        "Nix Packages" = {
+          urls = [{
+            template = "https://search.nixos.org/Packages";
+            params = [
+              { name = "type"; value = "Packages";}
+              { name = "query"; value = "{searchTerms}";}
+            ];
+          }];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ "@np" ];
+        };
+      };
+      search.force = true;
+
+      bookmarks = [
+        {
+          name = "wikipedia";
+          tags = [ "wiki" ];
+          keyword = "wiki";
+          url = "https://wikipedia.org/wiki/Special:Search?search=%s&go/Go";
+
+        }
+      ];
+
+    };
+};
+
 }
