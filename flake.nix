@@ -19,6 +19,23 @@
     lib = nixpkgs.lib;
     
   in {
+    homeManagerConfigurations = {
+      reinoud = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          ./users/reinoud/home.nix 
+          {
+            home = {
+              username = "reinoud";
+              homeDirectory = "/home/reinoud";
+             stateVersion = "23.05"; 
+            }; 
+          }
+        ];
+      }; 
+    }; 
+
+
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;

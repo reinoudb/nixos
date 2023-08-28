@@ -1,5 +1,6 @@
 #!/bin/sh 
 pushd ~/.dotfiles/
-home-manager switch -f ./users/reinoud/home.nix
+nix build .#homeManagerConfigurations.reinoud.activationPackage
+./result/activate
 popd
 

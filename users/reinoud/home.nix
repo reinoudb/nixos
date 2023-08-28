@@ -2,7 +2,7 @@
 {
   imports = [
   #  ./packettracer8.nix
-    ./librewolf.nix
+    # ./librewolf.nix
   ];
 
 
@@ -56,15 +56,15 @@
         size: 8.0
    '';
 
-   ".vimrc".source = ~/.dotfiles/programs/vim/vimrc;
+    ".vimrc".source = ./../../programs/vim/vimrc;
 
     ".config/i3" = {
-     source = ~/.dotfiles/programs/i3;
+     source = ./../../programs/i3;
      recursive = true; 
     };
 
     ".config/dunst" = {
-      source = ~/.dotfiles/programs/dunst;
+      source = ./../../programs/dunst;
      recursive = true; 
     };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
