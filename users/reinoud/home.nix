@@ -125,6 +125,13 @@ services = {
 
 
   programs.firefox = {
+ 
+ 
+ #    preferencesStatus = {
+ #      privacy.fingerprintingProtection = true;
+    
+ #    };
+
     enable = true;
     profiles.reinoud = {
 
