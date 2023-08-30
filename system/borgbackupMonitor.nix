@@ -15,9 +15,9 @@ let
         '';
       };
     } // flip mapAttrs' config.services.borgbackup.jobs (name: value:
-      lib.mkForce (nameValuePair "borgbackup-job-${name}" {
+      nameValuePair "borgbackup-job-${name}" {
         unitConfig.OnFailure = "notify-problems@%i.service";
-      })
+      }
     );
     
     # optional, but this actually forces backup after boot in case laptop was powered off during scheduled event
@@ -32,6 +32,8 @@ let
 in {
   imports =
     [
+      ....
       borgbackupMonitor
     ];
+  ...
 }

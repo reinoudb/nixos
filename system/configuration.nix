@@ -8,8 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./unstable.nix
       # <home-manager/nixos>
-      # ./unstable.nix
       # ./borgbackupMonitor.nix
       #./vim.nix
       # ./notify-service-service.nix
@@ -85,6 +85,7 @@ users = {
 };
 
 nixpkgs.config.allowUnfree = true;
+
 
 environment.systemPackages = with pkgs; [
 
@@ -346,9 +347,7 @@ systemd.user = {
  bluetooth.enable = true;
 };
 
-
 services.borgbackup.jobs.home-dir = {
-  # wantedBy = [ "multi-user.target" ];
   paths = "/home/reinoud/Documents";
   encryption = {
     mode = "keyfile";
@@ -357,7 +356,7 @@ services.borgbackup.jobs.home-dir = {
   environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
   repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
   compression = "auto,zstd";
-  startAt = "daily";
+  startAt = "hourly";
 };
 
 nix.gc = {

@@ -15,7 +15,7 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, nixpkgs-unstablen, ...}@inputs: 
+  outputs = { nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
   let
     system = "x86_64-linux";
     
@@ -26,9 +26,14 @@
 
     lib = nixpkgs.lib;
 
+    overlay-unstable = final: prev: {
+        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+      };
+
     unstable = import nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
+    };
     
   in {
     homeManagerConfigurations = {
@@ -53,8 +58,8 @@
       nixos = lib.nixosSystem {
         inherit system;
         # Overlays-module makes "pkgs.unstable" available in configuration.nix
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
         modules = [
+          ({ config, pkgs, ... }: { pkgs.unstable = [nixpkgs.unstable]; })
           ./system/configuration.nix
         ]; 
       }; 
