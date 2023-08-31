@@ -310,7 +310,9 @@ home-manager.users.reinoud = { pkgs, ...}: {
   #	};
 };
 */
-systemd = {
+
+
+systemd.user = {
   timers = {
     battery-alert = {
       enable = true;
@@ -325,11 +327,7 @@ systemd = {
       wantedBy = [ "default.target" ];
     };
   };
-};
-
-
-systemd.user = {
-    services = {
+  services = {
 
     battery-alert = {
       enable = true;
