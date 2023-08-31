@@ -24,7 +24,7 @@ fi
 
 
 
-if [[ ${capacity} -gt 95 ]]; then
+if [[ ${capacity} -gt 95 && ${bat_status} == "Charging" ]]; then
 	    echo "Battery alert - ${capacity}%"
 	    notify-send  "Battery full" --icon=./full-battery.png --urgency low
 fi
