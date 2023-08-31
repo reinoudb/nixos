@@ -104,6 +104,7 @@ i3blocks
   alsa-utils
 
 # core
+xvfb-run
 xautolock
 unrar-wrapper
 dig
@@ -167,8 +168,6 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
-    freetube
-    invidious
     gimp
     iamb
     matrixcli
@@ -312,30 +311,38 @@ home-manager.users.reinoud = { pkgs, ...}: {
 };
 */
 systemd = {
-  services = {
+  timers = {
     battery-alert = {
       enable = true;
-      path = with pkgs; [ bash libnotify x11vnc ];
-      description = "Battery Alert Service";
-      serviceConfig.Type = "simple";
-      serviceConfig.ExecStart = "${pkgs.bash}/bin/bash /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh";
+      description = "Battery Alert Timer";
+      timerConfig = {
+        OnActiveSec = "1m";
+        OnStartupSec = "1m";
+        RemainAfterElapse= true;
+        OnUnitActiveSec = "1m";
+        Unit = "battery-alert.service";
       };
+      wantedBy = [ "default.target" ];
     };
-
-     timers = {
-      battery-alert = {
-        enable = true;
-        description = "Battery Alert Timer";
-        timerConfig.OnUnitActiveSec = "1m";
-        timerConfig.RemainAfterElapse= true;
-        timerConfig.Unit = "battery-alert.service";
-        wantedBy = [ "graphical-session.target" ];
-      };
-    };
+  };
 };
+
 
 systemd.user = {
     services = {
+
+    battery-alert = {
+      enable = true;
+      path = with pkgs; [ bash libnotify ];
+      description = "Battery Alert Service";
+      serviceConfig = {
+        ExecStart = "${pkgs.bash}/bin/bash /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh";
+          Environment = "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus";
+        Type = "simple";
+      };
+      wantedBy = ["default.target"]; 
+      };
+
 
        polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
@@ -349,7 +356,6 @@ systemd.user = {
     };
 	};
 };
-
 
  hardware = {
  bluetooth.enable = true;
