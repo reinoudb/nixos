@@ -1,0 +1,8 @@
+exec --no-startup-id alacritty --class dropdown # start terminal with title dropdown
+
+for_window [class="dropdown"] floating enable
+#for_window [instance="dropdown"] floating enable zet hier een size
+for_window [class="dropdown"] move scratchpad
+for_window [class="dropdown"] border pixel 8
+
+bindsym $mod+p [class="dropdown"] scratchpad show 
