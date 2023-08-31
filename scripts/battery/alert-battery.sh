@@ -30,6 +30,5 @@ if [[ ${capacity} -gt 95 ]]; then
 fi
 
 echo $capacity
-notify-send "test"
 popd
 
