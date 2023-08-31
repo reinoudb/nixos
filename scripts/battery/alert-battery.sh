@@ -1,5 +1,5 @@
 #!/bin/sh
-pushd ~/.dotfiles/scripts/battery/
+pushd /home/reinoud/.dotfiles/scripts/battery/
 bat_files="/sys/class/power_supply/BAT1"
 bat_status=$(cat "${bat_files}/status")
 capacity=$(cat "${bat_files}/capacity")

@@ -49,23 +49,23 @@ networking = {
   networkmanager.enable = true;
   nameservers = [ "9.9.9.9" ];
  #wireless.enable = true; # enable wireless support via wpa_supplicant
-   # wg-quick.interfaces = { #/
-     # wg0 = { #/
-     #   address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
-     #   dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
-     #   privateKeyFile = "/config/wireguard/privatekey"; #/
+   wg-quick.interfaces = { #/
+     wg0 = { #/
+       address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
+       dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
+       privateKeyFile = "/config/wireguard/privatekey"; #/
 
-     #  peers = [ #/
-     #     { #/
-     #     publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
-     #     presharedKeyFile = "/config/wireguard/presharedKeyFile"; #/
-     #     allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
-     #     endpoint = "nl.vpn.airdns.org:1637"; #/
-     #     persistentKeepalive = 15; #/
-     #     } #/
-     #   ]; #/
-     # }; #/
-   # }; #/
+      peers = [ #/
+         { #/
+         publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
+         presharedKeyFile = "/config/wireguard/presharedKeyFile"; #/
+         allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
+         endpoint = "nl.vpn.airdns.org:1637"; #/
+         persistentKeepalive = 15; #/
+         } #/
+       ]; #/
+     }; #/
+   }; #/
 };
 
 time.timeZone = "Europe/Brussels";
@@ -91,9 +91,7 @@ environment.systemPackages = with pkgs; [
 
 lxappearance # change icon & themes i3
 i3
-qtile
 i3lock-fancy-rapid
-# x11vnc
 x11basic
 xdg-desktop-portal-gnome
 i3status
@@ -106,6 +104,7 @@ i3blocks
   alsa-utils
 
 # core
+xautolock
 unrar-wrapper
 dig
 #wpa_supplicant_gui
@@ -169,6 +168,7 @@ lutris
     xfce.xfce4-screenshooter
     alacritty
     freetube
+    invidious
     gimp
     iamb
     matrixcli
@@ -246,7 +246,7 @@ programs = {
   i3lock.enable = true;
   ssh.knownHosts = {
       myhost = {
-        extraHostNames = [ "192.168.0.125"];
+        extraHostNames = [ "192.168.0.125" ];
         publicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCk74I9ZaUUFUsDhMcZllvsD418Po4d4mR0rTMFVTMhy7kFIUAqcoAUSCnZHO7ROrTAUhmgqlBpwvYFBo9Dpr7Zf8PV2tPu2avw8Gan1pfDE7FTQitVaUqOdtoe+Km+gTdaCZLTg3W+KJ+4+TRg+7PqrYiWwIlAsMUjmWDr4nYArJplqYFTpVuWzLjZmiADW0AD/bJmw0P7+lZmcLrgUkXUoEH12ZOdTp4g+bAe7CSqEK5I3Ao1eWluydk425oBhF2Wd0cVBShnfMN3fdxWm0Bkg/W0daeHM1kZ9cXzZwtcVInJz7NYxnP3iUA4QQ3xL2lCg/ZF0Z+n0QKSH+12AtPCvoOXXIBYqYf0bUt7U9IsTvJ3gmWW2W4yDgVWTHoFGKnkWMXy3svgf0f1+BMv6EE+cQ/O9FehiJwX1YasYISXbAxqgyt2M5lg3QLP7b9tLMgvghSddTg9olZBZ3cgtT9/jEEHiZzGxaGlNmFuLhZoU7RyvzequHfnb5aLqXkDb6c=";
       };
     };
@@ -268,7 +268,7 @@ programs = {
 # rtkit is optional but recommended security.rtkit.enable = true; 
 security.rtkit.enable = true;
 services = { 
-  dbus.enable = true;
+    dbus.enable = true;
   openssh.enable = true;
 	pipewire = {
 		enable = true;
@@ -277,13 +277,18 @@ services = {
 		pulse.enable = true; };
 	flatpak.enable = true;
 	xserver = { 
-		enable = true;
+		xautolock = {
+      enable = true;
+      time = 1;
+      # enableNotifier = true;
+      notify = 5;
+      locker = "${pkgs.lightdm}/bin/lightdm";
+    };
+    enable = true;
 		windowManager.i3.configFile = ./../programs/i3/config;
-		# windowManager.qtile.configFile = /home/reinoud/.config/qtile/config.py;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
-    windowManager.qtile.enable = true;
 
 		};
 	blueman.enable = true;
@@ -306,19 +311,33 @@ home-manager.users.reinoud = { pkgs, ...}: {
   #	};
 };
 */
+systemd = {
+  services = {
+    battery-alert = {
+      enable = true;
+      path = with pkgs; [ bash libnotify x11vnc ];
+      description = "Battery Alert Service";
+      serviceConfig.Type = "simple";
+      serviceConfig.ExecStart = "${pkgs.bash}/bin/bash /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh";
+      };
+    };
+
+     timers = {
+      battery-alert = {
+        enable = true;
+        description = "Battery Alert Timer";
+        timerConfig.OnUnitActiveSec = "1m";
+        timerConfig.RemainAfterElapse= true;
+        timerConfig.Unit = "battery-alert.service";
+        wantedBy = [ "graphical-session.target" ];
+      };
+    };
+};
 
 systemd.user = {
     services = {
 
-      # battery-alert = {
-      #   enable = true;
-      #   path = with pkgs; [ bash libnotify x11vnc ];
-      #   description = "Battery Alert Service";
-      #   serviceConfig.Type = "simple";
-      #   serviceConfig.ExecStart = /home/reinoud/.dotfiles/scripts/battery/alert-battery.sh;
-      # };
-
-      polkit-gnome-authentication-agent-1 = {
+       polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
         wantedBy = [ "graphical-session.target" ];
         wants = [ "graphical-session.target" ];
@@ -329,17 +348,6 @@ systemd.user = {
           };
     };
 	};
-    # timers = {
-    #   battery-alert = {
-    #     enable = true;
-    #     timerConfig.OnbootSec = "5m";
-    #     description = "Battery Alert Timer";
-    #     timerConfig.OnUnitActiveSec = "1m";
-    #     # timerConfig.Unit = "battery-alert";
-    #     timerConfig.RemainAfterElapse= true;
-    #     wantedBy = [ "multi-user.target" ];       
-    #   };
-    # };
 };
 
 
@@ -365,7 +373,7 @@ nix.gc = {
   options = "--delete-older-than 15d";
 };
 
-  fileSystems."/home/reinoud/basestation" = {
+fileSystems."/home/reinoud/basestation" = {
   device = "local-basestation:/mnt/2tb/Documents";
   fsType = "sshfs";
   options =
