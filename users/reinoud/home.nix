@@ -59,7 +59,7 @@
     ".vimrc".source = ./../../programs/vim/vimrc;
 
     ".config/i3" = {
-     source = ./../../programs/i3;
+     source = ~/.dotfiles/programs/i3;
      recursive = true; 
     };
 
@@ -122,50 +122,4 @@ services = {
     enable = true;
   };
 };
-
-
-  programs.firefox = {
- 
- 
- #    preferencesStatus = {
- #      privacy.fingerprintingProtection = true;
-    
- #    };
-
-    enable = true;
-    profiles.reinoud = {
-
-      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        ublock-origin
-        keepassxc-browser
-      ];
-
-      search.engines = {
-        "Nix Packages" = {
-          urls = [{
-            template = "https://search.nixos.org/Packages";
-            params = [
-              { name = "type"; value = "Packages";}
-              { name = "query"; value = "{searchTerms}";}
-            ];
-          }];
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@np" ];
-        };
-      };
-      search.force = true;
-
-      bookmarks = [
-        {
-          name = "wikipedia";
-          tags = [ "wiki" ];
-          keyword = "wiki";
-          url = "https://wikipedia.org/wiki/Special:Search?search=%s&go/Go";
-
-        }
-      ];
-
-    };
-};
-
 }

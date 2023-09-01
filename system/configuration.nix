@@ -104,7 +104,7 @@ i3blocks
   alsa-utils
 
 # core
-xvfb-run
+blugon
 xautolock
 unrar-wrapper
 dig
@@ -143,6 +143,10 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   wirelesstools
 
 # gaming
+xwiimote
+wiiuse
+wiiload
+dolphin-emu
 vulkan-tools
 vulkan-loader
 steam-run
@@ -160,14 +164,13 @@ lutris
 
 # virtual
 	virt-manager
-  # vmware-workstation
-  # linuxKernel.packages.linux_zen.vmware
-  # linuxKernel.packages.linux_xanmod_stable.vmware
+  vmware-workstation
   qemu_full
 
     btop 
     xfce.xfce4-screenshooter
     alacritty
+    kitty
     gimp
     iamb
     matrixcli
@@ -193,6 +196,7 @@ lutris
     dolphin
     j4-dmenu-desktop
     spotify
+    spotify-player
     fish
     neofetch
     keepassxc
@@ -238,7 +242,8 @@ xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
 
 virtualisation = {
   libvirtd.enable = true;
-  # vmware.host.enable = true;
+  podman.enable = true;
+  vmware.host.enable = true;
 };
 
 programs = {
@@ -284,7 +289,7 @@ services = {
       locker = "${pkgs.lightdm}/bin/lightdm";
     };
     enable = true;
-		windowManager.i3.configFile = ./../programs/i3/config;
+		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
@@ -341,7 +346,6 @@ systemd.user = {
       wantedBy = ["default.target"]; 
       };
 
-
        polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
         wantedBy = [ "graphical-session.target" ];
@@ -360,7 +364,15 @@ systemd.user = {
 };
 
 services.borgbackup.jobs.home-dir = {
-  paths = "/home/reinoud/Documents";
+  exclude = [
+    "/home/*/Games" 
+    ".cache"
+    "*/basestation"
+  ];
+  patterns = [ # Include/exclude paths matching the given patterns. The first matching patterns is used, so if an include pattern (prefix +) matches before an exclude pattern (prefix -), the file is backed up. See borg help patterns for pattern syntax.
+      
+  ];
+  paths = "/home/";
   encryption = {
     mode = "keyfile";
     passCommand = "cat /config/borg/password";
