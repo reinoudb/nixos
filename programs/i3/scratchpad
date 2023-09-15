@@ -1,5 +1,5 @@
 exec --no-startup-id alacritty --class dropdown # start terminal with title dropdown
-exec --no-startup-id kitty -e spotify_player --class music 
+exec --no-startup-id alacritty --class music -e spotify_player 
 
 
 for_window [class="dropdown"] floating enable

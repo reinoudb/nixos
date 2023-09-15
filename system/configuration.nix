@@ -2,11 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 ## and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [
+      # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
       ./unstable.nix
       # <home-manager/nixos>
@@ -75,6 +75,10 @@ console.keyMap = "be-latin1";
 i18n.defaultLocale = "en_US.UTF-8";
 
 users = {
+  # groups = { nxremap shit
+  #   uinput.members = ["reinoud"]; 
+  #   input.members = ["reinoud"];
+  # };
   defaultUserShell = pkgs.fish;
   users.reinoud = {
     isNormalUser = true;
@@ -104,6 +108,7 @@ i3blocks
   alsa-utils
 
 # core
+mpv
 blugon
 xautolock
 unrar-wrapper
@@ -170,8 +175,9 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
-    kitty
     gimp
+    youtube-tui
+    kitty
     iamb
     matrixcli
     nheko
@@ -196,6 +202,7 @@ lutris
     dolphin
     j4-dmenu-desktop
     spotify
+    spotifyd
     spotify-player
     fish
     neofetch
@@ -215,10 +222,10 @@ lutris
     ranger
 # browser
     librewolf
+    firefox
     tor-browser-bundle-bin 
     tor
     brave
-    firefox
   ];
 #};
 
@@ -272,6 +279,21 @@ programs = {
 # rtkit is optional but recommended security.rtkit.enable = true; 
 security.rtkit.enable = true;
 services = { 
+  # xremap = {
+  #   userName = "reinoud";
+  #   config = {
+  #     keymap = [
+  #       {
+  #         name = "main remaps";
+  #         remap = {
+  #           super-y = {
+  #             launch = ["librewolf"]; 
+  #           };
+  #         };
+  #       } 
+  #     ]; 
+  #   };
+  # };
     dbus.enable = true;
   openssh.enable = true;
 	pipewire = {
@@ -289,7 +311,7 @@ services = {
       locker = "${pkgs.lightdm}/bin/lightdm";
     };
     enable = true;
-		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
+		# windowManager.i3.configFile = /home/reinoud/.config/i3/config;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
@@ -360,7 +382,8 @@ systemd.user = {
 };
 
  hardware = {
- bluetooth.enable = true;
+  uinput.enable = true; # iets voor xremap 
+  bluetooth.enable = true;
 };
 
 services.borgbackup.jobs.home-dir = {

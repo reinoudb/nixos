@@ -6,63 +6,43 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs"; 
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    
+    xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs = { nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
-  let
-    system = "x86_64-linux";
-    
-    pkgs = import nixpkgs {
-      inherit system;
-      config = { allowUnfree = true; };
-    };
 
-    lib = nixpkgs.lib;
-
-    overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+    let
+      system = "x86_64-linux";
+      
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
       };
 
-    unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
+      lib = nixpkgs.lib;
+
+    in {
+      homeManagerConfigurations = {
+        reinoud = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = { inherit inputs; };
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./users/reinoud/home.nix 
+          ];
+        }; 
+      }; 
+
+
+      nixosConfigurations = {
+        nixos = lib.nixosSystem {
+          inherit system;
+          # Overlays-module makes "pkgs.unstable" available in configuration.nix
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./system/configuration.nix
+          ]; 
+        }; 
+      }; 
     };
-    
-  in {
-    homeManagerConfigurations = {
-      reinoud = home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = { inherit inputs; };
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [
-          ./users/reinoud/home.nix 
-          # {
-          #   home = {
-          #     username = "reinoud";
-          #     homeDirectory = "/home/reinoud";
-          #    stateVersion = "23.05"; 
-          #   }; 
-          # }
-        ];
-      }; 
-    }; 
-
-
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-        inherit system;
-        # Overlays-module makes "pkgs.unstable" available in configuration.nix
-        modules = [
-          ({ config, pkgs, ... }: { pkgs.unstable = [nixpkgs.unstable]; })
-          ./system/configuration.nix
-        ]; 
-      }; 
-    }; 
-  };
 }
