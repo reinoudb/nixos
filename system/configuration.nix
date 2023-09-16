@@ -108,6 +108,7 @@ i3blocks
   alsa-utils
 
 # core
+bridge-utils
 mpv
 blugon
 xautolock
