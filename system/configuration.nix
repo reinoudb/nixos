@@ -263,7 +263,17 @@ programs = {
     };
 	dconf.enable = true;
 	vim.defaultEditor = true;
-	fish.enable = true;
+  fish = {
+    enable = true;
+    promptInit = "test"; 
+    shellInit = "set -U fish_greeting"; # what to launch when terminal started
+    loginShellInit = "date";
+    interactiveShellInit = "date";
+    shellAliases = {
+      dot="cd /home/reinoud/.dotfiles/"; 
+      applysystem="bash /home/reinoud/.dotfiles/apply-system.sh";
+    };
+  };
   thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
