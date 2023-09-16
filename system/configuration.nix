@@ -24,7 +24,7 @@
 system = {
   stateVersion = "23.05"; # Did you read the comment?
   autoUpgrade.enable = true;
-  autoUpgrade.allowReboot = false; # true
+  autoUpgrade.allowReboot = false;
 };
    
 
@@ -83,7 +83,7 @@ users = {
   users.reinoud = {
     isNormalUser = true;
     description = "reinoud";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "audio" "dbus" ];
+    extraGroups = [ "kvm" "networkmanager" "wheel" "libvirtd" "audio" "dbus" ];
     packages = with pkgs; [];
   };
 };
