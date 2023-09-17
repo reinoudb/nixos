@@ -108,6 +108,8 @@ i3blocks
   alsa-utils
 
 # core
+btrfs-progs
+btrfs-tools
 bridge-utils
 mpv
 blugon
