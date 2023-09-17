@@ -201,6 +201,7 @@ lutris
     thunderbird
     filezilla
     wireshark
+    nmap
     pipe-viewer
     dolphin
     j4-dmenu-desktop
