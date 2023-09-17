@@ -108,6 +108,7 @@ i3blocks
   alsa-utils
 
 # core
+samba4Full
 btrfs-progs
 bridge-utils
 mpv
