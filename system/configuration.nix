@@ -109,7 +109,6 @@ i3blocks
 
 # core
 btrfs-progs
-btrfs-tools
 bridge-utils
 mpv
 blugon
