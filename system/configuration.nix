@@ -290,21 +290,6 @@ programs = {
 # rtkit is optional but recommended security.rtkit.enable = true; 
 security.rtkit.enable = true;
 services = { 
-  # xremap = {
-  #   userName = "reinoud";
-  #   config = {
-  #     keymap = [
-  #       {
-  #         name = "main remaps";
-  #         remap = {
-  #           super-y = {
-  #             launch = ["librewolf"]; 
-  #           };
-  #         };
-  #       } 
-  #     ]; 
-  #   };
-  # };
     dbus.enable = true;
   openssh.enable = true;
 	pipewire = {
