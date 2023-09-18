@@ -295,11 +295,11 @@ security.rtkit.enable = true;
 services = { 
     dbus.enable = true;
   openssh.enable = true;
-	pipewire = {
-		enable = true;
-		alsa.enable = true;
-		alsa.support32Bit = true;
-		pulse.enable = true; };
+	# pipewire = {
+	# 	enable = true;
+	# 	alsa.enable = true;
+	# 	alsa.support32Bit = true;
+	# 	pulse.enable = true; };
 	flatpak.enable = true;
 	xserver = { 
 		xautolock = {
@@ -440,7 +440,7 @@ fileSystems."/home/reinoud/basestation" = {
       users.extraUsers.browser = {
         isNormalUser = true;
         home = "/home/browser";
-        openssh.authorizedKeys.keys = [ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvqKp3WmphTJ1XFBI+wONn1/HAJ4nh7E6qAcBB5dNEODirPq+Sjzxmp0m7CoO7Zp/P8wCeBJVfPz5zztGBBZB67mGzBijCBJ9mwUTcteeIHw5ubDNk6N0BrRi6NNxvGZgkeIF7vCWtps4Ps7r2hcpGk4ybeooVy6m4bZbQRJ4BEH3VMfnMEZtHe/9KkwgfV/IkF2Gip8WjKvo9qFqIWuJeADiOnYrRcdZ1tGzkUcR9o5y/Bqw5niCWezBldBcZedixtU3HzPL3+CdbOSzkfMmPzZrGnHm+sHMEwIRmLsGqYajgE+3ScjXMMoxxJ5ZRxND8VZKNfbyPGCiEKpDAyLWYlMm/r8Mewhg7ZoWGv/6hgLEcIEx2tgX/ormO/JyhgXuyepXeJPLU2cBzXNrthvIj+F7Ov8di+Cr53PHENLuq4dUHWFftXtRpK+9mPLfWa9f81hAZ/c1PRaNroIYuPbbulpDIH+TzXFu1rGPbAYN2raTX14PlI8IhYPmr4GV0RpU= rbruyndonckx@FedoraLaptop ];
+        openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvqKp3WmphTJ1XFBI+wONn1/HAJ4nh7E6qAcBB5dNEODirPq+Sjzxmp0m7CoO7Zp/P8wCeBJVfPz5zztGBBZB67mGzBijCBJ9mwUTcteeIHw5ubDNk6N0BrRi6NNxvGZgkeIF7vCWtps4Ps7r2hcpGk4ybeooVy6m4bZbQRJ4BEH3VMfnMEZtHe/9KkwgfV/IkF2Gip8WjKvo9qFqIWuJeADiOnYrRcdZ1tGzkUcR9o5y/Bqw5niCWezBldBcZedixtU3HzPL3+CdbOSzkfMmPzZrGnHm+sHMEwIRmLsGqYajgE+3ScjXMMoxxJ5ZRxND8VZKNfbyPGCiEKpDAyLWYlMm/r8Mewhg7ZoWGv/6hgLEcIEx2tgX/ormO/JyhgXuyepXeJPLU2cBzXNrthvIj+F7Ov8di+Cr53PHENLuq4dUHWFftXtRpK+9mPLfWa9f81hAZ/c1PRaNroIYuPbbulpDIH+TzXFu1rGPbAYN2raTX14PlI8IhYPmr4GV0RpU=" ];
         extraGroups = ["audio" "video"];
       };
     };
