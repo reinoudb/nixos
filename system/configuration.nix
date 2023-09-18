@@ -425,4 +425,8 @@ fileSystems."/home/reinoud/basestation" = {
       "ServerAliveInterval=15" # keep connections alive
     ];
 };
+# users.mysql.enable = true;
+# services.mysql.user = "user";
+# users.mysql.host = "localhost";
+# users.mysql.passwordFile = "/config/mysql/pass";
 }
