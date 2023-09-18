@@ -107,7 +107,6 @@ i3blocks
   alsa-utils
 
 # core
-socat
 samba4Full
 btrfs-progs
 bridge-utils
@@ -425,35 +424,4 @@ fileSystems."/home/reinoud/basestation" = {
       "ServerAliveInterval=15" # keep connections alive
     ];
 };
-
-  containers.browser = {
-    autoStart = false;
-    privateNetwork = true;
-    hostAddress = "192.168.7.10";
-    localAddress = "192.168.7.11";
-    config = {config, pkgs, ... }: {
-      services.openssh = {
-        enable = true;
-        settings.X11Forwarding = true;
-      };
-
-      users.extraUsers.browser = {
-        isNormalUser = true;
-        home = "/home/browser";
-        openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvqKp3WmphTJ1XFBI+wONn1/HAJ4nh7E6qAcBB5dNEODirPq+Sjzxmp0m7CoO7Zp/P8wCeBJVfPz5zztGBBZB67mGzBijCBJ9mwUTcteeIHw5ubDNk6N0BrRi6NNxvGZgkeIF7vCWtps4Ps7r2hcpGk4ybeooVy6m4bZbQRJ4BEH3VMfnMEZtHe/9KkwgfV/IkF2Gip8WjKvo9qFqIWuJeADiOnYrRcdZ1tGzkUcR9o5y/Bqw5niCWezBldBcZedixtU3HzPL3+CdbOSzkfMmPzZrGnHm+sHMEwIRmLsGqYajgE+3ScjXMMoxxJ5ZRxND8VZKNfbyPGCiEKpDAyLWYlMm/r8Mewhg7ZoWGv/6hgLEcIEx2tgX/ormO/JyhgXuyepXeJPLU2cBzXNrthvIj+F7Ov8di+Cr53PHENLuq4dUHWFftXtRpK+9mPLfWa9f81hAZ/c1PRaNroIYuPbbulpDIH+TzXFu1rGPbAYN2raTX14PlI8IhYPmr4GV0RpU=" ];
-        extraGroups = ["audio" "video"];
-      };
-    };
-  };
-  hardware.pulseaudio = {
-    enable = true;
-    systemWide = true;
-    support32Bit = true;
-    tcp = { enable = true; anonymousClients = { allowedIpRanges = ["127.0.0.1" "192.168.7.0/24"]; }; };
-  };
-
-  networking.nat.enable = true;
-  networking.nat.internalInterfaces = ["ve-browser"];
-  networking.nat.externalInterface = "wlo1";
-
 }
