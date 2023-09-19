@@ -154,3 +154,6 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
+" Start NERDTree and leave the cursor in it.
+autocmd VimEnter * NERDTree

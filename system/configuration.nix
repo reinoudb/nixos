@@ -274,6 +274,7 @@ programs = {
     loginShellInit = "date";
     interactiveShellInit = "date";
     shellAliases = {
+      ap="cd ~/Documents/ap";
       dot="cd /home/reinoud/.dotfiles/"; 
       applysystem="bash /home/reinoud/.dotfiles/apply-system.sh";
     };
@@ -295,11 +296,11 @@ security.rtkit.enable = true;
 services = { 
     dbus.enable = true;
   openssh.enable = true;
-	# pipewire = {
-	# 	enable = true;
-	# 	alsa.enable = true;
-	# 	alsa.support32Bit = true;
-	# 	pulse.enable = true; };
+	pipewire = {
+		enable = true;
+		alsa.enable = true;
+		alsa.support32Bit = true;
+		pulse.enable = true; };
 	flatpak.enable = true;
 	xserver = { 
 		xautolock = {
@@ -429,4 +430,18 @@ fileSystems."/home/reinoud/basestation" = {
 # services.mysql.user = "user";
 # users.mysql.host = "localhost";
 # users.mysql.passwordFile = "/config/mysql/pass";
+
+  networking.wireless.networks."uwf-argo-air" = {
+    hidden = false;
+    auth = ''
+      key_mgmt=WPA-EAP
+      eap=PEAP
+      phase2="auth=MSCHAPV2"
+      identity="s141959"
+      password="p@$$w0rd"
+      '';
+    };
+
+
+
 }
