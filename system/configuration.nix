@@ -274,9 +274,11 @@ programs = {
     loginShellInit = "date";
     interactiveShellInit = "date";
     shellAliases = {
+
       ap="cd ~/Documents/ap";
       dot="cd /home/reinoud/.dotfiles/"; 
       applysystem="bash /home/reinoud/.dotfiles/apply-system.sh";
+      applyuser="bash /home/reinoud/.dotfiles/apply-users.sh";
     };
   };
   thunar = {
