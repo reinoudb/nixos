@@ -47,7 +47,6 @@ networking = {
   hostName = "nixos";
   networkmanager.enable = true;
   nameservers = [ "9.9.9.9" ];
-  wireless.userControlled.enable = true;
  #wireless.enable = true; # enable wireless support via wpa_supplicant
    # wg-quick.interfaces = { #/
    #   wg0 = { #/
@@ -108,7 +107,6 @@ i3blocks
   alsa-utils
 
 # core
-wpa_supplicant_gui
 samba4Full
 btrfs-progs
 bridge-utils
