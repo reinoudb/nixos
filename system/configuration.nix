@@ -8,9 +8,7 @@
       # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
       ./unstable.nix
-      # <home-manager/nixos>
-      # ./borgbackupMonitor.nix
-      #./vim.nix
+      # <home-manager/nixos> # ./borgbackupMonitor.nix #./vim.nix
       # ./notify-service-service.nix
       # ./services.nix
     ];
@@ -194,6 +192,8 @@ lutris
     rclone
     feh
 	vim-full
+  neovim
+  neovim
     xcolor
     mysql80
     #ciscoPacketTracer8 
