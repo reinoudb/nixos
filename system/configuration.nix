@@ -430,18 +430,4 @@ fileSystems."/home/reinoud/basestation" = {
 # services.mysql.user = "user";
 # users.mysql.host = "localhost";
 # users.mysql.passwordFile = "/config/mysql/pass";
-
-  networking.wireless.networks."uwf-argo-air" = {
-    hidden = false;
-    auth = ''
-      key_mgmt=WPA-EAP
-      eap=PEAP
-      phase2="auth=MSCHAPV2"
-      identity="s141959"
-      password="p@$$w0rd"
-      '';
-    };
-
-
-
 }
