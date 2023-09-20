@@ -173,6 +173,7 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
+    teams
     libreoffice
     gimp
     youtube-tui
