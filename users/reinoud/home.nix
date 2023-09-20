@@ -100,10 +100,10 @@
      fish = {
       enable = true;
       shellAliases = {
-        applysystem = "/home/reinoud/.dotfiles/apply-system.sh";
-        applyuser = "/home/reinoud/.dotfiles/apply-user.sh";
+        # applysystem = "/home/reinoud/.dotfiles/apply-system.sh";
+        # applyuser = "/home/reinoud/.dotfiles/apply-user.sh";
 
-        dot = "cd /home/reinoud/.dotfiles/";
+        # dot = "cd /home/reinoud/.dotfiles/";
       };
     };
 

@@ -92,7 +92,6 @@ environment.systemPackages = with pkgs; [
 
 lxappearance # change icon & themes i3
 i3
-i3lock-fancy-rapid
 x11basic
 xdg-desktop-portal-gnome
 i3status
@@ -110,7 +109,6 @@ btrfs-progs
 bridge-utils
 mpv
 blugon
-xautolock
 unrar-wrapper
 dig
 #wpa_supplicant_gui
@@ -258,7 +256,6 @@ virtualisation = {
 };
 
 programs = {
-  i3lock.enable = true;
   ssh.knownHosts = {
       myhost = {
         extraHostNames = [ "192.168.0.125" ];
@@ -305,15 +302,8 @@ services = {
 		pulse.enable = true; };
 	flatpak.enable = true;
 	xserver = { 
-		xautolock = {
-      enable = true;
-      time = 1;
-      # enableNotifier = true;
-      notify = 5;
-      locker = "${pkgs.lightdm}/bin/lightdm";
-    };
     enable = true;
-		# windowManager.i3.configFile = /home/reinoud/.config/i3/config;
+		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
