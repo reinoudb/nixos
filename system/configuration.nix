@@ -72,10 +72,12 @@ console.keyMap = "be-latin1";
 i18n.defaultLocale = "en_US.UTF-8";
 
 users = {
+  groups.nixosvmtest = {};
   defaultUserShell = pkgs.fish;
   users = {
+    nixosvmtest.group = "nixosvmtest";
     nixosvmtest.isSystemUser = true;
-    initialPassword = "test";
+    nixosvmtest.initialPassword = "test";
     reinoud = {
       isNormalUser = true;
         description = "reinoud";
