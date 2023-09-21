@@ -72,18 +72,18 @@ console.keyMap = "be-latin1";
 i18n.defaultLocale = "en_US.UTF-8";
 
 users = {
-  # groups = { nxremap shit
-  #   uinput.members = ["reinoud"]; 
-  #   input.members = ["reinoud"];
-  # };
   defaultUserShell = pkgs.fish;
-  users.reinoud = {
-    isNormalUser = true;
-    description = "reinoud";
-    extraGroups = [ "kvm" "networkmanager" "wheel" "libvirtd" "audio" "dbus" ];
-    packages = with pkgs; [];
+  users = {
+    nixosvmtest.isSystemUser = true;
+    initialPassword = "test";
+    reinoud = {
+      isNormalUser = true;
+        description = "reinoud";
+        extraGroups = [ "kvm" "networkmanager" "wheel" "libvirtd" "audio" "dbus" ];
+        packages = with pkgs; [];
+    };
   };
-};
+}; 
 
 nixpkgs.config.allowUnfree = true;
 
@@ -104,7 +104,8 @@ i3blocks
   alsa-utils
 
 # core
-cope
+screen
+
 auto-cpufreq
 samba4Full
 btrfs-progs
