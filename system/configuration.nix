@@ -293,8 +293,21 @@ programs = {
 # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
 #sound.enable = false;
 # rtkit is optional but recommended security.rtkit.enable = true; 
+powerManagement.enable = true;
 security.rtkit.enable = true;
 services = { 
+  auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+      governor = "powersave";
+      turbo = "never";
+      };
+      charger = {
+      governor = "performance";
+      turbo = "auto";
+      };
+  };
     dbus.enable = true;
   openssh.enable = true;
 	pipewire = {
