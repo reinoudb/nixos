@@ -104,7 +104,6 @@ i3blocks
   alsa-utils
 
 # core
-cpupower-gui
 samba4Full
 btrfs-progs
 bridge-utils
