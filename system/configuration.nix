@@ -296,6 +296,7 @@ programs = {
 powerManagement.enable = true;
 security.rtkit.enable = true;
 services = { 
+  thermald.enable = true;
   auto-cpufreq = {
     enable = true;
     settings = {
