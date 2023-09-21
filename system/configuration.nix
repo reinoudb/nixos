@@ -104,6 +104,7 @@ i3blocks
   alsa-utils
 
 # core
+auto-cpufreq
 samba4Full
 btrfs-progs
 bridge-utils
