@@ -3,6 +3,8 @@
 i3status -c /config/i3/bar/i3status.main.conf | while :
 # i3status | while :
 do
+
+  stor_perc=$(df -h / | awk 'NR==2 {print $5}')
   
   batterij=$(cat /sys/class/power_supply/BAT1/capacity)
   batterij_status=$(cat /sys/class/power_supply/BAT1/status)
@@ -26,6 +28,6 @@ else
 fi
   
   read line
-  echo "$vpn | $batterij_volledig | $line" || exit 1
+  echo "$vpn | $stor_perc | $batterij_volledig | $line" || exit 1
 done
 
