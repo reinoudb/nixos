@@ -309,7 +309,8 @@ services = {
       governor = "performance";
       turbo = "auto";
       };
-  };
+    };
+  };    
     dbus.enable = true;
   openssh.enable = true;
 	pipewire = {
