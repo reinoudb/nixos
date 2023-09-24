@@ -7,7 +7,7 @@
   imports = [
       # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
-      ./unstable.nix
+      # ./unstable.nix
       # <home-manager/nixos> # ./borgbackupMonitor.nix #./vim.nix
       # ./notify-service-service.nix
       # ./services.nix
@@ -91,6 +91,8 @@ nixpkgs.config.allowUnfree = true;
 
 
 environment.systemPackages = with pkgs; [
+
+
 
 lxappearance # change icon & themes i3
 i3
@@ -182,7 +184,6 @@ lutris
     libreoffice
     gimp
     youtube-tui
-    kitty
     iamb
     matrixcli
     nheko
@@ -325,7 +326,7 @@ services = {
 	flatpak.enable = true;
 	xserver = { 
     enable = true;
-		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
+		# windowManager.i3.configFile = ./../../.config/i3/config;
 		layout = "be";
 		xkbVariant = "";
     windowManager.i3.enable = true;
