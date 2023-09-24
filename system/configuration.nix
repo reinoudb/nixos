@@ -180,6 +180,8 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
+    unstable.freetube
+    unstable.ciscoPacketTracer8
     teams
     libreoffice
     gimp
@@ -201,7 +203,6 @@ lutris
   neovim
     xcolor
     mysql80
-    #ciscoPacketTracer8 
     xfce.thunar
     thunderbird
     filezilla

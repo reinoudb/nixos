@@ -3,17 +3,25 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs"; 
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ...}@inputs: 
 
     let
       system = "x86_64-linux";
+
+      overlay-unstable = final: prev: { 
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;  
+        };
+      };
       
       pkgs = import nixpkgs {
         inherit system;
@@ -37,9 +45,8 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-          # Overlays-module makes "pkgs.unstable" available in configuration.nix
-          specialArgs = { inherit inputs; };
           modules = [
+            ({config, pkgs, ...}: { nixpkgs.overlays = [ overlay-unstable ];})
             ./system/configuration.nix
           ]; 
         }; 
