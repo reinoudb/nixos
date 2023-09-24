@@ -200,7 +200,6 @@ lutris
     feh
 	vim-full
   neovim
-  neovim
     xcolor
     xfce.thunar
     thunderbird
