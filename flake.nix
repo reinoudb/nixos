@@ -44,6 +44,7 @@
 
       nixosConfigurations = {
         nixos = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           inherit system;
           modules = [
             ({config, pkgs, ...}: { nixpkgs.overlays = [ overlay-unstable ];})

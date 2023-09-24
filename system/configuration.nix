@@ -7,7 +7,7 @@
   imports = [
       # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
-      # ./unstable.nix
+      ./unstable.nix
       # <home-manager/nixos> # ./borgbackupMonitor.nix #./vim.nix
       # ./notify-service-service.nix
       # ./services.nix
@@ -180,8 +180,8 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
-    unstable.freetube
-    unstable.ciscoPacketTracer8
+    # unstable.freetube
+    # unstable.ciscoPacketTracer8
     teams
     libreoffice
     gimp
