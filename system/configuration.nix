@@ -153,6 +153,7 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   wirelesstools
 
 # gaming
+prismlauncher-unwrapped
 xwiimote
 wiiuse
 wiiload
