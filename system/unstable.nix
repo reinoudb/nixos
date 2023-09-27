@@ -6,5 +6,9 @@ in
   environment.systemPackages = with pkgs; [
     unstable.ciscoPacketTracer8
     unstable.freetube
+    
+  unstable.dwarfs
+  unstable.wine-staging
+  unstable.fuse-overlayfs
   ];
 }
