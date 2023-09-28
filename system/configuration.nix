@@ -113,7 +113,6 @@ i3blocks
 
 # core
 screen
-
 auto-cpufreq
 samba4Full
 btrfs-progs
@@ -429,22 +428,6 @@ nix.gc = {
   dates = "weekly";
   options = "--delete-older-than 15d";
 };
-
-# fileSystems."/home/reinoud/basestation" = {
-  # device = "local-basestation:/mnt/2tb/Documents";
-  # fsType = "sshfs";
-  # options =
-  #   [ # Filesystem options
-  #     "allow_other"          # for non-root access
-  #     "_netdev"              # this is a network fs
-  #     "x-systemd.automount"  # mount on demand
-
-  #     # SSH options
-  #     "reconnect"              # handle connection drops
-  #     "ServerAliveInterval=15" # keep connections alive
-  #   ];
-# };
-
 
 specialisation = { 
    nvidia.configuration = { 
