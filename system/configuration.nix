@@ -230,7 +230,7 @@ lutris
     onlyoffice-bin
     kate
     element-desktop
-    ranger
+    lf
 # browser
     librewolf
     firefox
