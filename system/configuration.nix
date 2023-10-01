@@ -3,7 +3,9 @@
 
 { config, pkgs, inputs, ... }:
 
+
 {
+
   imports = [
       # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
@@ -13,11 +15,11 @@
       # ./services.nix
     ];
 
-    nix = {
-      package = pkgs.nixFlakes;
-     extraOptions = "experimental-features = nix-command flakes"; 
-    };
- 
+nix = {
+  package = pkgs.nixFlakes;
+ extraOptions = "experimental-features = nix-command flakes"; 
+};
+
 system = {
   stateVersion = "23.05"; # Did you read the comment?
   autoUpgrade.enable = true;
@@ -171,7 +173,6 @@ lutris
   #jc141
   perl536Packages.OpenGL
     wineWowPackages.unstableFull
-    /* wine-staging */
     # fuse-overlayfs
 	vitetris
 
@@ -211,7 +212,6 @@ lutris
     nmap
     pipe-viewer
     dolphin
-    j4-dmenu-desktop
     spotify
     spotifyd
     spotify-player
@@ -237,19 +237,9 @@ lutris
     tor-browser-bundle-bin 
     tor
     brave
-  ];
-#};
-
-  # Some rograms need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+];
 
 
-  # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
@@ -327,20 +317,25 @@ services = {
 		pulse.enable = true; };
 	flatpak.enable = true;
 	xserver = { 
-    enable = true;
-		windowManager.i3.configFile = /home/reinoud/.config/i3/config;
 		layout = "be";
 		xkbVariant = "";
-    windowManager.i3.enable = true;
-
+    enable = true;
+    windowManager = {
+      dwm = {
+        enable = true;
+      };
+      i3 = {
+        configFile = /home/reinoud/.config/i3/config;
+        enable = true;
+      };
 		};
+  };    
 	blueman.enable = true;
   picom.enable = true;
   #thunar related
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
-    };
-
+};
 /*
 home-manager.useGlobalPkgs = true;
 home-manager.users.reinoud = { pkgs, ...}: {
@@ -452,6 +447,4 @@ specialisation = {
      };
   };
 };
-
-
 }
