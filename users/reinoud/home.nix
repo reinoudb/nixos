@@ -96,6 +96,26 @@
 
   # Let Home Manager install and manage itself.
   programs = {
+    lf = {
+      enable = true;
+      settings = {
+        preview = true;
+        drawbox = true;
+        icons = true;
+       ignorecase = true; 
+      };
+      commands = {
+        dragon-out = ''${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
+        editor-open = ''$$EDITOR $f'';
+        mkdir = ''
+         ''${{
+            printf "Directory Name: " 
+            read DIR
+            mkdir $DIR
+          }}
+        '';
+      }; 
+    };
     home-manager.enable = true;
      fish = {
       enable = true;
