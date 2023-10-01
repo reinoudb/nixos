@@ -107,7 +107,6 @@
       commands = {
         dragon-out = ''${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
         editor-open = ''$$EDITOR $f'';
-        e = ''$$EDITOR $f'';
         mkdir = ''
          ''${{
             printf "Directory Name: " 
@@ -115,6 +114,9 @@
             mkdir $DIR
           }}
         '';
+      }; 
+      keybindings = {
+        ee = "editor-open";
       }; 
     };
     home-manager.enable = true;
