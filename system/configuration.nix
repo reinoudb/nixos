@@ -186,7 +186,6 @@ lutris
     alacritty
     # unstable.freetube
     # unstable.ciscoPacketTracer8
-    teams
     libreoffice
     gimp
     youtube-tui
