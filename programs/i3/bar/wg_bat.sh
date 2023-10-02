@@ -30,6 +30,6 @@ wg=$(ifconfig | grep -o 'wg[0-9]*')
   fi
   
   read line
-  echo "$batterij_volledig | $cpu | $storage | $line" || exit 1
+  echo "$batterij_volledig | $storage | $line" || exit 1
 done
 
