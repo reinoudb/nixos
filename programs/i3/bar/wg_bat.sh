@@ -21,7 +21,7 @@ wg=$(ifconfig | grep -o 'wg[0-9]*')
 
 
   stor_perc=$(df -h / | awk 'NR==2 {print $5}')
-  storage="DF $stor_perc"
+  storage="DF: $stor_perc"
 
   if [[ $(cat /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor) = "powersave" ]]; then
     cpu="pwrs"
