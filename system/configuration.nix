@@ -268,14 +268,13 @@ programs = {
     promptInit = "test"; 
     shellInit = "set -U fish_greeting"; # what to launch when terminal started
     loginShellInit = "date";
-    interactiveShellInit = "date";
+    interactiveShellInit = "shuf -n 1 /home/reinoud/scripts/facts";
     shellAliases = {
 
       ap="cd ~/Documents/ap";
       dot="cd /home/reinoud/.dotfiles/"; 
       applysystem="bash /home/reinoud/.dotfiles/apply-system.sh";
       applyuser="bash /home/reinoud/.dotfiles/apply-users.sh";
-      cat="bat";
     };
   };
   thunar = {
