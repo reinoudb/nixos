@@ -114,6 +114,7 @@ i3blocks
   alsa-utils
 
 # core
+bat
 screen
 auto-cpufreq
 samba4Full
@@ -274,6 +275,7 @@ programs = {
       dot="cd /home/reinoud/.dotfiles/"; 
       applysystem="bash /home/reinoud/.dotfiles/apply-system.sh";
       applyuser="bash /home/reinoud/.dotfiles/apply-users.sh";
+      cat="bat";
     };
   };
   thunar = {
