@@ -87,7 +87,15 @@ users = {
     reinoud = {
       isNormalUser = true;
         description = "reinoud";
-        extraGroups = [ "kvm" "networkmanager" "wheel" "libvirtd" "audio" "dbus" ];
+        extraGroups = [ 
+          "kvm"
+          "networkmanager"
+          "wheel"
+          "libvirtd"
+          "audio"
+          "dbus"
+          "tss" #tpm
+        ];
         packages = with pkgs; [];
     };
   };
@@ -173,6 +181,7 @@ steam
 lutris
   #jc141
   perl536Packages.OpenGL
+    wineWowPackages.full
     wineWowPackages.unstableFull
     # fuse-overlayfs
 	vitetris
@@ -287,11 +296,7 @@ programs = {
   };
 };
 
-# Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
-#sound.enable = false;
-# rtkit is optional but recommended security.rtkit.enable = true; 
 powerManagement.enable = true;
-security.rtkit.enable = true;
 services = { 
   thermald.enable = true;
   tlp.enable = true;
@@ -447,4 +452,14 @@ specialisation = {
      };
   };
 };
+
+security = {
+  rtkit.enable = true;
+  tpm2 = {
+    enable = true;
+    pkcs11.enable = true;  # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
+    tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
+  };
+};
+
 }
