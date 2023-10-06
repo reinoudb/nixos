@@ -122,6 +122,7 @@ i3blocks
   alsa-utils
 
 # core
+jmtpfs # mtp for connection mobile phones
 bat
 screen
 auto-cpufreq
