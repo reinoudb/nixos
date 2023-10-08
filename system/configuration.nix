@@ -250,7 +250,9 @@ lutris
 ];
 
 
-  networking.firewall.allowedTCPPorts = [];
+networking.firewall.allowedTCPPorts = [
+  8080
+];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
@@ -421,7 +423,7 @@ services.borgbackup.jobs.home-dir = {
   environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
   repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
   compression = "auto,zstd";
-  startAt = "hourly";
+  startAt = "daily";
 };
 
 nix.gc = {
@@ -462,5 +464,4 @@ security = {
     tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
   };
 };
-
 }
