@@ -237,6 +237,7 @@ lutris
     vorta
     borgbackup
     electron-mail
+    tutanota-desktop
     onlyoffice-bin
     kate
     element-desktop
