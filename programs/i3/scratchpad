@@ -1,5 +1,6 @@
 exec --no-startup-id alacritty --class dropdown # start terminal with title dropdown
 exec --no-startup-id alacritty --class music -e spotify_player 
+exec --no-startup-id alacritty --class calc -e wcalc
 
 
 for_window [class="dropdown"] floating enable
@@ -13,3 +14,12 @@ for_window [class="music"] move scratchpad
 for_window [class="music"] border pixel 8
 
 bindsym $mod+b [class="music"] scratchpad show 
+
+
+
+
+for_window [class="calc"] floating enable
+for_window [class="calc"] move scratchpad
+for_window [class="calc"] border pixel 8
+
+bindsym $mod+m [ class="calc"] scratchpad show
