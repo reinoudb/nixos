@@ -284,7 +284,7 @@ programs = {
     loginShellInit = "date";
     interactiveShellInit = "shuf -n 1 /home/reinoud/scripts/facts";
     shellAliases = {
-
+      plutomooimaken="sudo nix-collect-garbage --delete-older-than 2d && applysystem";
       ap="cd ~/Documents/ap";
       dot="cd /home/reinoud/.dotfiles/"; 
       applysystem="bash /home/reinoud/.dotfiles/apply-system.sh";
