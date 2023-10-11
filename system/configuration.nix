@@ -7,6 +7,7 @@
 {
 
   imports = [
+      # ./borgbackupMonitor.nix
       # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
       ./unstable.nix
@@ -426,7 +427,14 @@ services.borgbackup.jobs.home-dir = {
   environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
   repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
   compression = "auto,zstd";
-  startAt = "daily";
+  startAt = "hourly";
+  prune.keep = {
+    within = "1d";
+    daily = 7;
+    weekly = 4;
+    monthly = 12;
+    yearly = 5;
+  };
 };
 
 nix.gc = {

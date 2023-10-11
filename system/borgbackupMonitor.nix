@@ -32,8 +32,6 @@ let
 in {
   imports =
     [
-      ....
       borgbackupMonitor
     ];
-  ...
 }
