@@ -320,8 +320,33 @@ services = {
       turbo = "auto";
       };
     };
+  borgbackup.jobs.home-dir = {
+    exclude = [
+      "/home/*/Games" 
+      ".cache"
+      "*/basestation"
+    ];
+    patterns = [ # Include/exclude paths matching the given patterns. The first matching patterns is used, so if an include pattern (prefix +) matches before an exclude pattern (prefix -), the file is backed up. See borg help patterns for pattern syntax.
+        
+    ];
+    paths = "/home/";
+    encryption = {
+      mode = "keyfile";
+      passCommand = "cat /config/borg/password";
+      };
+    environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
+    repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
+    compression = "auto,zstd";
+    startAt = "hourly";
+    prune.keep = {
+      within = "1d";
+      daily = 7;
+      weekly = 4;
+      monthly = 12;
+      yearly = 5;
+    };
   };    
-    dbus.enable = true;
+  dbus.enable = true;
   openssh.enable = true;
 	pipewire = {
 		enable = true;
@@ -395,33 +420,6 @@ systemd.user = {
  hardware = {
   uinput.enable = true; # iets voor xremap 
   bluetooth.enable = true;
-};
-
-services.borgbackup.jobs.home-dir = {
-  exclude = [
-    "/home/*/Games" 
-    ".cache"
-    "*/basestation"
-  ];
-  patterns = [ # Include/exclude paths matching the given patterns. The first matching patterns is used, so if an include pattern (prefix +) matches before an exclude pattern (prefix -), the file is backed up. See borg help patterns for pattern syntax.
-      
-  ];
-  paths = "/home/";
-  encryption = {
-    mode = "keyfile";
-    passCommand = "cat /config/borg/password";
-    };
-  environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
-  repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
-  compression = "auto,zstd";
-  startAt = "hourly";
-  prune.keep = {
-    within = "1d";
-    daily = 7;
-    weekly = 4;
-    monthly = 12;
-    yearly = 5;
-  };
 };
 
 nix.gc = {
