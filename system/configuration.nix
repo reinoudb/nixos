@@ -270,6 +270,7 @@ virtualisation = {
 };
 
 programs = {
+  i3lock.enable = true;
   ssh.knownHosts = {
       myhost = {
         extraHostNames = [ "192.168.0.125" ];
