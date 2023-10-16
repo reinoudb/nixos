@@ -349,20 +349,6 @@ services = {
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
 };
-/*
-home-manager.useGlobalPkgs = true;
-home-manager.users.reinoud = { pkgs, ...}: {
-	home.stateVersion = "23.05";
-	home.packages = with pkgs; [
-				];
-
-  #home.file.".vim" = {
-  #	source = /config/vim;
-  #	recursive = true;
-  #	};
-};
-*/
-
 
 systemd.user = {
   timers = {
