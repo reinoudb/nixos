@@ -45,10 +45,6 @@ fonts.fonts = with pkgs; [
 ];
 
 networking = {
-  # extraHosts = 
-  # ''
-  #   # 10.133.0.2 vcenter.bletchley.ap.be
-  # '';
   hostName = "nixos";
   networkmanager.enable = true;
   nameservers = [ "9.9.9.9" ];
