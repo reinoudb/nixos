@@ -57,12 +57,12 @@ networking = {
    #   wg0 = { #/
    #     address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
    #     dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
-   #     privateKeyFile = "/config/wireguard/privatekey"; #/
+   #     privateKeyFile = "~/.dotfiles/secrets/wireguard/privatekey"; #/
 
    #    peers = [ #/
    #       { #/
    #       publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
-   #       presharedKeyFile = "/config/wireguard/presharedKeyFile"; #/
+   #       presharedKeyFile = "~/.dotfiles/secrets/wireguard/presharedKeyFile"; #/
    #       allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
    #       endpoint = "nl.vpn.airdns.org:1637"; #/
    #       persistentKeepalive = 15; #/
