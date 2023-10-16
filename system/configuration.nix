@@ -15,12 +15,15 @@
       # ./notify-service-service.nix
       # ./services.nix
     ];
-
 nix = {
-  package = pkgs.nixFlakes;
- extraOptions = "experimental-features = nix-command flakes"; 
+  gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes"; 
 };
-
 system = {
   stateVersion = "23.05"; # Did you read the comment?
   autoUpgrade.enable = true;
@@ -304,7 +307,7 @@ powerManagement.enable = true;
 services = { 
   thermald.enable = true;
   tlp.enable = true;
-  auto-cpufreq = {
+  auto-cpufreq = { 
     enable = true;
     settings = {
       battery = {
@@ -316,6 +319,7 @@ services = {
       turbo = "auto";
       };
     };
+  };
   borgbackup.jobs.home-dir = {
     exclude = [
       "/home/*/Games" 
@@ -417,13 +421,6 @@ systemd.user = {
   uinput.enable = true; # iets voor xremap 
   bluetooth.enable = true;
 };
-
-nix.gc = {
-  automatic = true;
-  dates = "weekly";
-  options = "--delete-older-than 15d";
-};
-
 specialisation = { 
    nvidia.configuration = { 
      # Nvidia Configuration 
