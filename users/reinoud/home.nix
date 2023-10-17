@@ -1,10 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
-  imports = [
-    # inputs.xremap-flake.homeManagerModules.default
-  #  ./packettracer8.nix
-    # ./firefox.nix
-  ];
+  imports = [ # inputs.xremap-flake.homeManagerModules.default #  ./packettracer8.nix # ./firefox.nix ];
 
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -253,11 +249,8 @@ programs.firefox = {
 
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
-        block-origin
-        ponsorblock
-        arkreader
-        ridactyl
-        outube-shorts-block
+        ublock-origin
+        sponsorblock
       ];
 
     };
