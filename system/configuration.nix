@@ -195,8 +195,6 @@ lutris
     btop 
     xfce.xfce4-screenshooter
     alacritty
-    unstable.freetube
-    unstable.ciscoPacketTracer8
     libreoffice
     gimp
     youtube-tui
@@ -249,6 +247,13 @@ lutris
     tor-browser-bundle-bin 
     tor
     brave
+
+
+    unstable.dwarfs
+    unstable.wine-staging
+    unstable.fuse-overlayfs
+unstable.freetube
+unstable.ciscoPacketTracer8
 ];
 
 
