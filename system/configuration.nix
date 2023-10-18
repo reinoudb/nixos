@@ -140,7 +140,6 @@ linuxKernel.packages.linux_zen.cpupower # set cpu performance
   cargo
   tmux
   findutils
-  mlocate
   gnome.zenity
   bash
   python3Full
@@ -243,10 +242,10 @@ lutris
     lf
 # browser
     librewolf
-    firefox
     tor-browser-bundle-bin 
     tor
     brave
+    firefox
 
 
     unstable.dwarfs
@@ -257,9 +256,13 @@ unstable.ciscoPacketTracer8
 ];
 
 
-networking.firewall.allowedTCPPorts = [
-  8080
-];
+networking.firewall = {
+  allowPing = true;
+    allowedTCPPorts = [
+      8080
+      5357
+    ];
+};
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
@@ -310,6 +313,27 @@ programs = {
 
 powerManagement.enable = true;
 services = { 
+  samba-wsdd.enable = true; # make share visible win10
+  samba = {
+    enable = true;
+    securityType = "user";
+    shares = {
+      public = {
+        path = "/mount/share";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0640";
+        "directory mask" = "0750";
+        "forece user" = "reinoud";
+        "force group" = "users";
+      }; 
+    };
+  };
+  locate = {
+    enable = true;
+    interval = "hourly"; # when to update db 
+  };
   thermald.enable = true;
   tlp.enable = true;
   auto-cpufreq = { 
