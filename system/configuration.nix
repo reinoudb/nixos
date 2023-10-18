@@ -7,13 +7,8 @@
 {
 
   imports = [
-      # ./borgbackupMonitor.nix
-      # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
-      ./unstable.nix
-      # <home-manager/nixos> # ./borgbackupMonitor.nix #./vim.nix
-      # ./notify-service-service.nix
-      # ./services.nix
+      ./pkgs.nix
     ];
 nix = {
   gc = {
@@ -25,7 +20,7 @@ nix = {
     extraOptions = "experimental-features = nix-command flakes"; 
 };
 system = {
-  stateVersion = "23.05"; # Did you read the comment?
+  stateVersion = "23.05";
   autoUpgrade.enable = true;
   autoUpgrade.allowReboot = false;
 };
@@ -102,159 +97,6 @@ users = {
 }; 
 
 nixpkgs.config.allowUnfree = true;
-
-
-environment.systemPackages = with pkgs; [
-
-
-
-lxappearance # change icon & themes i3
-i3
-x11basic
-xdg-desktop-portal-gnome
-i3status
-lightdm
-i3blocks
-
-# audio
-  blueman # bluetooth
-  pulseaudioFull
-  alsa-utils
-
-# core
-jmtpfs # mtp for connection mobile phones
-bat
-screen
-auto-cpufreq
-samba4Full
-btrfs-progs
-bridge-utils
-mpv
-blugon
-unrar-wrapper
-dig
-#wpa_supplicant_gui
-sshfs
-psmisc
-linuxKernel.packages.linux_zen.cpupower # set cpu performance
-  cargo
-  tmux
-  findutils
-  gnome.zenity
-  bash
-  python3Full
-  wireguard-tools
-
-  wget
-  zip
-  unzip
-  htop
-  libnotify
-  brightnessctl
-  playerctl
-  git
-  cryptsetup
-  polkit_gnome
-  lsof # volume control²
-  dunst
-  p7zip
-  ntfs3g
-  arandr
-  android-udev-rules
-  ncdu
-  podman
-  distrobox
-  wirelesstools
-
-# gaming
-xwiimote
-wiiuse
-wiiload
-dolphin-emu
-vulkan-tools
-vulkan-loader
-steam-run
-protontricks
-protonup-qt
-winetricks
-steam
-lutris
-  #jc141
-  perl536Packages.OpenGL
-    wineWowPackages.full
-    wineWowPackages.unstableFull
-    # fuse-overlayfs
-	vitetris
-
-# virtual
-	virt-manager
-  vmware-workstation
-  qemu_full
-
-    btop 
-    xfce.xfce4-screenshooter
-    alacritty
-    libreoffice
-    gimp
-    youtube-tui
-    iamb
-    matrixcli
-    nheko
-    gimp
-    russ # rss
-    gpicview 
-    vlc
-    haskellPackages.subnet
-    pro-office-calculator
-    wcalc
-    qbittorrent
-    rclone
-    feh
-	vim-full
-  neovim
-    xcolor
-    xfce.thunar
-    thunderbird
-    filezilla
-    wireshark
-    nmap
-    pipe-viewer
-    dolphin
-    spotify
-    spotifyd
-    spotify-player
-    fish
-    neofetch
-    keepassxc
-    signal-desktop
-    gparted
-    rofi
-    rofi-vpn
-    rofi-calc
-    rofi-power-menu
-    vorta
-    borgbackup
-    electron-mail
-    tutanota-desktop
-    onlyoffice-bin
-    kate
-    element-desktop
-    lf
-# browser
-    librewolf
-    tor-browser-bundle-bin 
-    tor
-    brave
-    firefox
-
-
-    # unstable.dwarfs
-    # unstable.wine-staging
-    # unstable.fuse-overlayfs
-# unstable.freetube
-# unstable.ciscoPacketTracer8
-];
-
 
 networking.firewall = {
   allowPing = true;
