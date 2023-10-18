@@ -10,7 +10,7 @@
       # ./borgbackupMonitor.nix
       # inputs.xremap-flake.nixosModules.default
       ./hardware-configuration.nix
-      # ./unstable.nix
+      ./unstable.nix
       # <home-manager/nixos> # ./borgbackupMonitor.nix #./vim.nix
       # ./notify-service-service.nix
       # ./services.nix
@@ -248,11 +248,11 @@ lutris
     firefox
 
 
-    unstable.dwarfs
-    unstable.wine-staging
-    unstable.fuse-overlayfs
-unstable.freetube
-unstable.ciscoPacketTracer8
+    # unstable.dwarfs
+    # unstable.wine-staging
+    # unstable.fuse-overlayfs
+# unstable.freetube
+# unstable.ciscoPacketTracer8
 ];
 
 
