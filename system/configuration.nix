@@ -99,6 +99,7 @@ users = {
 nixpkgs.config.allowUnfree = true;
 
 networking.firewall = {
+  enable = false;
   allowPing = true;
     allowedTCPPorts = [
       8080
@@ -107,7 +108,6 @@ networking.firewall = {
 };
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = true;
 
 xdg.portal.enable = true;
 xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];

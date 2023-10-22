@@ -203,7 +203,7 @@ include ~/.config/i3/i3gaps
 include ~/.config/i3/startup
 include ~/.config/i3/shortcuts
 include ~/.config/i3/workspaces
-include ~/.config/i3/bar/bar.conf
+include ~/.dotfiles/programs/i3/bar/bar.conf
 include ~/.config/i3/scratchpad
 
 smart_borders on
