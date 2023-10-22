@@ -210,6 +210,7 @@ nixpkgs.config = {
     dmenu = pkgs.dmenu.override {
       patches = [
         ./../programs/dmenu/insencitive.diff 
+        # ./../programs/dmenu/height.diff 
       ]; 
     }; 
   }; 
