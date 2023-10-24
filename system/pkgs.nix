@@ -81,6 +81,7 @@ in
   gimp
 
 # core
+iw
 jmtpfs # mtp for phones
 screen
 auto-cpufreq
