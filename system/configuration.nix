@@ -192,6 +192,7 @@ services = {
     };
   };
   borgbackup.jobs.home-dir = {
+    persistentTimer = true;
     exclude = [
       "/home/*/Games" 
       ".cache"
@@ -232,6 +233,19 @@ services = {
     windowManager = {
       dwm = {
         enable = true;
+        package = pkgs.dwm.overrideAttrs {
+            src = ./../programs/dwm; 
+          }; 
+          # override {
+          # patches = [
+
+          #   # local patch files 
+          #   # (pkgs.fetchpatch {
+          #   #   url = "https://dwm.sucless.org/patcheq.diff";
+          #   #   hash = "";
+          #   # };)
+          # ]; 
+        # };
       };
       i3 = {
         enable = true;
