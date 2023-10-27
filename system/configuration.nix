@@ -180,41 +180,11 @@ services = {
       "guest ok" = "no";
       "read only" = "no";
       "force user" = "reinoud"; # als iemand wilt verbinden moet die username dit zijn
-      comment = "share van me";
-      # "create mask" = "0644";
+      "create mask" = "0700";
+      "directory mask" = "0700";
+      # comment = "share van me";
       
     };
-  };
-
-    
-
-
-    
-    # openFirewall = true;
-    # enable = true;
-    # securityType = "user";
-      # extraConfig = ''
-      #   guest account = reinoud
-      #   map to guest = Bad User
-      #   load printers = no
-      #   printcap name = /dev/null 
-      # '';
-
-    
-
-      
-    # shares = {
-    #   private = {
-    #     path = "/mount/share";
-    #     browseable = "yes";
-    #     "read only" = "no";
-    #     "guest ok" = "no";
-    #     "create mask" = "0644";
-    #     "directory mask" = "0755";
-    #     # "force user" = "reinoud";
-    #     # "force group" = "groupname";
-    #   };
-    # };
   };
   locate = {
     enable = true;
