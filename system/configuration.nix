@@ -100,7 +100,7 @@ nixpkgs.config.allowUnfree = true;
 
 networking.firewall = {
   enable = false;
-  allowPing = false;
+  allowPing = true;
     allowedTCPPorts = [
       8080
       5357
@@ -157,19 +157,33 @@ powerManagement.enable = true;
 services = { 
   samba-wsdd.enable = true; # make share visible win10
   samba = {
+    openFirewall = true;
     enable = true;
     securityType = "user";
+      extraConfig = ''
+        workgroup = WORKGROUP
+        server string = smbnix
+        netbios name = smbnix
+        security = user
+        #use sendfile = yes
+        #max protocol = smb2
+        # note: localhost is the ipv6 localhost ::1
+        hosts allow = 192.168.0. 127.0.0.1 localhost
+        hosts deny = 0.0.0.0/0
+        guest account = nobody
+        map to guest = bad user
+      '';
     shares = {
-      public = {
+      private = {
         path = "/mount/share";
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";
-        "create mask" = "0640";
-        "directory mask" = "0750";
-        "forece user" = "reinoud";
-        "force group" = "users";
-      }; 
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "username";
+        "force group" = "groupname";
+      };
     };
   };
   locate = {
