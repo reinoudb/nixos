@@ -100,7 +100,7 @@ nixpkgs.config.allowUnfree = true;
 
 networking.firewall = {
   enable = false;
-  allowPing = true;
+  allowPing = false;
     allowedTCPPorts = [
       8080
       5357
