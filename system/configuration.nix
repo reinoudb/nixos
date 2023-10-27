@@ -157,34 +157,64 @@ powerManagement.enable = true;
 services = { 
   samba-wsdd.enable = true; # make share visible win10
   samba = {
-    openFirewall = true;
-    enable = true;
-    securityType = "user";
-      extraConfig = ''
-        workgroup = WORKGROUP
-        server string = smbnix
-        netbios name = smbnix
-        security = user
-        #use sendfile = yes
-        #max protocol = smb2
-        # note: localhost is the ipv6 localhost ::1
-        hosts allow = 192.168.0. 127.0.0.1 localhost
-        hosts deny = 0.0.0.0/0
-        guest account = nobody
-        map to guest = bad user
-      '';
-    shares = {
-      private = {
-        path = "/mount/share";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "username";
-        "force group" = "groupname";
-      };
+
+
+
+  enable = true;
+  enableNmbd = false;
+  enableWinbindd = false;
+  extraConfig = ''
+    map to guest = Bad User
+
+    load printers = no
+    printcap name = /dev/null
+
+    log file = /var/log/samba/client.%I
+    log level = 2
+  '';
+
+  shares = {
+    private = {
+      browseable = "yes";
+      path = "/mount/share/";
+      "guest ok" = "no";
+      "read only" = "no";
+      "force user" = "reinoud"; # als iemand wilt verbinden moet die username dit zijn
+      comment = "share van me";
+      # "create mask" = "0644";
+      
     };
+  };
+
+    
+
+
+    
+    # openFirewall = true;
+    # enable = true;
+    # securityType = "user";
+      # extraConfig = ''
+      #   guest account = reinoud
+      #   map to guest = Bad User
+      #   load printers = no
+      #   printcap name = /dev/null 
+      # '';
+
+    
+
+      
+    # shares = {
+    #   private = {
+    #     path = "/mount/share";
+    #     browseable = "yes";
+    #     "read only" = "no";
+    #     "guest ok" = "no";
+    #     "create mask" = "0644";
+    #     "directory mask" = "0755";
+    #     # "force user" = "reinoud";
+    #     # "force group" = "groupname";
+    #   };
+    # };
   };
   locate = {
     enable = true;
