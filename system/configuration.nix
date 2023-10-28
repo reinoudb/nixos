@@ -158,32 +158,31 @@ services = {
   samba-wsdd.enable = true; # make share visible win10
   samba = {
 
+    enable = true;
+    enableNmbd = false;
+    enableWinbindd = false;
+    extraConfig = ''
+      map to guest = Bad User
 
+      load printers = no
+      printcap name = /dev/null
 
-  enable = true;
-  enableNmbd = false;
-  enableWinbindd = false;
-  extraConfig = ''
-    map to guest = Bad User
+      log file = /var/log/samba/client.%I
+      log level = 2
+    '';
 
-    load printers = no
-    printcap name = /dev/null
-
-    log file = /var/log/samba/client.%I
-    log level = 2
-  '';
-
-  shares = {
-    private = {
-      browseable = "yes";
-      path = "/mount/share/";
-      "guest ok" = "no";
-      "read only" = "no";
-      "force user" = "reinoud"; # als iemand wilt verbinden moet die username dit zijn
-      "create mask" = "0700";
-      "directory mask" = "0700";
-      # comment = "share van me";
-      
+    shares = {
+      private = {
+        browseable = "yes";
+        path = "/mount/share/";
+        "guest ok" = "no";
+        "read only" = "no";
+        "force user" = "reinoud"; # als iemand wilt verbinden moet die username dit zijn
+        "create mask" = "0700";
+        "directory mask" = "0700";
+        # comment = "share van me";
+        
+      };
     };
   };
   locate = {
@@ -218,7 +217,7 @@ services = {
     paths = "/home/";
     encryption = {
       mode = "keyfile";
-      passCommand = "cat ~/.dotfiles/programs/secrets/borg/password";
+      passCommand = "cat /home/reinoud/.dotfiles/programs/secrets/borg/password";
       };
     environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
     repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
@@ -245,22 +244,22 @@ services = {
 		xkbVariant = "";
     enable = true;
     windowManager = {
-      dwm = {
-        enable = true;
-        package = pkgs.dwm.overrideAttrs {
-            src = ./../programs/dwm; 
-          }; 
-          # override {
-          # patches = [
+      # dwm = {
+      #   enable = true;
+      #   package = pkgs.dwm.overrideAttrs {
+      #       src = ./../programs/dwm; 
+      #     }; 
+      #     # override {
+      #     # patches = [
 
-          #   # local patch files 
-          #   # (pkgs.fetchpatch {
-          #   #   url = "https://dwm.sucless.org/patcheq.diff";
-          #   #   hash = "";
-          #   # };)
-          # ]; 
-        # };
-      };
+      #     #   # local patch files 
+      #     #   # (pkgs.fetchpatch {
+      #     #   #   url = "https://dwm.sucless.org/patcheq.diff";
+      #     #   #   hash = "";
+      #     #   # };)
+      #     # ]; 
+      #   # };
+      # };
       i3 = {
         enable = true;
       };
