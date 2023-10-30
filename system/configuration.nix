@@ -155,6 +155,24 @@ programs = {
 
 powerManagement.enable = true;
 services = { 
+  fail2ban = {
+    enable = true;
+   maxretry = 5; # Observe 5 violations before banning an IP
+    ignoreIP = [
+      # Whitelisting some subnets:
+      "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16"
+      "8.8.8.8" # Whitelists a specific IP
+      "nixos.wiki" # Resolves the IP via DNS
+    ];
+    bantime = "24h"; # Set bantime to one day
+    bantime-increment = {
+      enable = true; # Enable increment of bantime after each violation
+      formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
+      multipliers = "1 2 4 8 16 32 64";
+      maxtime = "168h"; # Do not ban for more than 1 week
+      overalljails = true; # Calculate the bantime based on all the violations
+    };
+  };
   samba-wsdd.enable = true; # make share visible win10
   samba = {
 
