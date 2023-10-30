@@ -27,14 +27,15 @@ system = {
    
 
 boot = { 
-  plymouth.enable = true;
+  # initrd.systemd.enable = true;
+  # plymouth.enable = true;
   loader.systemd-boot.enable = true;
   loader.efi.canTouchEfiVariables = true;
   supportedFilesystems = [ "ntfs" ];
-#Setup keyfile 
-  # initrd.secrets = {
-  #   "/crypto_keyfile.bin" = null;
-  #       };
+# Setup keyfile 
+   initrd.secrets = {
+     "/crypto_keyfile.bin" = null;
+         };
 };
 
 fonts.fonts = with pkgs; [

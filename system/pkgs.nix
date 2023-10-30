@@ -4,7 +4,6 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-
 # browser
   librewolf
   tor-browser-bundle-bin
@@ -69,7 +68,7 @@ in
   pulseaudioFull
   alsa-utils
   vlc
-    unstable.freetube
+    # unstable.freetube
   pipe-viewer
   spotify
   spotifyd
@@ -81,6 +80,7 @@ in
   gimp
 
 # core
+tpm2-tss
 iw
 jmtpfs # mtp for phones
 screen
