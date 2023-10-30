@@ -99,7 +99,7 @@ users = {
 nixpkgs.config.allowUnfree = true;
 
 networking.firewall = {
-  enable = false;
+  enable = true;
   allowPing = true;
     allowedTCPPorts = [
       8080
