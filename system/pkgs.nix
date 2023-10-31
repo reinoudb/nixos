@@ -29,6 +29,7 @@ in
   qemu_full
 
  # Gaming
+ vitetris
  prismlauncher-unwrapped
  jdk17
   xwiimote
@@ -61,7 +62,6 @@ in
   # perl536Packages.OpenGL
   # wineWowPackages.full
   # wineWowPackages.unstableFull
-  # vitetris
   # unstable.dwarfs
   # unstable.wine-staging
   # unstable.fuse-overlayfs
