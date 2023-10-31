@@ -29,6 +29,8 @@ in
   qemu_full
 
  # Gaming
+ prismlauncher-unwrapped
+ jdk17
   xwiimote
   wiiuse
   wiiload
