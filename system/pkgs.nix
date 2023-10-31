@@ -8,6 +8,7 @@ in
   librewolf
   tor-browser-bundle-bin
   tor 
+  torsockets
   brave
   firefox
 
