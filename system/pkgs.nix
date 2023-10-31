@@ -136,7 +136,7 @@ wirelesstools
   libreoffice
   onlyoffice-bin
   tutanota-desktop
-  # electron-mail
+  electron-mail
   wcalc
  pro-office-calculator 
  xfce.xfce4-screenshooter

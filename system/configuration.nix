@@ -33,9 +33,9 @@ boot = {
   loader.efi.canTouchEfiVariables = true;
   supportedFilesystems = [ "ntfs" ];
 # Setup keyfile 
-   initrd.secrets = {
-     "/crypto_keyfile.bin" = null;
-         };
+   # initrd.secrets = {
+   #   "/crypto_keyfile.bin" = null;
+   #       };
 };
 
 fonts.fonts = with pkgs; [
