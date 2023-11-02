@@ -29,6 +29,8 @@ in
   qemu_full
 
  # Gaming
+ protonup-qt
+ lutris
  vitetris
  prismlauncher-unwrapped
  jdk17
@@ -41,7 +43,7 @@ in
   unstable.wineWowPackages.unstableFull
   
     unstable.dwarfs
-  unstable.wine-staging
+  wine-staging
   unstable.fuse-overlayfs
   unstable.bubblewrap
   # # unstable.gst-libav
