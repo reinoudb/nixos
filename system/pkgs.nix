@@ -38,13 +38,13 @@ in
   dolphin-emu
 
 
-  wineWowPackages.unstableFull
+  unstable.wineWowPackages.unstableFull
   
     unstable.dwarfs
   unstable.wine-staging
   unstable.fuse-overlayfs
   unstable.bubblewrap
-  # unstable.gst-libav
+  # # unstable.gst-libav
   # unstable.gst-plugins-bad1
   # unstable.gst-plugins-base1
   # unstable.gst-plugins-good1
@@ -68,11 +68,9 @@ in
 
 # audio & video
   blueman
-  pulseaudioFull
   alsa-utils
   vlc
     # unstable.freetube
-  pipe-viewer
   spotify
   spotifyd
   spotify-player
