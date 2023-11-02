@@ -225,6 +225,7 @@ services = {
   borgbackup.jobs.home-dir = {
     persistentTimer = true;
     exclude = [
+      "/home/*/mount"
       "/home/*/Games" 
       ".cache"
       "*/basestation"
