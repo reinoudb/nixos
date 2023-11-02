@@ -235,7 +235,7 @@ services = {
     paths = "/home/";
     encryption = {
       mode = "keyfile";
-      passCommand = "cat /home/reinoud/.dotfiles/programs/secrets/borg/password";
+      passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
       };
     environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
     repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
