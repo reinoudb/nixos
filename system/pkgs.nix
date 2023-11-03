@@ -29,8 +29,6 @@ in
   qemu_full
 
  # Gaming
- protonup-qt
- lutris
  vitetris
  prismlauncher-unwrapped
  jdk17
@@ -43,7 +41,7 @@ in
   unstable.wineWowPackages.unstableFull
   
     unstable.dwarfs
-  wine-staging
+  unstable.wine-staging
   unstable.fuse-overlayfs
   unstable.bubblewrap
   # # unstable.gst-libav
@@ -70,9 +68,11 @@ in
 
 # audio & video
   blueman
+  pulseaudioFull
   alsa-utils
   vlc
     # unstable.freetube
+  pipe-viewer
   spotify
   spotifyd
   spotify-player
