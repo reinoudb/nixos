@@ -381,4 +381,7 @@ security = {
     tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
   };
 };
+
+location.provider = "geoclue2";
+
 }
