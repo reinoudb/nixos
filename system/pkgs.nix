@@ -83,6 +83,7 @@ in
   gimp
 
 # core
+tree
 tpm2-tss
 iw
 jmtpfs # mtp for phones
