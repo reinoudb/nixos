@@ -156,6 +156,18 @@ programs = {
 
 powerManagement.enable = true;
 services = { 
+  geoclue2.enable = true;
+  redshift = {
+    enable = true;
+    brightness = {
+      day = "1";
+     night = "1";
+    }; 
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
+  };
   fail2ban = {
     enable = true;
    maxretry = 5; # Observe 5 violations before banning an IP
