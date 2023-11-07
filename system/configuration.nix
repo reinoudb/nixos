@@ -187,6 +187,17 @@ services = {
       maxtime = "168h"; # Do not ban for more than 1 week
       overalljails = true; # Calculate the bantime based on all the violations
     };
+    jails = {
+      samba = ''
+        enabled = true
+        filter = samba
+        logpath = /var/log/samba/log.*
+        bantime = 3600
+        findtime = 600
+        maxretry = 5
+        action = iptables-multiport[name=samba, port="139,445", protocol=tcp]
+      '';
+    };
   };
   samba-wsdd.enable = true; # make share visible win10
   samba = {
