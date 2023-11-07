@@ -120,6 +120,9 @@ virtualisation = {
 };
 
 programs = {
+  xss-lock = {
+    enable = true; 
+  };
   i3lock.enable = true;
   ssh.knownHosts = {
       myhost = {
