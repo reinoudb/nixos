@@ -188,6 +188,15 @@ services = {
       overalljails = true; # Calculate the bantime based on all the violations
     };
     jails = {
+      ssh = ''
+        enabled = true
+        filter = sshd
+        logpath = /var/log/auth.log
+        bantime = 3600
+        findtime = 600
+        maxretry = 3
+        action = iptables-multiport[name=sshd, port="ssh", protocol=tcp]
+      '';
       samba = ''
         enabled = true
         filter = samba
