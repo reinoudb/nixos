@@ -84,6 +84,7 @@ freetube
   gimp
 
 # core
+tpm-tools
 tree
 tpm2-tss
 iw
