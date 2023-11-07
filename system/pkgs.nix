@@ -67,6 +67,7 @@ in
   # unstable.fuse-overlayfs
 
 # audio & video
+freetube
   blueman
   pulseaudioFull
   alsa-utils
