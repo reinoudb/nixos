@@ -25,4 +25,3 @@ if [[ $chosen != "manual" ]]; then
   xrandr --output $displaytomount --$positions-of $(head -n 1 .displays) 
   echo "test"
 fi
-
