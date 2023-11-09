@@ -3,8 +3,12 @@ xrandr | grep " connected" | awk '{print $1}' > .displays
 displaytomount=$(tail -n -1 .displays)
 
 if [[ $displaytomount  = "eDP-1" ]]; then
-  echo "only 1 screen" 
-  exit
+  choices="ok\nmanual"
+  keuze=$(echo -e "$choices" | dmenu -i -p "$displaytomount is alleen")
+  case "$keuze" in
+    ok) exit;;
+    manual) arandr;;
+  esac
 fi
 
 choices="left\nright\nmanual"
