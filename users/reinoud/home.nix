@@ -193,8 +193,8 @@
 programs = {
   git = {
     enable = true;
-    userName = "s141959@ap.be";
-    userEmail = "öÑÛn±à¸wV7ª'ÎL¦g^ïs¨ÁÝäá;{^¥àXPFó¾ø~TgÁ*x]t²?%DÏg÷Õô'ÀÑ{Ó¯B8Ãß½GÆR7ô{ÃÑ";
+    userName = "GrannyCadet";
+    userEmail = "s141959@ap.be ";
   };
 };
 
