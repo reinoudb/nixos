@@ -177,16 +177,6 @@
       };
 
     home-manager.enable = true;
-     fish = {
-      enable = true;
-      shellAliases = {
-        # applysystem = "/home/reinoud/.dotfiles/apply-system.sh";
-        # applyuser = "/home/reinoud/.dotfiles/apply-user.sh";
-
-        # dot = "cd /home/reinoud/.dotfiles/";
-      };
-    };
-
   };
 
 
@@ -199,7 +189,6 @@ programs = {
 };
 
 services = {
-   
   dunst = {
     enable = true;
   };
