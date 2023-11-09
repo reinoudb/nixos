@@ -84,6 +84,7 @@ freetube
   gimp
 
 # core
+hstr # hh command 
 tpm-tools
 tree
 tpm2-tss
