@@ -75,7 +75,7 @@ i18n.defaultLocale = "en_US.UTF-8";
 
 users = {
   groups.nixosvmtest = {};
-  defaultUserShell = pkgs.bash;
+  defaultUserShell = pkgs.fish;
   users = {
     nixosvmtest.group = "nixosvmtest";
     nixosvmtest.isSystemUser = true;
@@ -133,7 +133,7 @@ programs = {
 	dconf.enable = true;
 	vim.defaultEditor = true;
   fish = {
-    enable = false;
+    enable = true;
     promptInit = "test"; 
     shellInit = "set -U fish_greeting"; # what to launch when terminal started
     loginShellInit = "date";
