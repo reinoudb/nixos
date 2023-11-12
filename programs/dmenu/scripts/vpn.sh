@@ -4,9 +4,20 @@ pushd ~/.dotfiles/secrets/wireguard/ > /dev/null
 
 vpn_connect () {
   sudo wg-quick $1 ~/.dotfiles/secrets/wireguard/$2.conf
-  exit
+  new=0
 }
 
+vpn_new () {
+  choices="$conf\ncancel"
+  keuze=$(echo -e "$choices" | dmenu -i -p "What server")
+  if [[ $keuze = "cancel" ]]; then
+    exit
+  else
+    vpn_connect "up" $keuze
+  fi
+}
+
+new=1
 
 conf=$(ls *.conf | awk -F'.' '{print $1}')
 
@@ -23,20 +34,16 @@ do
       case "$keuze" in
         ok) exit;;
         disconnect) vpn_connect "down" $x;;
-        change);;
+        change) vpn_connect "down" $x
+                new=1 
+          ;;
       esac
     fi
   done   
 done
 
-
-choices="$conf\ncancel"
-keuze=$(echo -e "$choices" | dmenu -i -p "What server")
-if [[ $keuze = "cancel" ]]; then
-  exit
-else
-  vpn_connect "up" $keuze
+if [[ $new = 1 ]]; then
+  vpn_new
 fi
-
 
 popd > /dev/null
