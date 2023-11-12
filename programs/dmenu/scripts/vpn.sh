@@ -3,7 +3,7 @@
 pushd ~/.dotfiles/secrets/wireguard/ > /dev/null
 
 vpn_connect () {
-  sudo wg-quick $1 ~/.dotfiles/secrets/wireguard/$2.conf
+  sudo -A wg-quick $1 ~/.dotfiles/secrets/wireguard/$2.conf
   new=0
 }
 

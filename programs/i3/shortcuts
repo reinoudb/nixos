@@ -57,3 +57,5 @@ bindsym $mod+u scratchpad show
 #bindsym $mod+d exec --no-startup-id dmenu_run
 
 bindsym $mod+µ [title="scratchpad"] scratchpad show
+
+bindsym $mod+v exec /home/reinoud/.dotfiles/programs/dmenu/scripts/vpn.sh
