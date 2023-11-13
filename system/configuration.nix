@@ -268,7 +268,10 @@ services = {
     patterns = [ # Include/exclude paths matching the given patterns. The first matching patterns is used, so if an include pattern (prefix +) matches before an exclude pattern (prefix -), the file is backed up. See borg help patterns for pattern syntax.
         
     ];
-    paths = "/home/";
+    paths = [
+      "/home/" 
+      "/config"
+    ];
     encryption = {
       mode = "keyfile";
       passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
