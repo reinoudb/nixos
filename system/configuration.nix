@@ -407,15 +407,15 @@ security = {
 
 location.provider = "geoclue2";
 
-systemd.services.borgbackup-job-home-dir.serviceConfig = {
-  ProtectHome = "read-only";
-  PrivateUsers = true;
-  ProtectKernelLogs = true;
-  ProtectHostname = true;
-  RestrictSUIDSGID = true;
-  NoNewPrivileges = true;
-  PrivateDevices = true;
-};
+# systemd.services.borgbackup-job-home-dir.serviceConfig = {
+#   ProtectHome = "read-only";
+#   PrivateUsers = true;
+#   ProtectKernelLogs = true;
+#   ProtectHostname = true;
+#   RestrictSUIDSGID = true;
+#   NoNewPrivileges = true;
+#   PrivateDevices = true;
+# };
 
 
 
