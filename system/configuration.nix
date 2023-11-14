@@ -84,6 +84,7 @@ users = {
       isNormalUser = true;
         description = "reinoud";
         extraGroups = [ 
+          "wireshark"
           "kvm"
           "networkmanager"
           "wheel"
