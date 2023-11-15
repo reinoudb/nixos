@@ -199,7 +199,7 @@ nixpkgs.config = {
     dmenu = pkgs.dmenu.override {
       patches = [
         ./../programs/dmenu/insencitive.diff 
-        ./../programs/dmenu/barheight.diff 
+        ./../programs/dmenu/lineheight.diff 
       ]; 
     }; 
   }; 
