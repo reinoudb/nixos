@@ -423,6 +423,8 @@ systemd.services.borgbackup-job-home-dir.serviceConfig = {
   ProtectKernelTunables = true; 
 };
 
-
+programs.steam = {
+  enable = true;
+};
 
 }
