@@ -95,6 +95,70 @@
 
   # Let Home Manager install and manage itself.
   programs = {
+      neovim =
+    let
+      toLua = str: "lua << EOF\n${str}\nEOF\n";
+      toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+    in
+    {
+      extraPackages = with pkgs; [
+        lua-language-server
+        pyright
+        shellcheck
+        rnix-lsp
+
+        vimPlugins.nvim-cmp
+
+        xclip
+      ];
+      withPython3 = true;
+      viAlias = false;
+      vimAlias = false;
+      vimdiffAlias = false;
+      enable = true;
+      extraLuaConfig = ''
+        ${builtins.readFile ./../../programs/nvim/options.lua}
+      '';
+      plugins = with pkgs.vimPlugins; [
+        # nvim-telescope
+        nvim-lspconfig
+
+        
+
+        {
+          plugin = comment-nvim;
+          config = toLua "require(\"Comment\").setup()";
+        }
+
+        {
+          plugin = nvim-lspconfig;
+          config = toLuaFile ./../../programs/nvim/plugin/lsp.lua;
+        }
+
+        {
+          plugin = gruvbox-nvim;
+          config = "colorscheme gruvbox";
+        }
+
+        {
+          plugin = fugitive;
+          config = "";
+        }
+
+        {
+          plugin = (nvim-treesitter.withPlugins (p: [
+            p.tree-sitter-nix
+            p.tree-sitter-vim
+            p.tree-sitter-bash
+            p.tree-sitter-lua
+            p.tree-sitter-python
+            p.tree-sitter-bash
+          ]));
+          config = toLuaFile ./../../programs/nvim/plugin/treesitter.lua;
+        }
+        vim-nix # idk what this does
+      ];
+    };
     lf = {
       enable = true;
       settings = {

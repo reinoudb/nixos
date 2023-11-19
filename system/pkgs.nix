@@ -21,7 +21,6 @@ in
 # txt editors
   vim-full
   kate
-  neovim
 
 # virtualization
   virt-manager
