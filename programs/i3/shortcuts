@@ -59,3 +59,5 @@ bindsym $mod+u scratchpad show
 bindsym $mod+µ [title="scratchpad"] scratchpad show
 
 bindsym $mod+v exec /home/reinoud/.dotfiles/programs/dmenu/scripts/vpn.sh
+
+bindsym $mod+g exec /home/reinoud/.dotfiles/programs/dmenu/scripts/games.sh
