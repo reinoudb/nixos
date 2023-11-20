@@ -136,11 +136,6 @@
         }
 
         {
-          plugin = gruvbox-nvim;
-          config = "colorscheme gruvbox";
-        }
-
-        {
           plugin = fugitive;
           config = "";
         }
