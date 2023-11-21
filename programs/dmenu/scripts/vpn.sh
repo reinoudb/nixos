@@ -1,9 +1,10 @@
 #!/bin/sh
 # script for activating / choosing wireguard vpn
+
 pushd ~/.dotfiles/secrets/wireguard/ > /dev/null
 
 vpn_connect () {
-  sudo -A wg-quick $1 ~/.dotfiles/secrets/wireguard/$2.conf
+  alacritty -e sudo wg-quick $1 ~/.dotfiles/secrets/wireguard/$2.conf
   new=0
 }
 
