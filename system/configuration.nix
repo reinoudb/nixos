@@ -346,6 +346,19 @@ systemd.user = {
     };
   };
   services = {
+    lxpolkit = {
+      description = "lxde polkit";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.lxde.lxsession}/bin/lxpolkit";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
 
     battery-alert = {
       enable = true;
@@ -359,16 +372,16 @@ systemd.user = {
       wantedBy = ["default.target"]; 
       };
 
-       polkit-gnome-authentication-agent-1 = {
-        description = "polkit-gnome-authentication-agent-1";
-        wantedBy = [ "graphical-session.target" ];
-        wants = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; Restart = "on-failure"; RestartSec = 1; TimeoutStopSec = 10; 
-          };
-    };
+       # polkit-gnome-authentication-agent-1 = {
+       #  description = "polkit-gnome-authentication-agent-1";
+       #  wantedBy = [ "graphical-session.target" ];
+       #  wants = [ "graphical-session.target" ];
+       #  after = [ "graphical-session.target" ];
+       #  serviceConfig = {
+       #    Type = "simple";
+       #    ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; Restart = "on-failure"; RestartSec = 1; TimeoutStopSec = 10; 
+       #    };
+    # };
 	};
 };
 
