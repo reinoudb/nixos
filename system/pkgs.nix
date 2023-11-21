@@ -83,7 +83,6 @@ freetube
   gimp
 
 # core
-lxde.lxsession
 hstr # hh command 
 tpm-tools
 tree
