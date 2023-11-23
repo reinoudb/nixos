@@ -40,17 +40,7 @@ fonts.fonts = with pkgs; [
 
 networking = {
   hostName = "nixos";
-  # networkmanager.enable = true;
-  wireless = {
-    enable = true;
-    userControlled.enable = true;
-    networks = {
-      Pixel_4329 = {
-       pskRaw = "188892190ef6d91031df0cd454480e8e3034ea0b5fc6af6ed47c3ff5293d6fba"; 
-       priority = 10;
-      };
-    };
-  };
+  networkmanager.enable = true;
   nameservers = [ "9.9.9.9" ];
   firewall = {
     enable = true;
