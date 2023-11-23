@@ -6,10 +6,11 @@
 
 {
 
-  imports = [
-      ./hardware-configuration.nix
-      ./pkgs.nix
-    ];
+imports = [
+  ./hardware-configuration.nix
+  ./pkgs.nix
+];
+
 nix = {
   gc = {
     automatic = true;
@@ -19,23 +20,17 @@ nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes"; 
 };
+
 system = {
   stateVersion = "23.05";
   autoUpgrade.enable = true;
   autoUpgrade.allowReboot = false;
 };
-   
 
 boot = { 
-  # initrd.systemd.enable = true;
-  # plymouth.enable = true;
   loader.systemd-boot.enable = true;
   loader.efi.canTouchEfiVariables = true;
   supportedFilesystems = [ "ntfs" ];
-# Setup keyfile 
-   # initrd.secrets = {
-   #   "/crypto_keyfile.bin" = null;
-   #       };
 };
 
 fonts.fonts = with pkgs; [
@@ -47,30 +42,18 @@ networking = {
   hostName = "nixos";
   networkmanager.enable = true;
   nameservers = [ "9.9.9.9" ];
- #wireless.enable = true; # enable wireless support via wpa_supplicant
-   # wg-quick.interfaces = { #/
-   #   wg0 = { #/
-   #     address = [ "10.147.94.120/32" "fd7d:76ee:e68f:a993:68bb:339:f2ff:8a29/128" ]; #/
-   #     dns = [ "10.128.0.1" "fd7d:76ee:e68f:a993::1" ]; #/
-   #     privateKeyFile = "~/.dotfiles/secrets/wireguard/privatekey"; #/
-
-   #    peers = [ #/
-   #       { #/
-   #       publicKey = "PyLCXAQT8KkM4T+dUsOQfn+Ub3pGxfGlxkIApuig+hk="; #/
-   #       presharedKeyFile = "~/.dotfiles/secrets/wireguard/presharedKeyFile"; #/
-   #       allowedIPs = [ "0.0.0.0/0" "::/0" ]; #/
-   #       endpoint = "nl.vpn.airdns.org:1637"; #/
-   #       persistentKeepalive = 15; #/
-   #       } #/
-   #     ]; #/
-   #   }; #/
-   # }; #/
+  firewall = {
+    enable = true;
+    allowPing = false;
+    allowedTCPPorts = [
+      5357
+    ]; 
+  };
 };
 
 time.timeZone = "Europe/Brussels";
 console.keyMap = "be-latin1";
 
-  # Select internationalisation properties.
 i18n.defaultLocale = "en_US.UTF-8";
 
 users = {
@@ -82,37 +65,29 @@ users = {
     nixosvmtest.initialPassword = "test";
     reinoud = {
       isNormalUser = true;
-        description = "reinoud";
-        extraGroups = [ 
-          "wireshark"
-          "kvm"
-          "networkmanager"
-          "wheel"
-          "libvirtd"
-          "audio"
-          "dbus"
-          "tss" #tpm
-        ];
-        packages = with pkgs; [];
+      description = "reinoud";
+      extraGroups = [ 
+        "wireshark"
+        "kvm"
+        "networkmanager"
+        "wheel"
+        "libvirtd"
+        "audio"
+        "dbus"
+        "tss" #tpm
+      ];
     };
   };
 }; 
 
 nixpkgs.config.allowUnfree = true;
 
-networking.firewall = {
+xdg.portal = {
   enable = true;
-  allowPing = false;
-    allowedTCPPorts = [
-      8080
-      5357
-    ];
+  extraPortals = [
+    pkgs.xdg-desktop-portal-kde 
+  ];
 };
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-
-xdg.portal.enable = true;
-xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
 
 virtualisation = {
   libvirtd.enable = true;
@@ -121,6 +96,7 @@ virtualisation = {
 };
 
 programs = {
+  steam.enable = true;
   xss-lock = {
     enable = true; 
   };
@@ -234,7 +210,6 @@ services = {
         "force user" = "reinoud"; # als iemand wilt verbinden moet die username dit zijn
         "create mask" = "0700";
         "directory mask" = "0700";
-        # comment = "share van me";
         
       };
     };
@@ -306,17 +281,7 @@ services = {
         enable = true;
         package = pkgs.dwm.overrideAttrs {
             src = ./../programs/dwm; 
-          }; 
-          # override {
-          # patches = [
-
-          #   # local patch files 
-          #   # (pkgs.fetchpatch {
-          #   #   url = "https://dwm.sucless.org/patcheq.diff";
-          #   #   hash = "";
-          #   # };)
-          # ]; 
-        # };
+        }; 
       };
       i3 = {
         enable = true;
@@ -370,18 +335,7 @@ systemd.user = {
         Type = "simple";
       };
       wantedBy = ["default.target"]; 
-      };
-
-       # polkit-gnome-authentication-agent-1 = {
-       #  description = "polkit-gnome-authentication-agent-1";
-       #  wantedBy = [ "graphical-session.target" ];
-       #  wants = [ "graphical-session.target" ];
-       #  after = [ "graphical-session.target" ];
-       #  serviceConfig = {
-       #    Type = "simple";
-       #    ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; Restart = "on-failure"; RestartSec = 1; TimeoutStopSec = 10; 
-       #    };
-    # };
+    };
 	};
 };
 
@@ -389,25 +343,16 @@ systemd.user = {
   uinput.enable = true; # iets voor xremap 
   bluetooth.enable = true;
 };
+
 specialisation = { 
    nvidia.configuration = { 
-     # Nvidia Configuration 
      services.xserver.videoDrivers = [ "nvidia" ]; 
      hardware.opengl.enable = true; 
-  
-     # Optionally, you may need to select the appropriate driver version for your specific GPU. 
      hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; 
-  
-     # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway 
      hardware.nvidia.modesetting.enable = true; 
-  
      hardware.nvidia.prime = { 
        sync.enable = true; 
-  
-       # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA 
        nvidiaBusId = "PCI:1:0:0"; 
-  
-       # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA 
        intelBusId = "PCI:0:2:0"; 
      };
   };
@@ -424,20 +369,17 @@ security = {
 
 location.provider = "geoclue2";
 
-systemd.services.borgbackup-job-home-dir.serviceConfig = {
-  # ProtectHome = "read-only";
-  # PrivateUsers = true;
-  ProtectKernelLogs = true;
-  ProtectHostname = true;
-  RestrictSUIDSGID = true;
-  NoNewPrivileges = true;
-  PrivateDevices = true;
-  RestrictAddressFamilies = "AF_UNIX AF_INET";
-  ProtectKernelTunables = true; 
+systemd.services = {
+  borgbackup-job-home-dir.serviceConfig = {
+    # ProtectHome = "read-only";
+    # PrivateUsers = true;
+    ProtectKernelLogs = true;
+    ProtectHostname = true;
+    RestrictSUIDSGID = true;
+    NoNewPrivileges = true;
+    PrivateDevices = true;
+    RestrictAddressFamilies = "AF_UNIX AF_INET";
+    ProtectKernelTunables = true; 
+  };
 };
-
-programs.steam = {
-  enable = true;
-};
-
 }
