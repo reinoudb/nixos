@@ -83,6 +83,8 @@ freetube
   gimp
 
 # core
+libratbag
+piper
 hstr # hh command 
 tpm-tools
 tree

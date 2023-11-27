@@ -41,7 +41,7 @@ fonts.fonts = with pkgs; [
 networking = {
   hostName = "nixos";
   networkmanager.enable = true;
-  nameservers = [ "9.9.9.9" ];
+  nameservers = [ "192.168.0.125:8053" ];
   firewall = {
     enable = true;
     allowPing = false;
@@ -123,6 +123,7 @@ programs = {
       dot="cd /home/reinoud/.dotfiles/"; 
       applysystem="bash /home/reinoud/.dotfiles/apply-system.sh";
       applyuser="bash /home/reinoud/.dotfiles/apply-users.sh";
+      dup="bash /home/reinoud/scripts/duplicate.sh";
     };
   };
   thunar = {
@@ -137,6 +138,7 @@ programs = {
 
 powerManagement.enable = true;
 services = { 
+  ratbagd.enable = true;
   geoclue2.enable = true;
   redshift = {
     enable = true;
@@ -274,9 +276,13 @@ services = {
 		pulse.enable = true; };
 	flatpak.enable = true;
 	xserver = { 
+    enable = true;
+    libinput.mouse = {
+      accelProfile = "flat";
+      accelSpeed = "1.15";
+    };
 		layout = "be";
 		xkbVariant = "";
-    enable = true;
     windowManager = {
       dwm = {
         enable = true;
@@ -370,17 +376,17 @@ security = {
 
 location.provider = "geoclue2";
 
-systemd.services = {
-  borgbackup-job-home-dir.serviceConfig = {
-    # ProtectHome = "read-only";
-    # PrivateUsers = true;
-    ProtectKernelLogs = true;
-    ProtectHostname = true;
-    RestrictSUIDSGID = true;
-    NoNewPrivileges = true;
-    PrivateDevices = true;
-    RestrictAddressFamilies = "AF_UNIX AF_INET";
-    ProtectKernelTunables = true; 
-  };
-};
+# systemd.services = {
+#   borgbackup-job-home-dir.serviceConfig = {
+#     # ProtectHome = "read-only";
+#     # PrivateUsers = true;
+#     ProtectKernelLogs = true;
+#     ProtectHostname = true;
+#     RestrictSUIDSGID = true;
+#     NoNewPrivileges = true;
+#     PrivateDevices = true;
+#     RestrictAddressFamilies = "AF_UNIX AF_INET";
+#     ProtectKernelTunables = true; 
+#   };
+# };
 }
