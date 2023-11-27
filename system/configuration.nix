@@ -239,6 +239,7 @@ services = {
   borgbackup.jobs.home-dir = {
     persistentTimer = true;
     exclude = [
+      "/home/*/.local/share/Steam"
       "/home/*/mount"
       "/home/*/Games" 
       ".cache"
