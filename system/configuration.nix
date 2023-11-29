@@ -41,7 +41,6 @@ fonts.fonts = with pkgs; [
 networking = {
   hostName = "nixos";
   networkmanager.enable = true;
-  nameservers = [ "192.168.0.125:8053" ];
   firewall = {
     enable = true;
     allowPing = false;
@@ -367,6 +366,19 @@ specialisation = {
 };
 
 security = {
+  # sudo = {
+  #   enable = true;
+  #   extraRules = [{
+  #     commands = [
+  #       {
+  #         command = "${pkgs.wg_quick}/bin/wg-quick";
+  #         options = ["NOPASSWD"];
+  #         args = ["ALL"];
+  #       } 
+  #     ]; 
+  #     groups = [ "wheel" ];
+  #   }]; 
+  # };
   rtkit.enable = true;
   tpm2 = {
     enable = true;
