@@ -42,7 +42,7 @@
           inherit system;
           modules = [
             ./system/configuration.nix 
-            # ./system/newpkgs.nix
+            ./system/newpkgs.nix
           ]; 
         }; 
       }; 
