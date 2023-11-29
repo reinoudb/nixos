@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
-let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in
+# let
+  # unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+# in
 {
   environment.systemPackages = with pkgs; [
 # browser
@@ -37,12 +37,20 @@ in
   dolphin-emu
 
 
-  unstable.wineWowPackages.unstableFull
+  # unstable.wineWowPackages.unstableFull
   
-    unstable.dwarfs
-  unstable.wine-staging
-  unstable.fuse-overlayfs
-  unstable.bubblewrap
+  #   unstable.dwarfs
+  # unstable.wine-staging
+  # unstable.fuse-overlayfs
+  # unstable.bubblewrap
+
+
+
+
+
+
+
+
   # # unstable.gst-libav
   # unstable.gst-plugins-bad1
   # unstable.gst-plugins-base1
@@ -131,7 +139,7 @@ distrobox
 wirelesstools
 
 # networking
-  unstable.ciscoPacketTracer8
+  # unstable.ciscoPacketTracer8
   nmap
   wireshark
   rclone

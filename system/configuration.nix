@@ -8,7 +8,8 @@
 
 imports = [
   ./hardware-configuration.nix
-  ./pkgs.nix
+  # ./pkgs.nix
+  ./newpkgs.nix
 ];
 
 nix = {
