@@ -41,9 +41,9 @@
         nixos = lib.nixosSystem {
           inherit system;
           modules = [
-            ./system/configuration.nix 
-            ./system/newpkgs.nix
-          ]; 
+            # nur.nixosModules.nur
+            (import (./system/configuration.nix))
+          ];
         }; 
       }; 
     };

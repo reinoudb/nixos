@@ -2,8 +2,6 @@
 ## and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
-
-
 {
 
 imports = [
@@ -34,7 +32,7 @@ boot = {
   supportedFilesystems = [ "ntfs" ];
 };
 
-fonts.fonts = with pkgs; [
+fonts.packages = with pkgs; [
   font-awesome_5
   nerdfonts
 ];
