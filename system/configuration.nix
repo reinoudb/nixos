@@ -32,7 +32,7 @@ boot = {
   supportedFilesystems = [ "ntfs" ];
 };
 
-fonts.packages = with pkgs; [
+fonts.fonts = with pkgs; [
   font-awesome_5
   nerdfonts
 ];
@@ -346,7 +346,6 @@ systemd.user = {
 };
 
  hardware = {
-  uinput.enable = true; # iets voor xremap 
   bluetooth.enable = true;
 };
 

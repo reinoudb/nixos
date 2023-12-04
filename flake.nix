@@ -2,15 +2,21 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs-stable.url = "nixpkgs/nixos-23.05";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
+      overlay-unstable = final: prev: {
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
 
       pkgs = import nixpkgs {
         inherit system;
@@ -42,6 +48,7 @@
           inherit system;
           modules = [
             # nur.nixosModules.nur
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             (import (./system/configuration.nix))
           ];
         }; 

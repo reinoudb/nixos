@@ -1,9 +1,21 @@
 { config, pkgs, ... }:
-# let
-  # unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-# in
-{
-  environment.systemPackages = with pkgs; [
+let
+  unstable = inputs.nixpkgs-unstable;
+  stable = inputs.nixpkgs;
+
+  unstablepackage = with unstable; [
+ 
+  unstable.wineWowPackages.unstableFull
+  
+    unstable.dwarfs
+  unstable.wine-staging
+  unstable.fuse-overlayfs
+  unstable.bubblewrap
+
+ unstable.ciscoPacketTracer8
+  ];
+
+stablepackage = with stable; [
 # browser
   librewolf
   tor-browser-bundle-bin
@@ -35,14 +47,6 @@
   wiiuse
   wiiload
   dolphin-emu
-
-
-  # unstable.wineWowPackages.unstableFull
-  
-  #   unstable.dwarfs
-  # unstable.wine-staging
-  # unstable.fuse-overlayfs
-  # unstable.bubblewrap
 
 
 
@@ -139,7 +143,6 @@ distrobox
 wirelesstools
 
 # networking
-  # unstable.ciscoPacketTracer8
   nmap
   wireshark
   rclone
@@ -184,4 +187,13 @@ rofi-calc
 rofi-power-menu
 
   ];
+
+in
+{
+  nixosConfigurations = {
+    reinoud = {
+      environment.systemPackages = stablepackage ++ unstablepackage; 
+    }; 
+  };
+
 }
