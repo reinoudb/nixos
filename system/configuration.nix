@@ -116,6 +116,7 @@ programs = {
     # interactiveShellInit = "shuf -n 1 /home/reinoud/scripts/facts";
     interactiveShellInit = "";
     shellAliases = {
+      gs="git status";
       plutomooimaken="sudo nix-collect-garbage --delete-older-than 2d && applysystem";
       ap="cd ~/Documents/ap";
       dot="cd /home/reinoud/.dotfiles/"; 
