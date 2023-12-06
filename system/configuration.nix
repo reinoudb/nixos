@@ -8,6 +8,7 @@ imports = [
   ./hardware-configuration.nix
   # ./pkgs.nix
   ./newpkgs.nix
+  inputs.xremap-flake.nixosModules.default
 ];
 
 nix = {
@@ -401,4 +402,25 @@ location.provider = "geoclue2";
 #     ProtectKernelTunables = true; 
 #   };
 # };
+
+hardware.uinput.enable = true;
+users.groups.uinput.members = ["reinoud"];
+users.groups.input.members = ["reinoud"];
+
+services.xremap = {
+  userName = "reinoud";
+  config = {
+    keymap = [
+      {
+        name = "main remaps";
+        remap = {
+          super-y = {
+            launch = ["firefox"]; 
+          };
+        };
+      } 
+    ];
+  };
+};
+
 }
