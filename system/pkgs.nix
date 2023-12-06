@@ -122,7 +122,6 @@ ntfs3g
 arandr
 android-udev-rules
 ncdu
-distrobox
 wirelesstools
 
 # networking
