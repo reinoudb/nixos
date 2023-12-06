@@ -6,8 +6,7 @@
 
 imports = [
   ./hardware-configuration.nix
-  # ./pkgs.nix
-  ./newpkgs.nix
+  ./pkgs.nix
   inputs.xremap-flake.nixosModules.default
 ];
 

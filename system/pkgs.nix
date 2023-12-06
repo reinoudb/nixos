@@ -1,21 +1,5 @@
-{ config, pkgs, ... }:
-let
-  unstable = inputs.nixpkgs-unstable;
-  stable = inputs.nixpkgs;
-
-  unstablepackage = with unstable; [
- 
-  unstable.wineWowPackages.unstableFull
-  
-    unstable.dwarfs
-  unstable.wine-staging
-  unstable.fuse-overlayfs
-  unstable.bubblewrap
-
- unstable.ciscoPacketTracer8
-  ];
-
-stablepackage = with stable; [
+{ config, pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
 # browser
   librewolf
   tor-browser-bundle-bin
@@ -49,12 +33,12 @@ stablepackage = with stable; [
   dolphin-emu
 
 
-
-
-
-
-
-
+  unstable.wineWowPackages.unstableFull
+  
+    unstable.dwarfs
+  unstable.wine-staging
+  unstable.fuse-overlayfs
+  unstable.bubblewrap
   # # unstable.gst-libav
   # unstable.gst-plugins-bad1
   # unstable.gst-plugins-base1
@@ -143,12 +127,14 @@ distrobox
 wirelesstools
 
 # networking
+  unstable.ciscoPacketTracer8
   nmap
   wireshark
   rclone
 
 # office
-asciidoc
+asciidoctor
+  asciidoc
   lf
   thunderbird
   libreoffice
@@ -188,13 +174,4 @@ rofi-calc
 rofi-power-menu
 
   ];
-
-in
-{
-  nixosConfigurations = {
-    reinoud = {
-      environment.systemPackages = stablepackage ++ unstablepackage; 
-    }; 
-  };
-
 }
