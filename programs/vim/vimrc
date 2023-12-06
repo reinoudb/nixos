@@ -6,6 +6,9 @@
 
 " Plugin Loading
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter' " git status
+
+
 Plug 'Yggdroot/indentLine' " zorgt voor duidelijke indents
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets'
