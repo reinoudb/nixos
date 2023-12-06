@@ -157,5 +157,5 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 set updatetime=100
-signcolumn=yes
+set signcolumn=yes
 highlight! link SignColumn LineNr
