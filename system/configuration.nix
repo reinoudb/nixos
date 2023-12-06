@@ -91,7 +91,6 @@ xdg.portal = {
 
 virtualisation = {
   libvirtd.enable = true;
-  podman.enable = true;
   vmware.host.enable = true;
 };
 
