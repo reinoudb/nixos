@@ -133,6 +133,7 @@ wirelesstools
   rclone
 
 # office
+  asciidoc
   lf
   thunderbird
   libreoffice
