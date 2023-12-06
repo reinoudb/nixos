@@ -32,7 +32,7 @@ boot = {
   supportedFilesystems = [ "ntfs" ];
 };
 
-fonts.fonts = with pkgs; [
+fonts.packages = with pkgs; [
   font-awesome_5
   nerdfonts
 ];
@@ -86,6 +86,7 @@ xdg.portal = {
   extraPortals = [
     pkgs.xdg-desktop-portal-kde 
   ];
+  config.common.default = "kde";
 };
 
 virtualisation = {
