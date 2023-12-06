@@ -236,6 +236,27 @@ services = {
       };
     };
   };
+  borgbackup.jobs.dotfiles = {
+    persistentTimer = true;
+    paths = [
+      "/home/*/.dotfiles" 
+    ]; 
+    encryption = {
+      mode = "keyfile";
+      passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
+    };
+    environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
+    repo = "ssh://reinoud@perfectekindje.airdns.org:57130/mnt/2tb/backup/nixos";
+    compression = "auto,zstd";
+    startAt = "hourly";
+    prune.keep = {
+      within = "1d";
+      daily = 7;
+      weekly = 4;
+      monthly = 12;
+      yearly = 5;
+    };
+  };
   borgbackup.jobs.home-dir = {
     persistentTimer = true;
     exclude = [
