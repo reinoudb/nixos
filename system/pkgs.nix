@@ -125,6 +125,7 @@ ncdu
 wirelesstools
 
 # networking
+openvpn
   unstable.ciscoPacketTracer8
   nmap
   wireshark
