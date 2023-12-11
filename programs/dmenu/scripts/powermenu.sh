@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 choises="Lock\nLogout\nSleep\nHibernate\nReboot\nShutdown"
