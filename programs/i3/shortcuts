@@ -18,7 +18,8 @@ bindsym $mod+shift+m exec thunar
 # bron
 # https://github.com/adi1090x/rofi
 #bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
-bindsym $mod+shift+x exec --no-startup-id rofi -modi "Power:rofi-power-menu" -show Power
+# bindsym $mod+shift+x exec --no-startup-id rofi -modi "Power:rofi-power-menu" -show Power
+bindsym $mod+shift+x exec --no-startup-id bash /home/reinoud/.dotfiles/programs/scripts/powermenu.sh
 # bindsym $mod+shift+x exec --no-startup-id /config/rofi/powermenu/type-2/powermenu.sh
 
 bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +5%
