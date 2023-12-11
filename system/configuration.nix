@@ -93,6 +93,7 @@ xdg.portal = {
 };
 
 virtualisation = {
+  virtualbox.host.enable = true;
   libvirtd.enable = true;
   vmware.host.enable = true;
 };
@@ -430,6 +431,7 @@ location.provider = "geoclue2";
 hardware.uinput.enable = true;
 users.groups.uinput.members = ["reinoud"];
 users.groups.input.members = ["reinoud"];
+users.extraGroups.vboxusers.members = ["reinoud"];
 
 services.xremap = {
   userName = "reinoud";
@@ -474,18 +476,4 @@ services.prometheus = {
   enable = true;
   port = 9001;
 };
-
-services.nfs.server.enable = true;
-
-# Add firewall exception for VirtualBox provider 
-networking.firewall.extraCommands = ''
-  ip46tables -I INPUT 1 -i vboxnet+ -p tcp -m tcp --dport 2049 -j ACCEPT
-'';
-
-# Add firewall exception for libvirt provider when using NFSv4 
-networking.firewall.interfaces."virbr1" = {                                   
-  allowedTCPPorts = [ 2049 ];                                               
-  allowedUDPPorts = [ 2049 ];                                               
-}; 
-
 }
