@@ -174,6 +174,8 @@ rofi-power-menu
 
 # kangaroot
 vagrant
+k9s
+kubeconform
 
   ];
 }
