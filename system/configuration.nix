@@ -433,7 +433,6 @@ users.groups.uinput.members = ["reinoud"];
 users.groups.input.members = ["reinoud"];
 
 services.xremap = {
-  withX11 = true;
   userName = "reinoud";
   deviceName = "AT Translated Set 2 keyboard";
   config = {
