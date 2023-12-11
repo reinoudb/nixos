@@ -45,6 +45,9 @@ networking = {
     allowPing = false;
     allowedTCPPorts = [
       5357
+      3000
+      9001
+      9002
     ]; 
   };
 };
@@ -443,5 +446,35 @@ services.xremap = {
     ];
   };
 };
+
+services.grafana = {
+  enable   = true;
+  port     = 3000;
+  domain   = "localhost";
+  protocol = "http";
+  dataDir  = "/var/lib/grafana";
+};
+
+services.prometheus = {
+  scrapeConfigs = [
+    {
+      job_name = "chrysalis";
+      static_configs = [{
+        targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
+      }];
+    } 
+  ];
+  exporters = {
+    node = {
+      enable = true;
+     enabledCollectors = ["systemd"];
+     port = 9002;
+    };
+  };
+  enable = true;
+  port = 9001;
+};
+
+
 
 }
