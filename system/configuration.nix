@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on # your system.  Help is available in the configuration.nix(5) man page
 ## and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 {
 
 imports = [
@@ -431,17 +431,18 @@ location.provider = "geoclue2";
 hardware.uinput.enable = true;
 users.groups.uinput.members = ["reinoud"];
 users.groups.input.members = ["reinoud"];
-users.extraGroups.vboxusers.members = ["reinoud"];
 
 services.xremap = {
+  withX11 = true;
   userName = "reinoud";
+  deviceName = "AT Translated Set 2 keyboard";
   config = {
     keymap = [
       {
         name = "main remaps";
         remap = {
           super-y = {
-            launch = ["firefox"]; 
+            launch = ["/run/current-system/sw/bin/freetube"]; 
           };
         };
       } 

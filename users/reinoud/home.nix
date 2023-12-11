@@ -264,5 +264,4 @@ nixpkgs.config = {
   }; 
 };
 
-  
 }
