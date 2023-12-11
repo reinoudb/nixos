@@ -93,6 +93,7 @@ xdg.portal = {
 };
 
 virtualisation = {
+  virtualbox.host.enable = true;
   libvirtd.enable = true;
   vmware.host.enable = true;
 };
@@ -430,6 +431,7 @@ location.provider = "geoclue2";
 hardware.uinput.enable = true;
 users.groups.uinput.members = ["reinoud"];
 users.groups.input.members = ["reinoud"];
+users.extraGroups.vboxusers.members = ["reinoud"];
 
 services.xremap = {
   userName = "reinoud";
