@@ -38,10 +38,11 @@ fonts.packages = with pkgs; [
 
 networking = {
   hostName = "nixos";
-  wireless = {
-    enable = true;
-   userControlled.enable = true; 
-  };
+  networkmanager.enable = true;
+  # wireless = {
+  #   enable = true;
+  #  userControlled.enable = true; 
+  # };
   firewall = {
     enable = true;
     allowPing = false;
