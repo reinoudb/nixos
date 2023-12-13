@@ -144,6 +144,10 @@ programs = {
 
 powerManagement.enable = true;
 services = { 
+  clamav = {
+    daemon.enable = true;
+    updater.enable = true; 
+  };
   ratbagd.enable = true;
   geoclue2.enable = true;
   redshift = {
