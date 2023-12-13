@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [ 
- # inputs.xremap-flake.homeManagerModules.default #  ./packettracer8.nix # ./firefox.nix 
+ inputs.xremap-flake.homeManagerModules.default
 ];
 
 
@@ -22,7 +22,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    firefox
+    # inputs.xremap-flake.packages.${system}.default
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -263,5 +263,4 @@ nixpkgs.config = {
     }; 
   }; 
 };
-
 }
