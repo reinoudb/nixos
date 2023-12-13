@@ -141,6 +141,7 @@ asciidoctor
   onlyoffice-bin
   tutanota-desktop
   electron-mail
+  protonmail-bridge
   wcalc
  pro-office-calculator 
  xfce.xfce4-screenshooter
