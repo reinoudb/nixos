@@ -7,7 +7,6 @@
 imports = [
   ./hardware-configuration.nix
   ./pkgs.nix
-  inputs.xremap-flake.nixosModules.default
 ];
 
 nix = {
@@ -39,7 +38,10 @@ fonts.packages = with pkgs; [
 
 networking = {
   hostName = "nixos";
-  networkmanager.enable = true;
+  wireless = {
+    enable = true;
+   userControlled.enable = true; 
+  };
   firewall = {
     enable = true;
     allowPing = false;
@@ -374,6 +376,7 @@ systemd.user = {
 
  hardware = {
   bluetooth.enable = true;
+  uinput.enable = true;
 };
 
 specialisation = { 
@@ -428,52 +431,18 @@ location.provider = "geoclue2";
 #   };
 # };
 
-hardware.uinput.enable = true;
-users.groups.uinput.members = ["reinoud"];
-users.groups.input.members = ["reinoud"];
+  services.nfs.server.enable = true;
 
-services.xremap = {
-  userName = "reinoud";
-  deviceName = "AT Translated Set 2 keyboard";
-  config = {
-    keymap = [
-      {
-        name = "main remaps";
-        remap = {
-          super-y = {
-            launch = ["/run/current-system/sw/bin/freetube"]; 
-          };
-        };
-      } 
-    ];
+  # Add firewall exception for VirtualBox provider
+  networking.firewall.extraCommands = ''
+    ip46tables -I INPUT 1 -i vboxnet+ -p tcp -m tcp --dport 2049 -j ACCEPT
+  '';
+
+  # Add firewall exception for libvirt provider when using NFSv4
+  networking.firewall.interfaces."virbr1" = {
+    allowedTCPPorts = [ 2049 ];
+    allowedUDPPorts = [ 2049 ];
   };
-};
 
-services.grafana = {
-  enable   = true;
-  port     = 3000;
-  domain   = "localhost";
-  protocol = "http";
-  dataDir  = "/var/lib/grafana";
-};
-
-services.prometheus = {
-  scrapeConfigs = [
-    {
-      job_name = "chrysalis";
-      static_configs = [{
-        targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
-      }];
-    } 
-  ];
-  exporters = {
-    node = {
-      enable = true;
-     enabledCollectors = ["systemd"];
-     port = 9002;
-    };
-  };
-  enable = true;
-  port = 9001;
-};
-}
+   users.extraGroups.vboxusers.members = [ "reinoud" ];
+ }
