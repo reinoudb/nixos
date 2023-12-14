@@ -37,6 +37,9 @@ fonts.packages = with pkgs; [
 ];
 
 networking = {
+  hosts = {
+    "10.133.0.2" = ["vcenter.bletchley.ap.be"];
+  };
   hostName = "nixos";
   networkmanager.enable = true;
   # wireless = {
