@@ -39,6 +39,7 @@ fonts.packages = with pkgs; [
 networking = {
   hosts = {
     "10.133.0.2" = ["vcenter.bletchley.ap.be"];
+    "10.133.0.22" = ["esxi.snb.lab"];
   };
   hostName = "nixos";
   networkmanager.enable = true;
