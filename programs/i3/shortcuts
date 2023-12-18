@@ -61,4 +61,4 @@ bindsym $mod+v exec /home/reinoud/.dotfiles/programs/dmenu/scripts/vpn.sh
 bindsym $mod+g exec /home/reinoud/.dotfiles/programs/dmenu/scripts/games.sh
 # bindsym $mod+ù exec /home/reinoud/.dotfiles/programs/dmenu/scripts/todo.sh
 
-bindsym $mod+shift+x exec /home/reinoud/.dotfiles/programs/scripts/powermenu.sh
+bindsym $mod+shift+x exec /home/reinoud/.dotfiles/programs/dmenu/scripts/powermenu.sh
