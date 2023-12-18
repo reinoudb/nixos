@@ -63,4 +63,4 @@ bindsym $mod+g exec /home/reinoud/.dotfiles/programs/dmenu/scripts/games.sh
 
 bindsym $mod+shift+x exec /home/reinoud/.dotfiles/programs/dmenu/scripts/powermenu.sh
 
-bindsym $mod+shift+l exec i3lock
+bindsym $mod+shift+p exec i3lock -u -i /home/reinoud/Pictures/wallpaper/nix-wallpaper-stripes-logo.png -t -e
