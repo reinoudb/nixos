@@ -62,3 +62,5 @@ bindsym $mod+g exec /home/reinoud/.dotfiles/programs/dmenu/scripts/games.sh
 # bindsym $mod+ù exec /home/reinoud/.dotfiles/programs/dmenu/scripts/todo.sh
 
 bindsym $mod+shift+x exec /home/reinoud/.dotfiles/programs/dmenu/scripts/powermenu.sh
+
+bindsym $mod+shift+l exec i3lock
