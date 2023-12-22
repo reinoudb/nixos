@@ -127,6 +127,7 @@ programs = {
     # interactiveShellInit = "shuf -n 1 /home/reinoud/scripts/facts";
     interactiveShellInit = "";
     shellAliases = {
+      cat="bat --paging=never";
       topdf="asciidoctor-pdf";
       gs="git status";
       plutomooimaken="sudo nix-collect-garbage --delete-older-than 2d && applysystem";

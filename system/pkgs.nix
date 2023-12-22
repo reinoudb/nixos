@@ -79,6 +79,7 @@ freetube
   gimp
 
 # core
+bat
 wpa_supplicant_gui
 hstr # hh command 
 tpm-tools
