@@ -23,3 +23,7 @@ for_window [class="calc"] move scratchpad
 for_window [class="calc"] border pixel 8
 
 bindsym $mod+m [ class="calc"] scratchpad show
+
+
+for_window [class="zenity"] floating enable
+

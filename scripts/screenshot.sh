@@ -8,8 +8,8 @@ maim -s "$TEMP_FILE"
 
 # Controleer of er daadwerkelijk een screenshot is gemaakt
 if [ -f "$TEMP_FILE" ]; then
-    # Gebruik YAD om een "Opslaan Als" dialoog te tonen
-    SAVE_PATH=$(yad --file --file-selection --save --confirm-overwrite --filename="$TEMP_FILE")
+    # Gebruik Zenity om een "Opslaan Als" dialoog te tonen
+    SAVE_PATH=$(zenity --file-selection --save --confirm-overwrite --filename="$TEMP_FILE") --class screenshot
 
     # Verplaats de screenshot als de gebruiker een locatie heeft gekozen
     if [ -n "$SAVE_PATH" ]; then

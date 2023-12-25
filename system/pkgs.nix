@@ -79,6 +79,7 @@ freetube
   gimp
 
 # core
+yad
 obs-studio
 maim
 slop
