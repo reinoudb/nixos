@@ -64,3 +64,6 @@ bindsym $mod+g exec /home/reinoud/.dotfiles/programs/dmenu/scripts/games.sh
 bindsym $mod+shift+x exec /home/reinoud/.dotfiles/programs/dmenu/scripts/powermenu.sh
 
 bindsym $mod+shift+p exec i3lock -i /home/reinoud/Pictures/wallpaper/nix-wallpaper-stripes-logo.png -t -e
+
+
+bindsym $mod+shift+s exec --no-startup-id /home/reinoud/.dotfiles/scripts/screenshot.sh

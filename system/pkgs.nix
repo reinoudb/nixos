@@ -79,6 +79,8 @@ freetube
   gimp
 
 # core
+maim
+slop
 bat
 wpa_supplicant_gui
 hstr # hh command 
