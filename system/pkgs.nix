@@ -79,6 +79,7 @@ freetube
   gimp
 
 # core
+obs
 maim
 slop
 bat
