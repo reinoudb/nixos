@@ -28,8 +28,11 @@ system = {
 
 boot = { 
   tmp.cleanOnBoot = true;
-  loader.systemd-boot.enable = true;
-  loader.efi.canTouchEfiVariables = true;
+  loader = {
+    timeout = 2;
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+  };
   supportedFilesystems = [ "ntfs" ];
 };
 
