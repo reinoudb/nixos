@@ -26,6 +26,7 @@ system = {
 };
 
 boot = { 
+  tmp.cleanOnBoot = true;
   loader.systemd-boot.enable = true;
   loader.efi.canTouchEfiVariables = true;
   supportedFilesystems = [ "ntfs" ];
