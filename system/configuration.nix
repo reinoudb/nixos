@@ -9,6 +9,7 @@ imports = [
   ./pkgs.nix
 ];
 
+documentation.nixos.enable = false;
 nix = {
   gc = {
     automatic = true;
