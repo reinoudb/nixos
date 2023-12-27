@@ -164,11 +164,15 @@
       keybindings = {
         "<enter>" = "open";
         V = ''$${pkgs.bat}/bin/bat "$f"'';
+        "." = "set hidden!";
+        c = "mkdir";
+        a = ''$$EDITOR'';
       };
       commands = {
         dragon-out = ''${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
         editor-open = ''$$EDITOR $f'';
         e = ''$$EDITOR $f'';
+        sh = ''$echo $(pwd) > /tmp/.screenshotpath'';
         mkdir = ''
          ''${{
             printf "Directory Name: " 

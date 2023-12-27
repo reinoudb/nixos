@@ -79,6 +79,7 @@ freetube
   gimp
 
 # core
+kitty
 yad
 obs-studio
 maim
