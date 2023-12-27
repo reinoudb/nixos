@@ -26,4 +26,5 @@ bindsym $mod+m [ class="calc"] scratchpad show
 
 
 for_window [class="zenity"] floating enable
+for_window [class="saveas"] floating enable
 
