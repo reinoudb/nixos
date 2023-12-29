@@ -7,10 +7,10 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    xremap-flake.url = "github:xremap/nix-flake";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       overlay-unstable = final: prev: {
@@ -31,19 +31,28 @@
 
     in {
 
-      homeManagerConfigurations = {
-        system = "x86_64-linux";
-        modules = [
-          ./users/reinoud/home.nix 
-          {
-            home = {
-              username = "reinoud";
-              homeDirectory = "/home/reinoud";
-              stateVersion = "23.11";
-            };
-          }
-        ];
-      }; 
+      homeConfigurations."reinoud" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        extraSpecialArgs = { inherit inputs; };
+
+       modules = [ ./users/reinoud/home.nix ];
+      };
+
+      # homeManagerConfigurations = {
+      #   extraSpecialArgs = { inherit nix-colors; };
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     ./users/reinoud/home.nix 
+      #     {
+      #       home = {
+      #         username = "reinoud";
+      #         homeDirectory = "/home/reinoud";
+      #         stateVersion = "23.11";
+      #       };
+      #     }
+      #   ];
+      # }; 
       
       nixosConfigurations = {
         nixos = lib.nixosSystem {
