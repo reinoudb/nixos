@@ -56,10 +56,6 @@ networking = {
     enable = true;
     allowPing = false;
     allowedTCPPorts = [
-      5357
-      3000
-      9001
-      9002
     ]; 
   };
 };
