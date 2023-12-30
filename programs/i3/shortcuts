@@ -71,10 +71,6 @@ bindsym $mod+shift+p exec i3lock -i /home/reinoud/Pictures/wallpaper/nix-wallpap
 
 bindsym $mod+shift+s exec --no-startup-id xfce4-screenshooter -r --no-border
 
-
-set $mode_launcher_other Launch: [f]irefox [l]librewolf [b]brave [t]tor
-bindsym $mod+o mode "$mode_launcher_other"
-
 set $mode_launcher_browser Launch: [f]irefox [l]librewolf [b]brave [t]tor
 bindsym $mod+o mode "$mode_launcher_browser"
 
