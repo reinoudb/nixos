@@ -2,7 +2,6 @@
 # { config, pkgs, inputs, ... }:
 {
   imports = [ 
-    # inputs.firefox-addons.packages."x86_64-linux"
     # inputs.nix-colors.homeManagerModules.default
     # nix-colors.homeManagerModules.default
     # ./features/alacritty.nix
@@ -11,9 +10,7 @@
 
   home.username = "reinoud";
   home.homeDirectory = "/home/reinoud";
-
-  home.stateVersion = "23.11"; # Please read the comment before changing.
-
+  home.stateVersion = "23.11";
   home.packages = with pkgs; [
   ];
 
@@ -47,10 +44,14 @@
   };
 
   programs = {
+    git = {
+      enable = true;
+      userName = "GrannyCadet";
+      userEmail = "s141959@ap.be ";
+    };
     firefox = {
       enable = true;
       profiles.reinoud = {
-
         extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
           ublock-origin
         ];
@@ -236,14 +237,6 @@
     home-manager.enable = true;
   };
 
-
-programs = {
-  git = {
-    enable = true;
-    userName = "GrannyCadet";
-    userEmail = "s141959@ap.be ";
-  };
-};
 
 services = {
   dunst = {

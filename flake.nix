@@ -23,49 +23,28 @@
         };
       };
 
-      # pkgs = import nixpkgs {
-      #   inherit system;
-      #   config = {
-      #     allowUnfree = true; 
-      #   };
-      # };
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true; 
+        };
+      };
 
       lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
 
     in {
 
-       homeConfigurations."reinoud" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
+      homeManagerConfigurations = {
         extraSpecialArgs = { inherit inputs; };
-
-        modules = [ ./users/reinoud/home.nix ];
-
-      };
-
-      # homeConfigurations."reinoud" = home-manager.lib.homeManagerConfiguration {
-      #   inherit pkgs;
-
-      #   extraSpecialArgs = { inherit inputs; };
-
-      #  modules = [ ./users/reinoud/home.nix ];
-      # };
-
-      # homeManagerConfigurations = {
-      #   extraSpecialArgs = { inherit inputs; };
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     ./users/reinoud/home.nix 
-      #     {
-      #       home = {
-      #         username = "reinoud";
-      #         homeDirectory = "/home/reinoud";
-      #         stateVersion = "23.11";
-      #       };
-      #     }
-      #   ];
-      # }; 
+        system = "x86_64-linux";
+        modules = [
+          ./users/reinoud/home.nix 
+          {
+            home = {
+            };
+          }
+        ];
+      }; 
       
       nixosConfigurations = {
         nixos = lib.nixosSystem {
