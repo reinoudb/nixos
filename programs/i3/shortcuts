@@ -69,4 +69,4 @@ bindsym $mod+shift+p exec i3lock -i /home/reinoud/Pictures/wallpaper/nix-wallpap
 # bindsym $mod+shift+s exec --no-startup-id /home/reinoud/.dotfiles/scripts/screenshot.sh
 
 
-bindsym $mod+shift+s exec --no-startup-id xfce4-screenshooter -c -r --no-border
+bindsym $mod+shift+s exec --no-startup-id xfce4-screenshooter -r --no-border
