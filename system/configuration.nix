@@ -151,6 +151,12 @@ programs = {
 
 powerManagement.enable = true;
 services = { 
+  avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
+  printing.enable = true;
   clamav = {
     daemon.enable = true;
     updater.enable = true; 
