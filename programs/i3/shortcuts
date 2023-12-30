@@ -66,4 +66,7 @@ bindsym $mod+shift+x exec /home/reinoud/.dotfiles/programs/dmenu/scripts/powerme
 bindsym $mod+shift+p exec i3lock -i /home/reinoud/Pictures/wallpaper/nix-wallpaper-stripes-logo.png -t -e
 
 
-bindsym $mod+shift+s exec --no-startup-id /home/reinoud/.dotfiles/scripts/screenshot.sh
+# bindsym $mod+shift+s exec --no-startup-id /home/reinoud/.dotfiles/scripts/screenshot.sh
+
+
+bindsym $mod+shift+s exec --no-startup-id xfce4-screenshooter -c -r --no-border

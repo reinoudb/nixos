@@ -6,7 +6,6 @@
   tor 
   torsocks
   brave
-  firefox
 
 # social
   element-desktop

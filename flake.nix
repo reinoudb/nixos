@@ -6,8 +6,11 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-colors.url = "github:misterio77/nix-colors";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -20,27 +23,37 @@
         };
       };
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true; 
-        };
-      };
+      # pkgs = import nixpkgs {
+      #   inherit system;
+      #   config = {
+      #     allowUnfree = true; 
+      #   };
+      # };
 
       lib = nixpkgs.lib;
+      pkgs = nixpkgs.legacyPackages.${system};
 
     in {
 
-      homeConfigurations."reinoud" = home-manager.lib.homeManagerConfiguration {
+       homeConfigurations."reinoud" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = { inherit inputs; };
 
-       modules = [ ./users/reinoud/home.nix ];
+        modules = [ ./users/reinoud/home.nix ];
+
       };
 
+      # homeConfigurations."reinoud" = home-manager.lib.homeManagerConfiguration {
+      #   inherit pkgs;
+
+      #   extraSpecialArgs = { inherit inputs; };
+
+      #  modules = [ ./users/reinoud/home.nix ];
+      # };
+
       # homeManagerConfigurations = {
-      #   extraSpecialArgs = { inherit nix-colors; };
+      #   extraSpecialArgs = { inherit inputs; };
       #   system = "x86_64-linux";
       #   modules = [
       #     ./users/reinoud/home.nix 
