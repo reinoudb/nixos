@@ -33,7 +33,7 @@
     in {
 
       nixosConfigurations = {
-        NixFlanders = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           modules = [
             # nur.nixosModules.nur
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })

@@ -13,7 +13,7 @@ nix = {
     dates = "weekly";
     options = "--delete-older-than 15d";
   };
-    package = pkgs.nixFlakes;
+    package = pkgs.nixos;
     extraOptions = "experimental-features = nix-command flakes"; 
 };
 
@@ -43,7 +43,7 @@ networking = {
     "10.133.0.2" = ["vcenter.bletchley.ap.be"];
     "10.133.0.22" = ["esxi.snb.lab"];
   };
-  hostName = "NixFlanders";
+  hostName = "nixos";
   networkmanager.enable = true;
   # wireless = {
   #   enable = true;
@@ -279,7 +279,7 @@ services = {
       passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
       };
     environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
-    repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixflanders";
+    repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
