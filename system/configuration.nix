@@ -503,27 +503,59 @@ home-manager.users.reinoud = {
           }
         ];
 
-        search.engines = {
-          "Nix Packages" = {
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+        search = {
+          force = true;
+          default = "DuckDuckGo";
+          engines = {
+            "Nix Packages" = {
+              urls = [{
+                template = "https://search.nixos.org/packages";
+                params = [
+                  { name = "type"; value = "packages"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
 
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+
+            "NixOS Wiki" = {
+              urls = [{
+                template = "https://nixos.wiki/index.php";
+                params = [ { name = "search"; value = "{searchTerms}"; }];
+              }];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@nw" ];
+            };
+
           };
+          search.force = true;
         };
-        search.force = true;
 
         settings = {
+          "browser.aboutConfig.showWarning" = false;
+          "browser.aboutwelcome.enabled" = false;
           "dom.security.https_only_mode" = true;
           "browser.download.panel.shown" = true;
           "identity.fxaccounts.enabled" = false;
           "signon.rememberSignons" = false;
+          "browser.search.suggest.enabled" = false;
+          "browser.shell.checkDefaultBrowser" = false;
+          "browser.startup.homepage" = "about:home";
+          "browser.startup.page" = 1; # Restore previous session
+          "browser.tabs.warnOnClose" = false;
+          "browser.warnOnQuit" = false;
+          "datareporting.healthreport.uploadEnabled" = false;
+          "datareporting.policy.dataSubmissionEnabled" = false;
+          "devtools.selfxss.count" = 5; # Allow pasting into console
+          "dom.security.https_only_mode" = true;
+          "services.sync.engine.creditcards" = false;
+          "services.sync.engine.passwords" = false;
+          "services.sync.engine.prefs" = false;
+          "services.sync.username" = "kira.bruneau@pm.me";
+          "signon.rememberSignons" = false; # Use keepassxc instead
+          "toolkit.telemetry.pioneer-new-studies-available" = false;
         };
       };
     };
