@@ -492,15 +492,99 @@ home-manager.users.reinoud = {
       profiles.reinoud = {
         extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
           ublock-origin
+          keepassxc-browser
         ];
 
         bookmarks = [
+          {
+            name = "github";
+            url = "https://github.com";
+          }
           {
             name = "wikipedia";
             tags = [ "wiki" ];
             keyword = "wiki";
             url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
           }
+          {
+            name = "airvpn";
+            tags = [ "vpn" "server" ];
+            keyword = "vpn";
+            url = "https://airvpn.org";
+          }
+          {
+            name = "jellyfin_public";
+            tags = [ "jellyfin" "public" ];
+            keyword = "jellyfin";
+            url = "http://perfectekindje.airdns.org:59419";
+          }
+          {
+            name = "jellyfin_private";
+            tags = [ "jellyfin" "private" ];
+            keyword = "jellyfin";
+            url = "http://192.168.0.125:59419";
+          }
+          {
+            name = "drankenkas";
+            tags = [ "ksa" "dk" ];
+            keyword = "ksa";
+            url = "https://ksa-drankenkas.web.app";
+          }
+          {
+            name = "open-subtitles";
+            tags = [ "torrenting" "jellyfin" "subtitles" ];
+            keyword = "subtitles";
+            url = "https://opensubtitles.org";
+          }
+          {
+            name = "iptorrents";
+            tags = [ "iptorrents" "torrenting" ];
+            keyword = "torrenting";
+            url = "https://iptorrents.me";
+          }
+          {
+            name = "1337x.to";
+            tags = [ "torrenting" ];
+            keyword = "torrenting"; 
+            url = "https://1337x.to";
+          }
+          {
+            name = "fearnopeer";
+            tags = [ "torrenting" ];
+            keyword = "torrenting";
+            url = "https://fearnopeer.com";
+          }
+          {
+            name = "chatgpt";
+            tags = ["chatgpt" "ai"];
+            keyword = "chatgpt";
+            url = "https://chat.openai.com";
+          }
+          {
+            name = "learning";
+            tags = ["ap"];
+            keyword = "ap";
+            url = "https://learning.ap.be";
+          }
+          {
+            name = "student";
+            tags = ["ap"];
+            keyword = "ap";
+            url = "https://student.ap.be";
+          }
+          {
+            name = "teams";
+            tags = ["teams" "ap"];
+            keyword = "teams";
+            url = "https://teams.microsoft.com/";
+          }
+          {
+            name = "google drive";
+            tags = ["drive"];
+            keyword = "drive";
+            url = "https://drive.google.com";
+          } 
+
         ];
 
         search = {
@@ -532,6 +616,37 @@ home-manager.users.reinoud = {
           };
         };
 
+        userContent = ''
+          /* Set the background color for the home screen */
+          @-moz-document url("about:home"), url("about:newtab") {
+            body {
+              background-color: #2f302f !important;
+            }
+          }
+        '';
+
+        userChrome = ''                         
+          /* Set the background color for various UI elements */
+          #nav-bar, /* Navigation bar */
+          #toolbar-menubar, /* Menu bar */
+          #TabsToolbar, /* Tab bar */
+          #PersonalToolbar { /* Bookmarks bar */
+            background-color: #2f302f !important;
+          }
+
+          /* Style the tab background */
+          .tab-background {
+            background-color: #2f302f !important;
+          }
+
+          /* Style the main menu */
+          #appMenu-popup {
+            background-color: #2f302f !important;
+          }
+
+          /* You can continue adding other UI elements here */
+        '';
+
         settings = {
           "privacy.sanitize.sanitizeOnShutdown" = true;
           "privacy.clearOnShutdown.cache" = true;
@@ -562,7 +677,9 @@ home-manager.users.reinoud = {
           "services.sync.engine.prefs" = false;
           "services.sync.username" = "kira.bruneau@pm.me";
           "signon.rememberSignons" = false; # Use keepassxc instead
+
           "toolkit.telemetry.pioneer-new-studies-available" = false;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
       };
     };
