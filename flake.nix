@@ -6,11 +6,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # nix-colors.url = "github:misterio77/nix-colors";
+
   };
 
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -34,17 +30,17 @@
 
     in {
 
-      homeManagerConfigurations = {
-        extraSpecialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules = [
-          ./users/reinoud/home.nix 
-          {
-            home = {
-            };
-          }
-        ];
-      }; 
+      # homeManagerConfigurations = {
+      #   extraSpecialArgs = { inherit inputs; };
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     ./users/reinoud/home.nix 
+      #     {
+      #       home = {
+      #       };
+      #     }
+      #   ];
+      # }; 
       
       nixosConfigurations = {
         nixos = lib.nixosSystem {
