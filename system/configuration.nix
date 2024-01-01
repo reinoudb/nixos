@@ -626,6 +626,10 @@ home-manager.users.reinoud = {
         '';
 
         userChrome = ''                         
+          #navigator-toolbox {
+            display: none !important;
+          }
+
           /* Set the background color for various UI elements */
           #nav-bar, /* Navigation bar */
           #toolbar-menubar, /* Menu bar */
@@ -648,6 +652,12 @@ home-manager.users.reinoud = {
         '';
 
         settings = {
+          "ayers.acceleration.force-enabled" = true;
+          "gfx.webrender.all" = true;
+          "svg.context-properties.content.enabled" = true;
+
+          "privacy.trackingprotection.enabled" = true;
+          "browser.contentblocking.category" = "strict"; # Change to 'standard', 'strict', or 'custom'
           "privacy.fingerprintProtection" = true;
           "privacy.sanitize.sanitizeOnShutdown" = true;
           "privacy.clearOnShutdown.cache" = true;
