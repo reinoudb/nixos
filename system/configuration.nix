@@ -295,6 +295,7 @@ services = {
     paths = [
       "/home/" 
       "/config"
+      "/mount/share"
     ];
     encryption = {
       mode = "keyfile";
