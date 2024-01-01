@@ -4,7 +4,6 @@
 imports = [
   ./hardware-configuration.nix
   ./pkgs.nix
-  inputs.home-manager.nixosModules.home-manager
 ];
 
 documentation.nixos.enable = false;
@@ -491,9 +490,9 @@ home-manager.users.reinoud = {
     firefox = {
       enable = true;
       profiles.reinoud = {
-        # extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        #   ublock-origin
-        # ];
+        extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+          ublock-origin
+        ];
 
         bookmarks = [
           {
