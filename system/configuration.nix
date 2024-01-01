@@ -533,6 +533,16 @@ home-manager.users.reinoud = {
         };
 
         settings = {
+          "privacy.sanitize.sanitizeOnShutdown" = true;
+          "privacy.clearOnShutdown.cache" = true;
+          "privacy.clearOnShutdown.cookies" = true;
+          "privacy.clearOnShutdown.downloads" = true;
+          "privacy.clearOnShutdown.formdata" = true;
+          "privacy.clearOnShutdown.history" = true;
+          "privacy.clearOnShutdown.sessions" = true;
+          "privacy.clearOnShutdown.siteSettings" = false;  # Keep site-specific preferences
+
+          "ui.systemUsesDarkTheme" = 1;
           "browser.aboutConfig.showWarning" = false;
           "browser.aboutwelcome.enabled" = false;
           "dom.security.https_only_mode" = true;
