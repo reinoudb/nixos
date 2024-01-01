@@ -7,7 +7,7 @@ bindsym $mod+Tab workspace next
 
 # firefox
 # bindsym $mod+shift+f exec firefox
-bindsym $mod+shift+f exec librewolf
+bindsym $mod+shift+f exec firefox
 # bindsym $mod+shift+f exec flatpak run io.gitlab.librewolf-community
 
 # nemo file manager
