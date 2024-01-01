@@ -279,7 +279,7 @@ services = {
       passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
       };
     environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
-    repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixos";
+    repo = "ssh://reinoud@192.168.0.125:57130/mnt/2tb/backup/nixflanders";
     compression = "auto,zstd";
     startAt = "hourly";
     prune.keep = {
