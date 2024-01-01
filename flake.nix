@@ -27,18 +27,6 @@
 
     in {
 
-      # homeManagerConfigurations = {
-      #   extraSpecialArgs = { inherit inputs; };
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     ./users/reinoud/home.nix 
-      #     {
-      #       home = {
-      #       };
-      #     }
-      #   ];
-      # }; 
-      
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           modules = [
@@ -50,7 +38,6 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.reinoud = import ./users/reinoud/home.nix;
             }
           ];
           specialArgs = { inherit inputs; };
