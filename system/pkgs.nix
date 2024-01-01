@@ -32,9 +32,9 @@
   dolphin-emu
 
 
+  lutris
   unstable.wineWowPackages.unstableFull
-  
-    unstable.dwarfs
+  unstable.dwarfs
   unstable.wine-staging
   unstable.fuse-overlayfs
   unstable.bubblewrap
