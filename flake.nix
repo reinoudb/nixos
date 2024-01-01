@@ -6,10 +6,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, ... }:
     let
       system = "x86_64-linux";
       overlay-unstable = final: prev: {
@@ -26,8 +25,6 @@
         };
       };
 
-      lib = nixpkgs.lib;
-
     in {
 
       # homeManagerConfigurations = {
@@ -43,14 +40,21 @@
       # }; 
       
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          inherit system;
+        nixos = nixpkgs.lib.nixosSystem {
           modules = [
             # nur.nixosModules.nur
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             (import (./system/configuration.nix))
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.reinoud = import ./users/reinoud/home.nix;
+            }
           ];
+          specialArgs = { inherit inputs; };
+          inherit system;
         }; 
       }; 
     };
