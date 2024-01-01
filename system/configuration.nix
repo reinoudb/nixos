@@ -530,7 +530,6 @@ home-manager.users.reinoud = {
             };
 
           };
-          search.force = true;
         };
 
         settings = {
@@ -539,7 +538,6 @@ home-manager.users.reinoud = {
           "dom.security.https_only_mode" = true;
           "browser.download.panel.shown" = true;
           "identity.fxaccounts.enabled" = false;
-          "signon.rememberSignons" = false;
           "browser.search.suggest.enabled" = false;
           "browser.shell.checkDefaultBrowser" = false;
           "browser.startup.homepage" = "about:home";
@@ -549,7 +547,6 @@ home-manager.users.reinoud = {
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.selfxss.count" = 5; # Allow pasting into console
-          "dom.security.https_only_mode" = true;
           "services.sync.engine.creditcards" = false;
           "services.sync.engine.passwords" = false;
           "services.sync.engine.prefs" = false;
