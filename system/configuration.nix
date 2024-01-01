@@ -648,6 +648,7 @@ home-manager.users.reinoud = {
         '';
 
         settings = {
+          "privacy.fingerprintProtection" = true;
           "privacy.sanitize.sanitizeOnShutdown" = true;
           "privacy.clearOnShutdown.cache" = true;
           "privacy.clearOnShutdown.cookies" = true;
