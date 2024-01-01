@@ -43,7 +43,7 @@ networking = {
     "10.133.0.2" = ["vcenter.bletchley.ap.be"];
     "10.133.0.22" = ["esxi.snb.lab"];
   };
-  hostName = "nixos";
+  hostName = "NixFlanders";
   networkmanager.enable = true;
   # wireless = {
   #   enable = true;
