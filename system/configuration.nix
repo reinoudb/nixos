@@ -497,6 +497,10 @@ home-manager.users.reinoud = {
 
         bookmarks = [
           {
+            name = "lemmy";
+            url = "lemmy.world";
+          }
+          {
             name = "github";
             url = "https://github.com";
           }
