@@ -13,7 +13,7 @@ nix = {
     dates = "weekly";
     options = "--delete-older-than 15d";
   };
-    package = pkgs.nixos;
+    package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes"; 
 };
 
@@ -623,12 +623,56 @@ home-manager.users.reinoud = {
               background-color: #2f302f !important;
             }
           }
+
+          .footer, .ad-banner { display: none !important; }
+
+          body {
+            background-color: #2f302f !important;
+            color: #ffffff !important; /* Adjust text color for readability */
+          }
+
         '';
 
         userChrome = ''                         
-          #navigator-toolbox {
+          /* Hide shortcuts on the Firefox homepage */
+          @-moz-document url("about:home"), url("about:newtab") {
+            .top-sites {
+              display: none !important;
+            }
+          }
+
+
+          /* Hide 'View Recent Browsing Across Devices' */
+          .syncedTabsSidebar, .remotetabs-container {
             display: none !important;
           }
+
+
+          #reload-button { 
+            display: none !important; 
+          }
+
+          
+          scrollbar { display: none !important; }
+
+          .tabbrowser-tab { min-width: 60px !important; }
+
+          #back-button, #forward-button { display: none !important; }
+
+
+          #tabbrowser-tabs[style^="max-height:"][style*="px"] { 
+           visibility: collapse !important; 
+          }
+
+          
+          /* hide bookmarks except new TabsToolbar
+          #PersonalToolbar:not([customizing]){
+           visibility: collapse !important;
+          }
+          #main-window[title^="New Tab"] #PersonalToolbar{
+           visibility: visible !important;
+          }
+
 
           /* Set the background color for various UI elements */
           #nav-bar, /* Navigation bar */
@@ -652,10 +696,6 @@ home-manager.users.reinoud = {
         '';
 
         settings = {
-          "ayers.acceleration.force-enabled" = true;
-          "gfx.webrender.all" = true;
-          "svg.context-properties.content.enabled" = true;
-
           "privacy.trackingprotection.enabled" = true;
           "browser.contentblocking.category" = "strict"; # Change to 'standard', 'strict', or 'custom'
           "privacy.fingerprintProtection" = true;
@@ -669,17 +709,20 @@ home-manager.users.reinoud = {
           "privacy.clearOnShutdown.siteSettings" = false;  # Keep site-specific preferences
 
           "ui.systemUsesDarkTheme" = 1;
+          "identity.fxaccounts.enabled" = false;
           "browser.aboutConfig.showWarning" = false;
           "browser.aboutwelcome.enabled" = false;
           "dom.security.https_only_mode" = true;
+
           "browser.download.panel.shown" = true;
-          "identity.fxaccounts.enabled" = false;
           "browser.search.suggest.enabled" = false;
           "browser.shell.checkDefaultBrowser" = false;
           "browser.startup.homepage" = "about:home";
           "browser.startup.page" = 1; # Restore previous session
           "browser.tabs.warnOnClose" = false;
           "browser.warnOnQuit" = false;
+          "browser.download.useDownloadDir" = false;
+
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.selfxss.count" = 5; # Allow pasting into console
