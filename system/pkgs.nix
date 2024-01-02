@@ -138,6 +138,7 @@ openvpn
   rclone
 
 # office
+subtitleedit
 asciidoctor
   asciidoc
   lf
