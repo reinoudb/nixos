@@ -484,6 +484,18 @@ home-manager.users.reinoud = {
   };
 
   programs = {
+    #thunderbird = {
+    #  enable = true;
+    #  profiles."reinoud" = {
+    #    isDefault = true;
+    #    userChrome = ''
+    #      #messengerWindow {
+    #        background-color: #2f302f !important;
+    #      }
+
+    #    '';
+    #  };
+    #};
     git = {
       enable = true;
       userName = "GrannyCadet";
