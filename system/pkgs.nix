@@ -70,7 +70,7 @@ freetube
   pipe-viewer
   spotify
   spotifyd
-  spotify-player
+  spotify-tui
   youtube-tui
   gpicview
   feh
