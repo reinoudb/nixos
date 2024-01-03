@@ -511,8 +511,44 @@ home-manager.users.reinoud = {
 
         bookmarks = [
           {
-            name = "mipmip home-manager search";
-            url = "https://mipmip.github.io/home-manager-option-search/";
+            name = "nix sites";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "mipmip home-manager search";
+                url = "https://mipmip.github.io/home-manager-option-search/";
+              }
+              {
+                name = "jellyfin_public";
+                tags = [ "jellyfin" "public" ];
+                keyword = "jellyfin";
+                url = "http://perfectekindje.airdns.org:59419";
+              }
+              {
+                name = "nixos wiki";
+                url = "https://nixos.wiki";
+              }
+            
+            ];
+          }
+          {
+            name = "server";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "airvpn";
+                tags = [ "vpn" "server" ];
+                keyword = "vpn";
+                url = "https://airvpn.org";
+              }
+              {
+                name = "jellyfin_private";
+                tags = [ "jellyfin" "private" ];
+                keyword = "jellyfin";
+                url = "http://192.168.0.125:59419";
+              }
+
+            ];
           }
           {
             name = "lemmy";
@@ -521,30 +557,6 @@ home-manager.users.reinoud = {
           {
             name = "github";
             url = "https://github.com";
-          }
-          {
-            name = "wikipedia";
-            tags = [ "wiki" ];
-            keyword = "wiki";
-            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-          }
-          {
-            name = "airvpn";
-            tags = [ "vpn" "server" ];
-            keyword = "vpn";
-            url = "https://airvpn.org";
-          }
-          {
-            name = "jellyfin_public";
-            tags = [ "jellyfin" "public" ];
-            keyword = "jellyfin";
-            url = "http://perfectekindje.airdns.org:59419";
-          }
-          {
-            name = "jellyfin_private";
-            tags = [ "jellyfin" "private" ];
-            keyword = "jellyfin";
-            url = "http://192.168.0.125:59419";
           }
           {
             name = "drankenkas";
