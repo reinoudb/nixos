@@ -512,7 +512,7 @@ home-manager.users.reinoud = {
         bookmarks = [
           {
             name = "nix sites";
-            toolbar = true;
+            # toolbar = true;
             bookmarks = [
               {
                 name = "mipmip home-manager search";
@@ -533,7 +533,7 @@ home-manager.users.reinoud = {
           }
           {
             name = "server";
-            toolbar = true;
+            # toolbar = true;
             bookmarks = [
               {
                 name = "airvpn";
