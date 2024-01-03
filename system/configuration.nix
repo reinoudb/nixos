@@ -499,6 +499,10 @@ home-manager.users.reinoud = {
 
         bookmarks = [
           {
+            name = "mipmip home-manager search";
+            url = "https://mipmip.github.io/home-manager-option-search/";
+          }
+          {
             name = "lemmy";
             url = "lemmy.world";
           }
@@ -639,6 +643,96 @@ home-manager.users.reinoud = {
         '';
 
         userChrome = ''   
+        /* removes the show all tabs button /*
+#alltabs-button {
+    display: none !important;
+}
+
+
+
+:root:not([customizing]) #nav-bar {
+    min-height: 2.5em !important;
+    height: 2.5em !important;
+    margin: 0 0 -2.5em !important;
+    z-index: -1000 !important;
+    opacity: 0 !important;
+}
+
+:root:not([customizing]) #nav-bar:focus-within {
+    z-index: 1000 !important;
+    opacity: 1 !important;
+}
+
+
+
+        /* removed "import bookmarks" /*
+#PersonalToolbar #import-button {
+  display: none !important;
+}
+
+
+
+
+#context_bookmarkTab,
+#context_moveTabOptions,
+#context_sendTabToDevice,
+#context_reopenInContainer,
+#context_selectAllTabs,
+#context_closeTabOptions {
+  display: none !important;
+}
+
+/* Disable elements  */
+#context-navigation,
+#context-savepage,
+#context-pocket,
+#context-sendpagetodevice,
+#context-selectall,
+#context-viewsource,
+#context-inspect-a11y,
+#context-sendlinktodevice,
+#context-openlinkinusercontext-menu,
+#context-bookmarklink,
+#context-savelink,
+#context-savelinktopocket,
+#context-sendlinktodevice,
+#context-searchselect,
+#context-sendimage,
+#context-print-selection {
+  display: none !important;
+}
+
+
+
+/* Toolbar  */
+#tracking-protection-icon-container,
+#urlbar-zoom-button,
+#star-button-box,
+#pageActionButton,
+#pageActionSeparator,
+#tabs-newtab-button,
+#back-button,
+#PanelUI-button,
+#forward-button,
+.tab-secondary-label {
+  display: none !important;
+}
+
+#tabs-newtab-button {
+  padding-left: 0 !important;
+}
+
+:root {
+  --toolbarbutton-border-radius: 0 !important;
+  --tab-border-radius: 0 !important;
+  --tab-block-margin: 0 !important;
+}
+
+
+          .urlbarView {
+            display: none !important;
+          }
+
           /* remove list all tabs
           #alltabs-button {
             display: none !important;
@@ -709,6 +803,7 @@ home-manager.users.reinoud = {
         '';
 
         settings = {
+
           "layers.acceleration.force-enabled" = true;
           "gfx.webrender.all" = true;
           "svg.context-properties.content.enabled" = true;
