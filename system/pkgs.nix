@@ -142,7 +142,7 @@ subtitleedit
 asciidoctor
   asciidoc
   lf
-  # thunderbird
+  thunderbird
   libreoffice
   onlyoffice-bin
   tutanota-desktop
