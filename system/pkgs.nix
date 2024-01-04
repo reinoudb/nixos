@@ -33,6 +33,7 @@
 
 
   lutris
+
   unstable.wineWowPackages.unstableFull
   unstable.dwarfs
   unstable.wine-staging
@@ -45,13 +46,12 @@
   # unstable.gst-plugins-ugly1
   # unstable.gstreamer-vaapi
 
-  # vulkan-tools
-  # vulkan-loader
-  # steam-run
-  # protontricks
-  # protonup-qt
-  # winetricks
-  # steam 
+  vulkan-tools
+  vulkan-loader
+  steam-run
+  protontricks
+  protonup-qt
+  winetricks
   # lutris
   # perl536Packages.OpenGL
   # wineWowPackages.full
