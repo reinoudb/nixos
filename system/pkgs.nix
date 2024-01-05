@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
 # browser
   librewolf
@@ -23,22 +23,32 @@
   qemu_full
 
  # Gaming
- vitetris
- prismlauncher-unwrapped
- jdk17
-  xwiimote
-  wiiuse
-  wiiload
-  dolphin-emu
+
+# inputs.nix-gaming.packages."x86_64-linux".wine-ge
+# inputs.nix-gaming.packages."x86_64-linux".dxvk
+# inputs.nix-gaming.packages."x86_64-linux".proton-ge
 
 
-  lutris
+ # vitetris
+ # prismlauncher-unwrapped
+ # jdk17
+ #  xwiimote
+ #  wiiuse
+ #  wiiload
+ #  dolphin-emu
 
-  unstable.wineWowPackages.unstableFull
+
+ #  lutris
+
+ #  unstable.wineWowPackages.unstableFull
+  wineWow64Packages.base
   unstable.dwarfs
-  unstable.wine-staging
-  unstable.fuse-overlayfs
   unstable.bubblewrap
+  unstable.fuse-overlayfs
+  unstable.wine64
+ #  unstable.wine-staging
+ #  unstable.fuse-overlayfs
+ #  unstable.bubblewrap
   # # unstable.gst-libav
   # unstable.gst-plugins-bad1
   # unstable.gst-plugins-base1
@@ -46,12 +56,12 @@
   # unstable.gst-plugins-ugly1
   # unstable.gstreamer-vaapi
 
-  vulkan-tools
-  vulkan-loader
-  steam-run
-  protontricks
-  protonup-qt
-  winetricks
+  # vulkan-tools
+  # vulkan-loader
+  # steam-run
+  # protontricks
+  # protonup-qt
+  # winetricks
   # lutris
   # perl536Packages.OpenGL
   # wineWowPackages.full
