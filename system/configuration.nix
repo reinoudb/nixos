@@ -156,10 +156,6 @@ services = {
     openFirewall = true;
   };
   printing.enable = true;
-  clamav = {
-    daemon.enable = true;
-    updater.enable = true; 
-  };
   ratbagd.enable = true;
   geoclue2.enable = true;
   redshift = {
