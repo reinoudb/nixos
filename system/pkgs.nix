@@ -29,7 +29,7 @@
 # inputs.nix-gaming.packages."x86_64-linux".proton-ge
 
 
- # vitetris
+ vitetris
  # prismlauncher-unwrapped
  # jdk17
  #  xwiimote
