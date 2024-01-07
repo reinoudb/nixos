@@ -74,7 +74,6 @@ users = {
       isNormalUser = true;
       description = "reinoud";
       extraGroups = [ 
-        "docker"
         "wireshark"
         "kvm"
         "networkmanager"
@@ -99,7 +98,6 @@ xdg.portal = {
 };
 
 virtualisation = {
-  docker.enable = true;
   virtualbox.host.enable = true;
   libvirtd.enable = true;
   vmware.host.enable = true;
