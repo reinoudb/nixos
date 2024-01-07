@@ -284,6 +284,13 @@ services = {
       export BORG_ARCHIVE_NAME=$(hostname)-$(date +"%Y-%m-%d")-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 6)
     '';
     archiveBaseName = "${BORG_ARCHIVE_NAME}";
+    postHook = ''
+      if [ $exitStatus -eq 0 ]; then
+        notify-send "Backup" "Backup completed successfully."
+      else
+        notify-send "Backup" "Backup failed with error."
+      fi
+    '';
   };    
   dbus.enable = true;
   openssh.enable = true;
