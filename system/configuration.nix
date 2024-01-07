@@ -256,11 +256,7 @@ services = {
   borgbackup.jobs.home-dir = {
     persistentTimer = true;
     exclude = [
-      "/home/*/.local/share/Steam"
       "/home/*/mount"
-      "/home/*/Games" 
-      ".cache"
-      "*/basestation"
     ];
     patterns = [ # Include/exclude paths matching the given patterns. The first matching patterns is used, so if an include pattern (prefix +) matches before an exclude pattern (prefix -), the file is backed up. See borg help patterns for pattern syntax.
         
@@ -274,7 +270,7 @@ services = {
       passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
       };
     environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
-    repo = "ssh://reinoud@perfectekindje.airdns.org:11318/mnt/2tb/backup/nixos_homedir";
+    repo = "ssh://perfectekindje.airdns.org:11318/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
