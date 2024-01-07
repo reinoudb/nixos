@@ -274,11 +274,11 @@ services = {
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
-      within = "1d";
-      daily = 7;
-      weekly = 4;
+      within = "3d";
+      daily = 14;
+      weekly = 8;
       monthly = 12;
-      yearly = 5;
+      yearly = -1;
     };
     preHook = ''
       export BORG_ARCHIVE_NAME=$(hostname)-$(date +"%Y-%m-%d")-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 6)
