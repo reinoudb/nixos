@@ -258,9 +258,6 @@ services = {
     exclude = [
       "/home/*/mount"
     ];
-    patterns = [ # Include/exclude paths matching the given patterns. The first matching patterns is used, so if an include pattern (prefix +) matches before an exclude pattern (prefix -), the file is backed up. See borg help patterns for pattern syntax.
-        
-    ];
     paths = [
       "/home/reinoud" 
       "/mount/share"
@@ -269,7 +266,12 @@ services = {
       mode = "keyfile";
       passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
       };
-    environment.BORG_RSH = "ssh -v -i /home/reinoud/.ssh/id_rsa";
+      environment = {
+        BORG_RSH = "ssh -v -i /home/reinoud/.ssh/id_rsa";
+        DBUS_SESSION_BUS_ADDRESS = "unix:path=/run/user/1000/bus";
+        BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
+      };
+    doInit = false;
     repo = "ssh://perfectekindje.airdns.org:11318/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
     startAt = "daily";
@@ -281,14 +283,15 @@ services = {
       yearly = -1;
     };
     archiveBaseName = "${config.networking.hostName}";
-    dateFormat = "%Y-%m-%d";
+    dateFormat = "+%Y-%m-%d-%H:%M:%S";
     postHook = ''
       if [ $exitStatus -eq 0 ]; then
-        notify-send "Backup" "Backup completed successfully."
+        /run/current-system/sw/bin/notify-send "Backup" "Backup completed successfully."
       else
-        notify-send "Backup" "Backup failed with error."
+        /run/current-system/sw/bin/notify-send  "Backup" "Backup failed with error."
       fi
     '';
+    extraCreateArgs = "--stats --checkpoint-interval 300 --progress" ;
   };    
   dbus.enable = true;
   openssh.enable = true;
@@ -341,6 +344,13 @@ systemd.user = {
     };
   };
   services = {
+    borgbackup-job-home-dir = {
+      serviceConfig = {
+        StandardOutput = "journal";
+        StandardError = "inherit";
+      };
+    };
+
     lxpolkit = {
       description = "lxde polkit";
       wantedBy = [ "graphical-session.target" ];
