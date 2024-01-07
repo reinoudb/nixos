@@ -269,7 +269,7 @@ services = {
       mode = "keyfile";
       passCommand = "cat /home/reinoud/.dotfiles/secrets/borg/password";
       };
-    environment.BORG_RSH = "ssh -i /home/reinoud/.ssh/id_rsa";
+    environment.BORG_RSH = "ssh -v -i /home/reinoud/.ssh/id_rsa";
     repo = "ssh://perfectekindje.airdns.org:11318/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
     startAt = "daily";
@@ -280,6 +280,10 @@ services = {
       monthly = 12;
       yearly = 5;
     };
+    preHook = ''
+      export BORG_ARCHIVE_NAME=$(hostname)-$(date +"%Y-%m-%d")-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 6)
+    '';
+    archiveBaseName = "${BORG_ARCHIVE_NAME}";
   };    
   dbus.enable = true;
   openssh.enable = true;
