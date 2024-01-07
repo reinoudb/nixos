@@ -266,8 +266,7 @@ services = {
         
     ];
     paths = [
-      "/home/" 
-      "/config"
+      "/home/reinoud" 
       "/mount/share"
     ];
     encryption = {
