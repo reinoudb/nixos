@@ -186,9 +186,6 @@ neofetch
 gparted
 keepassxc
 rofi
-rofi-vpn
-rofi-calc
-rofi-power-menu
 
 # kangaroot
 vagrant
