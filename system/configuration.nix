@@ -519,6 +519,10 @@ home-manager.users.reinoud = {
 
         bookmarks = [
           {
+            name = "snb project"
+            url = "http://10.152.4.93"
+          }
+          {
             name = "nix sites";
             # toolbar = true;
             bookmarks = [
