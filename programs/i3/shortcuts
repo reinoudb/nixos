@@ -83,3 +83,23 @@ mode "$mode_launcher_browser" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
+
+set $mode_launcher_application Launch: [f]reetube [a]arandr [t]thunderbird [s]signal [k]keepass [p]spotify [o]onlyoffice [v]vorta
+bindsym $mod+a mode "$mode_launcher_application"
+
+mode "$mode_launcher_application" {
+    bindsym f exec freetube
+    bindsym a exec arandr
+    bindsym t exec thunderbird
+    bindsym s exec signal-desktop
+    bindsym k exec keepassxc
+    bindsym p exec spotify
+    bindsym o exec onlyoffice-desktopeditors
+    bindsym v exec vorta
+
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+
