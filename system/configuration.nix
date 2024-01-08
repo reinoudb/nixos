@@ -254,6 +254,8 @@ services = {
   };
 
   borgbackup.jobs.home-dir = {
+    user = "reinoud";
+    group = "users";
     persistentTimer = true;
     exclude = [
       "/home/*/mount"
@@ -272,7 +274,7 @@ services = {
         BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
       };
     doInit = false;
-    repo = "ssh://perfectekindje.airdns.org:11318/mnt/2tb/backup/nixos";
+    repo = "ssh://local-basestation/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
@@ -291,7 +293,8 @@ services = {
         /run/current-system/sw/bin/notify-send  "Backup" "Backup failed with error."
       fi
     '';
-    extraCreateArgs = "--stats --checkpoint-interval 300 --progress" ;
+    extraCreateArgs = "--stats --progress" ;
+    # extraCreateArgs = "--stats --checkpoint-interval 300 --progress" ;
   };    
   dbus.enable = true;
   openssh.enable = true;
@@ -519,8 +522,12 @@ home-manager.users.reinoud = {
 
         bookmarks = [
           {
-            name = "snb project"
-            url = "http://10.152.4.93"
+            name = "pastebin";
+            url = "pastebin.com";
+          }
+          {
+            name = "snb project";
+            url = "http://10.152.4.93";
           }
           {
             name = "nix sites";
