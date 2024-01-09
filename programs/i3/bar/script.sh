@@ -53,7 +53,7 @@ function hey_man {
     json_array=$(update_holder holder__hey_man "$json")
   else
     local json='{ "full_text": "BAK: inactive", "color": "#FFFFFF" }'
-    json_array=$(update_holder holder__hey_man "$json")
+    json_array=$(remove_holder holder__hey_man "$json")
   fi
 
 }
