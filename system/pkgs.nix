@@ -88,6 +88,7 @@ freetube
   gimp
 
 # core
+jq
 kitty
 yad
 obs-studio

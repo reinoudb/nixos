@@ -276,7 +276,7 @@ services = {
     doInit = false;
     repo = "ssh://local-basestation/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
-    startAt = "daily";
+    startAt = "hourly";
     prune.keep = {
       within = "3d";
       daily = 14;
@@ -293,8 +293,7 @@ services = {
         /run/current-system/sw/bin/notify-send  "Backup" "Backup failed with error."
       fi
     '';
-    extraCreateArgs = "--stats --progress" ;
-    # extraCreateArgs = "--stats --checkpoint-interval 300 --progress" ;
+    extraCreateArgs = "--stats --checkpoint-interval 300 --progress" ;
   };    
   dbus.enable = true;
   openssh.enable = true;
