@@ -288,9 +288,9 @@ services = {
     dateFormat = "+%Y-%m-%d-%H:%M:%S";
     postHook = ''
       if [ $exitStatus -eq 0 ]; then
-        /run/current-system/sw/bin/notify-send "Backup" "Backup completed successfully."
+        /run/current-system/sw/bin/notify-send "Backup" "Backup completed successfully." --urgency low
       else
-        /run/current-system/sw/bin/notify-send  "Backup" "Backup failed with error."
+        /run/current-system/sw/bin/notify-send  "Backup" "Backup failed with error." --urgency critical
       fi
     '';
     extraCreateArgs = "--stats --checkpoint-interval 300 --progress" ;
