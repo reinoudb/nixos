@@ -274,7 +274,7 @@ services = {
         BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
       };
     doInit = false;
-    repo = "ssh://local-basestation/mnt/2tb/backup/nixos";
+    repo = "ssh://public/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
