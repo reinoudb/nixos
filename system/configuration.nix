@@ -86,6 +86,7 @@ users = {
         "audio"
         "dbus"
         "tss" #tpm
+        "docker"
       ];
     };
   };
@@ -102,9 +103,12 @@ xdg.portal = {
 };
 
 virtualisation = {
-  podman = {
+  docker = {
     enable = true;
-
+    rootless = {
+      enable = true;
+     setSocketVariable = true; 
+    };
   };
   virtualbox.host.enable = true;
   libvirtd.enable = true;
