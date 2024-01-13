@@ -193,5 +193,6 @@ vagrant
 k9s
 kubeconform
 
+python311Packages.pyautogui
   ];
 }
