@@ -63,7 +63,7 @@ console.keyMap = "be-latin1";
 i18n.defaultLocale = "en_US.UTF-8";
 
 environment.variables = {
-  TERM = "kitty";
+  TERM = "alacritty";
 };
 
 users = {
