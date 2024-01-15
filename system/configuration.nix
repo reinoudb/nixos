@@ -682,59 +682,225 @@ home-manager.users.reinoud = {
         };
 
         userContent = ''
-          /* Set the background color for the home screen */
-          @-moz-document url("about:home"), url("about:newtab") {
-            body {
-              background-color: #2f302f !important;
-            }
-          }
+/* 
+┌─┐┬┌┬┐┌─┐┬  ┌─┐
+└─┐││││├─┘│  ├┤ 
+└─┘┴┴ ┴┴  ┴─┘└─┘
+┌─┐┌─┐─┐ ┬      
+├┤ │ │┌┴┬┘      
+└  └─┘┴ └─
 
-          .footer, .ad-banner { display: none !important; }
+by Miguel Avila
 
-          body {
-            background-color: #2f302f !important;
-            color: #ffffff !important; /* Adjust text color for readability */
-          }
+*/
+
+:root {
+  scrollbar-width: none !important;
+}
+
+@-moz-document url(about:privatebrowsing) {
+  :root {
+    scrollbar-width: none !important;
+  }
+}
         '';
+        userChrome = ''
 
-        userChrome = ''   
-        /* removes the show all tabs button /*
+
+
+/* Hide the 'List All Tabs' button */
 #alltabs-button {
     display: none !important;
 }
 
-
-
-:root:not([customizing]) #nav-bar {
-    min-height: 2.5em !important;
-    height: 2.5em !important;
-    margin: 0 0 -2.5em !important;
-    z-index: -1000 !important;
-    opacity: 0 !important;
+#reload-button {
+    display: none !important;
 }
 
-:root:not([customizing]) #nav-bar:focus-within {
-    z-index: 1000 !important;
-    opacity: 1 !important;
+/* Hide the bookmarks bar */
+#PersonalToolbar { 
+  display: none !important; 
 }
 
 
 
-        /* removed "import bookmarks" /*
-#PersonalToolbar #import-button {
+        /*
+┌─┐┬┌┬┐┌─┐┬  ┌─┐
+└─┐││││├─┘│  ├┤
+└─┘┴┴ ┴┴  ┴─┘└─┘
+┌─┐┌─┐─┐ ┬
+├┤ │ │┌┴┬┘
+└  └─┘┴ └─
+
+by Miguel Avila
+
+*/
+
+/*
+
+┌─┐┌─┐┌┐┌┌─┐┬┌─┐┬ ┬┬─┐┌─┐┌┬┐┬┌─┐┌┐┌
+│  │ ││││├┤ ││ ┬│ │├┬┘├─┤ │ ││ ││││
+└─┘└─┘┘└┘└  ┴└─┘└─┘┴└─┴ ┴ ┴ ┴└─┘┘└┘
+
+*/
+
+:root {
+  --sfwindow: #2f302f;
+  --sfsecondary: #2f302f;
+}
+
+/* Urlbar View */
+
+/*─────────────────────────────*/
+/* Comment this section if you */
+/* want to show the URL Bar    */
+/*─────────────────────────────*/
+
+.urlbarView {
   display: none !important;
 }
 
 
 
+/*─────────────────────────────*/
 
-#context_bookmarkTab,
-#context_moveTabOptions,
-#context_sendTabToDevice,
-#context_reopenInContainer,
-#context_selectAllTabs,
-#context_closeTabOptions {
+/*
+┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
+│  │ ││  │ │├┬┘└─┐
+└─┘└─┘┴─┘└─┘┴└─└─┘
+*/
+
+/* Tabs colors  */
+#tabbrowser-tabs:not([movingtab])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[multiselected='true'],
+#tabbrowser-tabs:not([movingtab])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[selected='true'] {
+  background-image: none !important;
+  background-color: var(--toolbar-bgcolor) !important;
+}
+
+/* Inactive tabs color */
+#navigator-toolbox {
+  background-color: var(--sfwindow) !important;
+}
+
+/* Window colors  */
+:root {
+  --toolbar-bgcolor: var(--sfsecondary) !important;
+  --tabs-border-color: var(--sfsecondary) !important;
+  --lwt-sidebar-background-color: var(--sfwindow) !important;
+  --lwt-toolbar-field-focus: var(--sfsecondary) !important;
+}
+
+/* Sidebar color  */
+#sidebar-box,
+.sidebar-placesTree {
+  background-color: var(--sfwindow) !important;
+}
+
+/*
+
+┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ ││├┤ │  ├┤  │ ├┤
+─┴┘└─┘┴─┘└─┘ ┴ └─┘
+┌─┐┌─┐┌┬┐┌─┐┌─┐┌┐┌┌─┐┌┐┌┌┬┐┌─┐
+│  │ ││││├─┘│ ││││├┤ │││ │ └─┐
+└─┘└─┘┴ ┴┴  └─┘┘└┘└─┘┘└┘ ┴ └─┘
+
+*/
+
+/* Tabs elements  */
+.tab-close-button {
+  display: none;
+}
+
+.tabbrowser-tab:not([pinned]) .tab-icon-image {
   display: none !important;
+}
+
+#nav-bar:not([tabs-hidden='true']) {
+  box-shadow: none;
+}
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab[first-visible-unpinned-tab] {
+  margin-inline-start: 0 !important;
+}
+
+:root {
+  --toolbarbutton-border-radius: 0 !important;
+  --tab-border-radius: 0 !important;
+  --tab-block-margin: 0 !important;
+}
+
+.tab-background {
+  border-right: 0px solid rgba(0, 0, 0, 0) !important;
+  margin-left: -4px !important;
+}
+
+.tabbrowser-tab:is([visuallyselected='true'], [multiselected])
+  > .tab-stack
+  > .tab-background {
+  box-shadow: none !important;
+}
+
+.tabbrowser-tab[last-visible-tab='true'] {
+  padding-inline-end: 0 !important;
+}
+
+#tabs-newtab-button {
+  padding-left: 0 !important;
+}
+
+/* Url Bar  */
+#urlbar-input-container {
+  background-color: var(--sfsecondary) !important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+}
+
+#urlbar-container {
+  margin-left: 0 !important;
+}
+
+#urlbar[focused='true'] > #urlbar-background {
+  box-shadow: none !important;
+}
+
+#navigator-toolbox {
+  border: none !important;
+}
+
+/* Bookmarks bar  */
+.bookmark-item .toolbarbutton-icon {
+  display: none;
+}
+toolbarbutton.bookmark-item:not(.subviewbutton) {
+  min-width: 1.6em;
+}
+
+/* Toolbar  */
+#tracking-protection-icon-container,
+#urlbar-zoom-button,
+#star-button-box,
+#pageActionButton,
+#pageActionSeparator,
+#tabs-newtab-button,
+#back-button,
+#PanelUI-button,
+#forward-button,
+.tab-secondary-label {
+  display: none !important;
+}
+
+.urlbarView-url {
+  color: #dedede !important;
 }
 
 /* Disable elements  */
@@ -757,105 +923,191 @@ home-manager.users.reinoud = {
   display: none !important;
 }
 
-
-
-/* Toolbar  */
-#tracking-protection-icon-container,
-#urlbar-zoom-button,
-#star-button-box,
-#pageActionButton,
-#pageActionSeparator,
-#tabs-newtab-button,
-#back-button,
-#PanelUI-button,
-#forward-button,
-.tab-secondary-label {
+#context_bookmarkTab,
+#context_moveTabOptions,
+#context_sendTabToDevice,
+#context_reopenInContainer,
+#context_selectAllTabs,
+#context_closeTabOptions {
   display: none !important;
 }
+        '';
 
-#tabs-newtab-button {
-  padding-left: 0 !important;
-}
+        #userContent = ''
+        #  /* Set the background color for the home screen */
+        #  @-moz-document url("about:home"), url("about:newtab") {
+        #    body {
+        #      background-color: #2f302f !important;
+        #    }
+        #  }
 
-:root {
-  --toolbarbutton-border-radius: 0 !important;
-  --tab-border-radius: 0 !important;
-  --tab-block-margin: 0 !important;
-}
+        #  .footer, .ad-banner { display: none !important; }
+
+        #  body {
+        #    background-color: #2f302f !important;
+        #    color: #ffffff !important; /* Adjust text color for readability */
+        #  }
+        #'';
+
+        #userChrome = ''   
+        #/* removes the show all tabs button /*
+##alltabs-button {
+    #display: none !important;
+#}
 
 
-          .urlbarView {
-            display: none !important;
-          }
 
-          /* remove list all tabs
-          #alltabs-button {
-            display: none !important;
-          }
+#:root:not([customizing]) #nav-bar {
+    #min-height: 2.5em !important;
+    #height: 2.5em !important;
+    #margin: 0 0 -2.5em !important;
+    #z-index: -1000 !important;
+    #opacity: 0 !important;
+#}
 
-          /* remove new tab
-          #new-tab-button, #tabs-newtab-button {
-            display: none !important;
-          }
+#:root:not([customizing]) #nav-bar:focus-within {
+    #z-index: 1000 !important;
+    #opacity: 1 !important;
+#}
+
+
+
+        #/* removed "import bookmarks" /*
+##PersonalToolbar #import-button {
+  #display: none !important;
+#}
+
+
+
+
+##context_bookmarkTab,
+##context_moveTabOptions,
+##context_sendTabToDevice,
+##context_reopenInContainer,
+##context_selectAllTabs,
+##context_closeTabOptions {
+  #display: none !important;
+#}
+
+#/* Disable elements  */
+##context-navigation,
+##context-savepage,
+##context-pocket,
+##context-sendpagetodevice,
+##context-selectall,
+##context-viewsource,
+##context-inspect-a11y,
+##context-sendlinktodevice,
+##context-openlinkinusercontext-menu,
+##context-bookmarklink,
+##context-savelink,
+##context-savelinktopocket,
+##context-sendlinktodevice,
+##context-searchselect,
+##context-sendimage,
+##context-print-selection {
+  #display: none !important;
+#}
+
+
+
+#/* Toolbar  */
+##tracking-protection-icon-container,
+##urlbar-zoom-button,
+##star-button-box,
+##pageActionButton,
+##pageActionSeparator,
+##tabs-newtab-button,
+##back-button,
+##PanelUI-button,
+##forward-button,
+#.tab-secondary-label {
+  #display: none !important;
+#}
+
+##tabs-newtab-button {
+  #padding-left: 0 !important;
+#}
+
+#:root {
+  #--toolbarbutton-border-radius: 0 !important;
+  #--tab-border-radius: 0 !important;
+  #--tab-block-margin: 0 !important;
+#}
+
+
+        #  .urlbarView {
+        #    display: none !important;
+        #  }
+
+        #  /* remove list all tabs
+        #  #alltabs-button {
+        #    display: none !important;
+        #  }
+
+        #  /* remove new tab
+        #  #new-tab-button, #tabs-newtab-button {
+        #    display: none !important;
+        #  }
 
         
-          /* Shorten the URL search bar */
-          /*#urlbar-container {
-          /*  max-width: 400px !important; /* Adjust the width as needed */
-          /*}
+        #  /* Shorten the URL search bar */
+        #  /*#urlbar-container {
+        #  /*  max-width: 400px !important; /* Adjust the width as needed */
+        #  /*}
 
-          /* Hide shortcuts on the Firefox homepage */
-          @-moz-document url("about:home"), url("about:newtab") {
-            .top-sites {
-              display: none !important;
-            }
-          }
+        #  /* Hide shortcuts on the Firefox homepage */
+        #  @-moz-document url("about:home"), url("about:newtab") {
+        #    .top-sites {
+        #      display: none !important;
+        #    }
+        #  }
 
-          #reload-button { 
-            display: none !important; 
-          }
-
-          
-          scrollbar { display: none !important; }
-
-          .tabbrowser-tab { min-width: 60px !important; }
-
-          /* #back-button, #forward-button { display: none !important; }
-
-          #tabbrowser-tabs[style^="max-height:"][style*="px"] { 
-           visibility: collapse !important; 
-          }
+        #  #reload-button { 
+        #    display: none !important; 
+        #  }
 
           
-          /* hide bookmarks except new TabsToolbar
-          #PersonalToolbar:not([customizing]){
-           visibility: collapse !important;
-          }
-          #main-window[title^="New Tab"] #PersonalToolbar{
-           visibility: visible !important;
-          }
+        #  scrollbar { display: none !important; }
+
+        #  .tabbrowser-tab { min-width: 60px !important; }
+
+        #  /* #back-button, #forward-button { display: none !important; }
+
+        #  #tabbrowser-tabs[style^="max-height:"][style*="px"] { 
+        #   visibility: collapse !important; 
+        #  }
+
+          
+        #  /* hide bookmarks except new TabsToolbar
+        #  #PersonalToolbar:not([customizing]){
+        #   visibility: collapse !important;
+        #  }
+        #  #main-window[title^="New Tab"] #PersonalToolbar{
+        #   visibility: visible !important;
+        #  }
 
 
-          /* Set the background color for various UI elements */
-          #nav-bar, /* Navigation bar */
-          #toolbar-menubar, /* Menu bar */
-          #TabsToolbar, /* Tab bar */
-          #PersonalToolbar { /* Bookmarks bar */
-            background-color: #2f302f !important;
-          }
+        #  /* Set the background color for various UI elements */
+        #  #nav-bar, /* Navigation bar */
+        #  #toolbar-menubar, /* Menu bar */
+        #  #TabsToolbar, /* Tab bar */
+        #  #PersonalToolbar { /* Bookmarks bar */
+        #    background-color: #2f302f !important;
+        #  }
 
-          /* Style the tab background */
-          .tab-background {
-            background-color: #2f302f !important;
-          }
+        #  /* Style the tab background */
+        #  .tab-background {
+        #    background-color: #2f302f !important;
+        #  }
 
-          /* Style the main menu */
-          #appMenu-popup {
-            background-color: #2f302f !important;
-          }
+        #  /* Style the main menu */
+        #  #appMenu-popup {
+        #    background-color: #2f302f !important;
+        #  }
 
-          /* You can continue adding other UI elements here */
-        '';
+        #  /* You can continue adding other UI elements here */
+        #'';
 
         settings = {
 
@@ -888,7 +1140,7 @@ home-manager.users.reinoud = {
           "browser.download.panel.shown" = true;
           "browser.search.suggest.enabled" = false;
           "browser.shell.checkDefaultBrowser" = false;
-          "browser.startup.homepage" = "about:home";
+          "browser.startup.homepage" = "localhost";
           "browser.startup.page" = 1; # Restore previous session
           "browser.tabs.warnOnClose" = false;
           "browser.warnOnQuit" = false;
