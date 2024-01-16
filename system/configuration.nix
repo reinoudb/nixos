@@ -4,6 +4,7 @@
 imports = [
   ./hardware-configuration.nix
   ./pkgs.nix
+  inputs.nixvim.nixosModules.nixvim
 ];
 
 documentation.nixos.enable = false;

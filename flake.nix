@@ -13,6 +13,11 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, ... }:
