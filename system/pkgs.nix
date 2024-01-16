@@ -140,6 +140,9 @@ arandr
 android-udev-rules
 ncdu
 wirelesstools
+#lf previeuws
+ctpv
+  atool ffmpegthumbnailer ffmpeg colordiff gnupg elinks ueberzug glow poppler_utils  
 
 # networking
 openvpn
