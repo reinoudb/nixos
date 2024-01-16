@@ -117,6 +117,76 @@ virtualisation = {
 };
 
 programs = {
+  nixvim = {
+    enable = true;
+    colorschemes.gruvbox.enable = true; 
+    #colorschemes = {
+    #  builtins.readFile ./../programs/vim/2f302f.vim;
+    #};
+    globals.mapleader = ","; # set leader key to ,
+    options = { # get them from :h option-list
+      number = true;
+      relativenumber = true;
+      shiftwidth = 2; # tab widht
+      cursorline = true;
+      errorbells = false;
+      smarttab = true;
+      expandtab = true;
+      smartindent = true;
+      wrap = true;
+      smartcase = true;
+      swapfile = false;
+      backup = false;
+      incsearch = true;
+      history = 5000;
+      background = "dark";
+      wildmenu = true;
+      ignorecase = true;
+      undodir = "~/.vim/undodir";
+      undofile = true;
+    };
+    plugins = {
+      neo-tree = {
+        enable = true;
+        enableGitStatus = true;
+        enableModifiedMarkers = true;
+        enableRefreshOnWrite = true;
+        closeIfLastWindow = true;
+        defaultSource = "filesystem";
+        sortCaseInsensitive = true;
+      };
+      comment-nvim.enable = true;
+      better-escape.enable = true;
+      auto-save.enable = true;
+      lightline.enable = true; 
+      nix.enable = true;
+      nvim-autopairs.enable = true; 
+      fugitive.enable = true;
+      gitgutter = {
+        enable = true;
+        matchBackgrounds = true;
+      };
+      lsp = {
+        enable = true;
+        servers = {
+          bashls.enable = true; 
+          pyright.enable = true;
+        };
+      }; 
+    };
+    extraPlugins = [
+      pkgs.vimPlugins.ansible-vim
+      pkgs.vimPlugins.plenary-nvim
+      pkgs.vimPlugins.nvim-web-devicons
+      pkgs.vimPlugins.nui-nvim
+    ];
+  # extraConfig = ''
+	# " Persistent_undo
+	# set undodir=~/.vim/undodir"
+	# set undofile
+	# let g:undotree_WindowLayout = 2
+  # '';
+  };
   steam.enable = true;
   xss-lock = {
     enable = true; 
