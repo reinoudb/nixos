@@ -155,6 +155,12 @@ programs = {
       clipboard = "unnamedplus";
     };
     plugins = {
+      startify = {
+        enable = true;
+        filesNumber = 10;
+        relativePath = true;
+
+      };
       nvim-cmp = {
         enable = true;
         completion = {
@@ -201,6 +207,7 @@ programs = {
       }; 
     };
     extraPlugins = [
+      pkgs.vimPlugins.indentLine
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.seoul256-vim
       pkgs.vimPlugins.ansible-vim
@@ -220,6 +227,8 @@ programs = {
         highlight LineNr ctermbg=NONE guibg=#2f302f
         " set gutter column right color for git 
         highlight SignColumn ctermbg=NONE guibg=#2f302f
+        "indent lines
+        let g:indent_guides_enable_on_vim_startup = 1
       ]]
     '';
   };
