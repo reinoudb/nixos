@@ -119,6 +119,8 @@ virtualisation = {
 programs = {
   nixvim = {
     enable = true;
+    viAlias = true;
+    vimAlias = true;
     globals.mapleader = ","; 
     keymaps = [
       {
@@ -595,11 +597,6 @@ home-manager.users.reinoud = {
         font:
           size: 8.0
       '';
-
-       ".config/nvim/customgray.vim" = {
-         source = ./../programs/vim/customgray.vim;
-       };
-
     
       ".config/i3" = {
        source = ./../programs/i3;
