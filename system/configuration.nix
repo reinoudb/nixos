@@ -119,12 +119,11 @@ virtualisation = {
 programs = {
   nixvim = {
     enable = true;
-    colorschemes.gruvbox.enable = true; 
-    #colorschemes = {
-    #  builtins.readFile ./../programs/vim/2f302f.vim;
-    #};
-    globals.mapleader = ","; # set leader key to ,
+    colorschemes.gruvbox.enable = true;
+    # globals.mapleader = ","; # set leader key to ,
     options = { # get them from :h option-list
+      mouse = false;
+      mousehide = true;
       number = true;
       relativenumber = true;
       shiftwidth = 2; # tab widht
@@ -142,8 +141,9 @@ programs = {
       background = "dark";
       wildmenu = true;
       ignorecase = true;
-      undodir = "~/.vim/undodir";
+      undodir = "/home/reinoud/.vim/undodir";
       undofile = true;
+      clipboard = "unnamedplus";
     };
     plugins = {
       neo-tree = {
@@ -561,6 +561,10 @@ home-manager.users.reinoud = {
         font:
           size: 8.0
       '';
+
+      # ".config/nvim/colors/customgray.vim" = {
+      #   source = ./../programs/vim/customgray.vim;
+      # };
 
     
       ".config/i3" = {
