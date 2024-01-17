@@ -88,6 +88,7 @@ freetube
   gimp
 
 # core
+xclip
 jq
 kitty
 yad
