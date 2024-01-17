@@ -119,10 +119,17 @@ virtualisation = {
 programs = {
   nixvim = {
     enable = true;
-    colorschemes.gruvbox.enable = true;
-    # globals.mapleader = ","; # set leader key to ,
+    globals.mapleader = ","; 
+    keymaps = [
+      {
+        mode = "n"; # normal mode
+        key = "<leader>e";
+        action = ":Neotree toggle<CR>";
+        options.silent = true;
+      }
+    ];
     options = { # get them from :h option-list
-      mouse = false;
+      mouse = "";
       mousehide = true;
       number = true;
       relativenumber = true;
@@ -146,6 +153,23 @@ programs = {
       clipboard = "unnamedplus";
     };
     plugins = {
+      nvim-cmp = {
+        enable = true;
+        completion = {
+          keywordLength = 3;
+        };
+        sources = [
+          { name = "nvim_lsp"; }
+          { name = "buffer"; }
+          { name = "path"; }
+        ];
+        sorting = {
+          priorityWeight = 2;
+          comparators = [ "length" "offset" "exact" "score" "recently_used" "locality" "kind" "order" ];
+        };
+        snippet.expand = "ultisnips";
+      };
+      cmp-nvim-ultisnips.enable = true;
       neo-tree = {
         enable = true;
         enableGitStatus = true;
@@ -175,17 +199,27 @@ programs = {
       }; 
     };
     extraPlugins = [
+      pkgs.vimPlugins.nvim-web-devicons
+      pkgs.vimPlugins.seoul256-vim
       pkgs.vimPlugins.ansible-vim
       pkgs.vimPlugins.plenary-nvim
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.nui-nvim
     ];
-  # extraConfig = ''
-	# " Persistent_undo
-	# set undodir=~/.vim/undodir"
-	# set undofile
-	# let g:undotree_WindowLayout = 2
-  # '';
+    extraConfigLua = '' 
+      vim.cmd [[
+        " set colortheme 
+        colorscheme seoul256
+        " set bg to gray
+        highlight Normal ctermbg=NONE guibg=#2f302f
+        " allow hex colors
+         set termguicolors
+        " set nr column right background
+        highlight LineNr ctermbg=NONE guibg=#2f302f
+        " set gutter column right color for git 
+        highlight SignColumn ctermbg=NONE guibg=#2f302f
+      ]]
+    '';
   };
   steam.enable = true;
   xss-lock = {
@@ -562,9 +596,9 @@ home-manager.users.reinoud = {
           size: 8.0
       '';
 
-      # ".config/nvim/colors/customgray.vim" = {
-      #   source = ./../programs/vim/customgray.vim;
-      # };
+       ".config/nvim/customgray.vim" = {
+         source = ./../programs/vim/customgray.vim;
+       };
 
     
       ".config/i3" = {
