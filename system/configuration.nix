@@ -244,6 +244,7 @@ programs = {
     # interactiveShellInit = "shuf -n 1 /home/reinoud/scripts/facts";
     interactiveShellInit = "";
     shellAliases = {
+      v="vim";
       xterm-kitty="kitty";
       cat="bat --paging=never";
       topdf="asciidoctor-pdf";
