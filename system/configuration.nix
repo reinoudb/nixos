@@ -45,11 +45,7 @@ networking = {
     "10.133.0.22" = ["esxi.snb.lab"];
   };
   hostName = "nixos";
-  networkmanager.enable = true;
-  # wireless = {
-  #   enable = true;
-  #  userControlled.enable = true; 
-  # };
+ networkmanager.enable = true;
   firewall = {
     enable = true;
     allowPing = false;
@@ -159,7 +155,6 @@ programs = {
         enable = true;
         filesNumber = 10;
         relativePath = true;
-
       };
       nvim-cmp = {
         enable = true;
