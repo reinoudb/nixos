@@ -99,6 +99,7 @@ bat
 wpa_supplicant_gui
 hstr # hh command 
 tpm-tools
+tpm2-tools
 tree
 tpm2-tss
 iw

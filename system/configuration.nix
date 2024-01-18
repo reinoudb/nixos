@@ -25,11 +25,20 @@ system = {
 };
 
 boot = { 
+  plymouth.enable = true;
   tmp.cleanOnBoot = true;
+  initrd.systemd.enable = true;
+  kernelModules = [ "tpm_tis" "tpm_tis_core" ];
   loader = {
-    timeout = 2;
+    timeout = 100;
     efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+    systemd-boot.enable = false;
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      timeoutStyle = "menu";
+    };
   };
   supportedFilesystems = [ "ntfs" ];
 };
@@ -399,7 +408,8 @@ services = {
         BORG_RELOCATED_REPO_ACCESS_IS_OK = "yes";
       };
     doInit = false;
-    repo = "ssh://public/mnt/2tb/backup/nixos";
+    repo = "ssh://local-basestation/mnt/2tb/backup/nixos";
+    # repo = "ssh://public/mnt/2tb/backup/nixos";
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
