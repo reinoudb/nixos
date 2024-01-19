@@ -14,7 +14,11 @@ vpn_new () {
   if [[ $keuze = "cancel" ]]; then
     exit
   else
-    vpn_connect "up" $keuze
+    if [[ -z "$keuze" ]]; then
+      exit
+    else
+      vpn_connect "up" $keuze
+    fi
   fi
 }
 
