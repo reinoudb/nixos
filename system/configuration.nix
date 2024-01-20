@@ -10,8 +10,7 @@ imports = [
 documentation.nixos.enable = false;
 nix = {
   gc = {
-    automatic = true;
-    dates = "weekly";
+    automatic = true; dates = "weekly";
     options = "--delete-older-than 15d";
   };
     package = pkgs.nixFlakes;
@@ -160,10 +159,15 @@ programs = {
       clipboard = "unnamedplus";
     };
     plugins = {
-      startify = {
+      lightline = {
         enable = true;
-        filesNumber = 10;
-        relativePath = true;
+        active = {
+          left = [
+            [ "mode" ]
+            [ "filename" ]
+          ];
+          right = [];
+        };
       };
       nvim-cmp = {
         enable = true;
@@ -194,7 +198,6 @@ programs = {
       comment-nvim.enable = true;
       better-escape.enable = true;
       auto-save.enable = true;
-      lightline.enable = true; 
       nix.enable = true;
       nvim-autopairs.enable = true; 
       fugitive.enable = true;
